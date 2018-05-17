@@ -1,0 +1,10 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+1: Ed Tanous <ed.tanous@intel.com>
+Code-Review+1: Brad Bishop <bradleyb@fuzziesquirrel.com>
+Code-Review+2: Patrick Venture <venture@google.com>
+Submitted-by: Patrick Venture <venture@google.com>
+Submitted-at: Thu, 17 May 2018 02:41:13 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/9509
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
