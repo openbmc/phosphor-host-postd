@@ -13,4 +13,4 @@ snooper_CXXFLAGS = $(SDBUSPLUS_CFLAGS) $(PHOSPHOR_DBUS_INTERFACES_CFLAGS)
 # Installs in $(includedir)/lpcsnoop/
 nobase_include_HEADERS = lpcsnoop/snoop.hpp lpcsnoop/snoop_listen.hpp
 
-SUBDIRS = .
+SUBDIRS = . test
