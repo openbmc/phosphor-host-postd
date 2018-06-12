@@ -24,25 +24,7 @@
 #include <memory>
 #include <thread>
 
-#include <sdbusplus/bus.hpp>
-#include <sdbusplus/server.hpp>
-#include "xyz/openbmc_project/State/Boot/Raw/server.hpp"
-
 #include "lpcsnoop/snoop.hpp"
-
-template <typename... T>
-using ServerObject = typename sdbusplus::server::object::object<T...>;
-using PostInterface = sdbusplus::xyz::openbmc_project::State::Boot::server::Raw;
-using PostObject = ServerObject<PostInterface>;
-
-class PostReporter : public PostObject
-{
-  public:
-    PostReporter(sdbusplus::bus::bus& bus, const char* objPath, bool defer) :
-        PostObject(bus, objPath, defer)
-    {
-    }
-};
 
 /*
  * 256 bytes is a nice amount.  It's improbable we'd need this many, but its
