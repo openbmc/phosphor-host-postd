@@ -16,13 +16,14 @@
 
 #include <fcntl.h>
 #include <getopt.h>
-#include <poll.h>
 #include <unistd.h>
 
 #include <array>
 #include <cstdint>
 #include <iostream>
 #include <memory>
+#include <sys/epoll.h>
+#include <systemd/sd-event.h>
 #include <thread>
 
 #include "lpcsnoop/snoop.hpp"
@@ -36,20 +37,6 @@ static size_t codeSize = 1; /* Size of each POST code in bytes */
  * fashion.  So, mostly arbitrarily chosen.
  */
 static constexpr size_t BUFFER_SIZE = 256;
-
-/*
- * Process any incoming dbus inquiries, which include introspection etc.
- */
-void ProcessDbus(sdbusplus::bus::bus& bus)
-{
-    while (true)
-    {
-        bus.process_discard();
-        bus.wait(); // wait indefinitely
-    }
-
-    return;
-}
 
 static void usage(const char* name)
 {
@@ -76,6 +63,47 @@ static uint64_t assembleBytes(std::array<uint8_t, BUFFER_SIZE> buf, int start,
 }
 
 /*
+ * Callback handling IO event from the POST code fd. i.e. there is new
+ * POST code available to read.
+ */
+int PostCodeEventHandler(sd_event_source* s, int postFd, uint32_t revents,
+                         void* userdata)
+{
+    PostReporter* reporter = static_cast<PostReporter*>(userdata);
+    std::array<uint8_t, BUFFER_SIZE> buffer;
+    int readb;
+
+    // TODO(kunyi): more error handling for EPOLLPRI/EPOLLERR.
+    if (revents & EPOLLIN)
+    {
+        readb = read(postFd, buffer.data(), buffer.size());
+        if (readb < 0)
+        {
+            /* Read failure. */
+            return readb;
+        }
+
+        if (readb % codeSize != 0)
+        {
+            fprintf(stderr,
+                    "Warning: read size %d not a multiple of "
+                    "POST code length %zu. Some codes may be "
+                    "corrupt or missing\n",
+                    readb, codeSize);
+            readb -= (readb % codeSize);
+        }
+
+        /* Broadcast the values read. */
+        for (int i = 0; i < readb; i += codeSize)
+        {
+            reporter->value(assembleBytes(buffer, i, codeSize));
+        }
+    }
+
+    return 0;
+}
+
+/*
  * TODO(venture): this only listens one of the possible snoop ports, but
  * doesn't share the namespace.
  *
@@ -86,11 +114,8 @@ int main(int argc, char* argv[])
 {
     int rc = 0;
     int opt;
-    struct pollfd pollset;
-    int pollr;
-    int readb;
     int postFd = -1;
-    std::array<uint8_t, BUFFER_SIZE> buffer;
+    sd_event* event = NULL;
 
     /*
      * These string constants are only used in this method within this object
@@ -143,82 +168,45 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    pollset.fd = postFd;
-    pollset.events |= POLLIN;
-
     auto bus = sdbusplus::bus::new_default();
 
     // Add systemd object manager.
     sdbusplus::server::manager::manager(bus, snoopObject);
 
     PostReporter reporter(bus, snoopObject, deferSignals);
-    reporter.emit_object_added();
 
-    bus.request_name(snoopDbus);
+    // Create sdevent and add IO source
+    // TODO(kunyi): the current interface is really C-style. Move to a C++
+    // wrapper when there is a SdEventPlus or some sort of that is ready.
+    rc = sd_event_default(&event);
 
-    /*
-     * I don't see a public interface for getting the underlying sd_bus*
-     * so instead of poll(bus, driver), I'll just create a separate thread.
-     *
-     * TODO(venture): There may be a way to use sdevent to poll both the file
-     * and the dbus in the same event loop.  If I could get the sdbus pointer
-     * from bus directly, I'd grab a file handler from it, and then just poll on
-     * both in one loop.  From a cursory look at sdevent, I should be able to do
-     * something similar with that at some point.
-     */
-    std::thread lt(ProcessDbus, std::ref(bus));
-
-    /* infinitely listen for POST codes and broadcast. */
-    while (true)
+    if (rc < 0)
     {
-        pollr = poll(&pollset, 1, -1); /* polls indefinitely. */
-        if (pollr < 0)
-        {
-            /* poll returned error. */
-            rc = -errno;
-            goto exit;
-        }
-
-        if (pollr > 0)
-        {
-            if (pollset.revents & POLLIN)
-            {
-                readb = read(postFd, buffer.data(), buffer.size());
-                if (readb < 0)
-                {
-                    /* Read failure. */
-                    rc = readb;
-                    goto exit;
-                }
-                else
-                {
-                    if (readb % codeSize != 0)
-                    {
-                        fprintf(stderr,
-                                "Warning: read size %d not a multiple of "
-                                "POST code length %zu. Some codes may be "
-                                "corrupt or missing\n",
-                                readb, codeSize);
-                        readb -= (readb % codeSize);
-                    }
-
-                    /* Broadcast the values read. */
-                    for (int i = 0; i < readb; i += codeSize)
-                    {
-                        reporter.value(assembleBytes(buffer, i, codeSize));
-                    }
-                }
-            }
-        }
+        fprintf(stderr, "Failed to allocate event loop:%s\n", strerror(-rc));
+        goto finish;
     }
 
-exit:
+    sd_event_source* source;
+    rc = sd_event_add_io(event, &source, postFd, EPOLLIN, PostCodeEventHandler,
+                         &reporter);
+    if (rc < 0)
+    {
+        fprintf(stderr, "Failed to add sdevent io source:%s\n", strerror(-rc));
+        goto finish;
+    }
+
+    // Enable bus to handle incoming IO and bus events
+    reporter.emit_object_added();
+    bus.request_name(snoopDbus);
+    bus.attach_event(event, SD_EVENT_PRIORITY_NORMAL);
+
+    rc = sd_event_loop(event);
+
+finish:
     if (postFd > -1)
     {
         close(postFd);
     }
-
-    lt.join();
 
     return rc;
 }
