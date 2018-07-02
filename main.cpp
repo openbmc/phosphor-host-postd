@@ -15,6 +15,7 @@
  */
 
 #include <fcntl.h>
+#include <getopt.h>
 #include <poll.h>
 #include <unistd.h>
 
@@ -44,6 +45,8 @@ class PostReporter : public PostObject
     }
 };
 
+static const char *snoopFilename = "/dev/aspeed-lpc-snoop0";
+
 /*
  * 256 bytes is a nice amount.  It's improbable we'd need this many, but its
  * gives us leg room in the event the driver poll doesn't return in a timely
@@ -65,6 +68,14 @@ void ProcessDbus(sdbusplus::bus::bus& bus)
     return;
 }
 
+static void usage(const char *name)
+{
+    fprintf(stderr, "\
+Usage: %s [-d <DEVICE>]\n\
+  -d, --device <DEVICE>  use <DEVICE> file. Default is '%s'\n\n",
+            name, snoopFilename);
+}
+
 /*
  * TODO(venture): this only listens one of the possible snoop ports, but
  * doesn't share the namespace.
@@ -75,6 +86,7 @@ void ProcessDbus(sdbusplus::bus::bus& bus)
 int main(int argc, char* argv[])
 {
     int rc = 0;
+    int opt;
     struct pollfd pollset;
     int pollr;
     int readb;
@@ -90,12 +102,26 @@ int main(int argc, char* argv[])
      */
     const char* snoopObject = SNOOP_OBJECTPATH;
     const char* snoopDbus = SNOOP_BUSNAME;
-    /*
-     * The following string would be promoted if used in another file under the
-     * same header.
-     */
-    auto snoopFilename = "/dev/aspeed-lpc-snoop0";
+
     bool deferSignals = true;
+
+    static const struct option long_options[] = {
+        { "device", required_argument, NULL, 'd' },
+        { 0,        0,                 0,    0   }
+    };
+
+    while ((opt = getopt_long(argc, argv, "d:", long_options, NULL)) != -1) {
+        switch (opt) {
+            case 0:
+                break;
+            case 'd':
+                snoopFilename = optarg;
+                break;
+            default:
+                usage(argv[0]);
+                exit(EXIT_FAILURE);
+        }
+    }
 
     postFd = open(snoopFilename, 0);
     if (postFd < 0)
