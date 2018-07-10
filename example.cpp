@@ -19,35 +19,39 @@
 #include <iostream>
 #include <memory>
 
-#include <sdbusplus/bus.hpp>
-#include <sdbusplus/message.hpp>
-#include <sdbusplus/server.hpp>
+#include "lpcsnoop/snoop_listen.hpp"
 
-#include "lpcsnoop/snoop.hpp"
-
-/*
- * Handle incoming dbus signal we care about.
- */
-static int DbusHandleSignal(sd_bus_message* msg, void* data, sd_bus_error* err);
-
-/*
- * Get the match signal for dbus.
- */
-static std::string GetMatch(void);
-
-// Example object that listens for dbus updates.
-class SnoopListen
+/* Example PostCode handler which simply prints them */
+static void printPostcode(uint64_t postcode)
 {
-  public:
-    SnoopListen(sdbusplus::bus::bus& bus) :
-        _bus(bus), _signal(bus, GetMatch().c_str(), DbusHandleSignal, this)
-    {
-    }
+    /* Print output to verify the example program is receiving values. */
+    std::printf("recv: 0x%" PRIx64 "\n", postcode);
+}
 
-  private:
-    sdbusplus::bus::bus& _bus;
-    sdbusplus::server::match::match _signal;
-};
+/*
+ * One can also specify custom handler that operates on
+ * sdbusplus::message::message type and pass them to constructor.
+ * e.g.
+ *
+ * static void PrintMessageMap(sdbusplus::message::message& m)
+ * {
+ *     using sdbusplus::message::variant_ns::get;
+ *     std::string messageBusName;
+ *     std::map<std::string, sdbusplus::message::variant<uint64_t>>
+ *         messageData;
+ *
+ *     m.read(messageBusName, messageData);
+ *
+ *     std::cout << "Got message from " << messageBusName << std::endl;
+ *     for (const auto& kv : messageData)
+ *     {
+ *         std::cout << "Key: " << kv.first << std::endl;
+ *         std::cout << "Value: " << get<uint64_t>(kv.second) << std::endl;
+ *     }
+ * }
+ *
+ * lpcsnoop::SnoopListen snoop(ListenBus, PrintMessageMap);
+ */
 
 /*
  * This is the entry point for the application.
@@ -58,7 +62,7 @@ class SnoopListen
 int main(int argc, char* argv[])
 {
     auto ListenBus = sdbusplus::bus::new_default();
-    SnoopListen snoop(ListenBus);
+    lpcsnoop::SnoopListen snoop(ListenBus, printPostcode);
 
     while (true)
     {
@@ -67,35 +71,4 @@ int main(int argc, char* argv[])
     }
 
     return 0;
-}
-
-static int DbusHandleSignal(sd_bus_message* msg, void* data, sd_bus_error* err)
-{
-    auto sdbpMsg = sdbusplus::message::message(msg);
-
-    std::string msgSensor, busName{SNOOP_BUSNAME};
-    std::map<std::string, sdbusplus::message::variant<uint64_t>> msgData;
-    sdbpMsg.read(msgSensor, msgData);
-
-    if (msgSensor == busName)
-    {
-        auto valPropMap = msgData.find("Value");
-        if (valPropMap != msgData.end())
-        {
-            uint64_t rawValue = sdbusplus::message::variant_ns::get<uint64_t>(
-                valPropMap->second);
-
-            /* Print output to verify the example program is receiving values.
-             */
-            std::printf("recv: 0x%" PRIx64 "\n", rawValue);
-        }
-    }
-
-    return 0;
-}
-
-static std::string GetMatch(void)
-{
-    return "type='signal',interface='org.freedesktop.DBus.Properties',"
-           "member='PropertiesChanged',path='" SNOOP_OBJECTPATH "'";
 }

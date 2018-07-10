@@ -22,23 +22,36 @@
 
 namespace lpcsnoop
 {
-
-using DbusSignalHandler = int (*)(sd_bus_message*, void*, sd_bus_error*);
+using sdbusplus::message::variant_ns::get;
 
 /* Returns matching string for what signal to listen on Dbus */
 static const std::string GetMatchRule()
 {
-    return "type='signal',"
-           "interface='org.freedesktop.DBus.Properties',"
-           "member='PropertiesChanged',"
-           "path='" SNOOP_OBJECTPATH "'";
+    using namespace sdbusplus::bus::match::rules;
+
+    return type::signal() + interface("org.freedesktop.DBus.Properties") +
+           member("PropertiesChanged") + path(SNOOP_OBJECTPATH);
 }
 
 class SnoopListen
 {
+    using message_handler_t = std::function<void(sdbusplus::message::message&)>;
+    using postcode_handler_t = std::function<void(uint64_t)>;
+
   public:
-    SnoopListen(sdbusplus::bus::bus& busIn, DbusSignalHandler handler) :
+    SnoopListen(sdbusplus::bus::bus& busIn, sd_bus_message_handler_t handler) :
         bus(busIn), signal(busIn, GetMatchRule().c_str(), handler, this)
+    {
+    }
+
+    SnoopListen(sdbusplus::bus::bus& busIn, message_handler_t handler) :
+        bus(busIn), signal(busIn, GetMatchRule(), handler)
+    {
+    }
+
+    SnoopListen(sdbusplus::bus::bus& busIn, postcode_handler_t handler) :
+        SnoopListen(busIn, std::bind(defaultMessageHandler, handler,
+                                     std::placeholders::_1))
     {
     }
 
@@ -52,6 +65,27 @@ class SnoopListen
   private:
     sdbusplus::bus::bus& bus;
     sdbusplus::server::match::match signal;
+
+    /*
+     * Default message handler which listens to published messages on snoop
+     * DBus path, and calls the given postcode_handler on each value received.
+     */
+    static void defaultMessageHandler(postcode_handler_t& handler,
+                                      sdbusplus::message::message& m)
+    {
+        std::string messageBusName;
+        std::map<std::string, sdbusplus::message::variant<uint64_t>>
+            messageData;
+        constexpr char propertyKey[] = "Value";
+
+        m.read(messageBusName, messageData);
+
+        if (messageBusName == SNOOP_BUSNAME &&
+            messageData.find(propertyKey) != messageData.end())
+        {
+            handler(get<uint64_t>(messageData[propertyKey]));
+        }
+    }
 };
 
 } // namespace lpcsnoop
