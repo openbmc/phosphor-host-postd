@@ -46,6 +46,7 @@ class PostReporter : public PostObject
 };
 
 static const char* snoopFilename = "/dev/aspeed-lpc-snoop0";
+static size_t codeSize = 1; /* Size of each POST code in bytes */
 
 /*
  * 256 bytes is a nice amount.  It's improbable we'd need this many, but its
@@ -72,8 +73,24 @@ static void usage(const char* name)
 {
     fprintf(stderr,
             "Usage: %s [-d <DEVICE>]\n"
+            "  -b, --bytes <SIZE>     set POST code length to <SIZE> bytes. "
+            "Default is %d\n"
             "  -d, --device <DEVICE>  use <DEVICE> file. Default is '%s'\n\n",
-            name, snoopFilename);
+            name, codeSize, snoopFilename);
+}
+
+static uint64_t assembleBytes(std::array<uint8_t, BUFFER_SIZE> buf, int start,
+                              int size)
+{
+    uint64_t result = 0;
+
+    for (int i = start + size - 1; i >= start; i--)
+    {
+        result <<= 8;
+        result |= buf[i];
+    }
+
+    return result;
 }
 
 /*
@@ -106,13 +123,27 @@ int main(int argc, char* argv[])
     bool deferSignals = true;
 
     static const struct option long_options[] = {
-        {"device", required_argument, NULL, 'd'}, {0, 0, 0, 0}};
+        {"bytes", required_argument, NULL, 'b'},
+        {"device", required_argument, NULL, 'd'},
+        {0, 0, 0, 0}};
 
-    while ((opt = getopt_long(argc, argv, "d:", long_options, NULL)) != -1)
+    while ((opt = getopt_long(argc, argv, "b:d:", long_options, NULL)) != -1)
     {
         switch (opt)
         {
             case 0:
+                break;
+            case 'b':
+                codeSize = atoi(optarg);
+
+                if (codeSize < 1 || codeSize > 8)
+                {
+                    fprintf(stderr,
+                            "Invalid POST code size '%s'. Must be "
+                            "an integer from 1 to 8.\n",
+                            optarg);
+                    exit(EXIT_FAILURE);
+                }
                 break;
             case 'd':
                 snoopFilename = optarg;
@@ -179,10 +210,20 @@ int main(int argc, char* argv[])
                 }
                 else
                 {
-                    /* Broadcast the bytes read. */
-                    for (int i = 0; i < readb; i++)
+                    if (readb % codeSize != 0)
                     {
-                        reporter.value(buffer[i]);
+                        fprintf(stderr,
+                                "Warning: read size %d not a multiple of "
+                                "POST code length %zu. Some codes may be "
+                                "corrupt or missing\n",
+                                readb, codeSize);
+                        readb -= (readb % codeSize);
+                    }
+
+                    /* Broadcast the values read. */
+                    for (int i = 0; i < readb; i += codeSize)
+                    {
+                        reporter.value(assembleBytes(buffer, i, codeSize));
                     }
                 }
             }
