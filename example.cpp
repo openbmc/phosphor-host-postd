@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <cinttypes>
 #include <cstdio>
 #include <iostream>
 #include <memory>
@@ -86,7 +87,7 @@ static int DbusHandleSignal(sd_bus_message* msg, void* data, sd_bus_error* err)
 
             /* Print output to verify the example program is receiving values.
              */
-            std::printf("recv: 0x%x\n", static_cast<uint8_t>(rawValue));
+            std::printf("recv: 0x%" PRIx64 "\n", rawValue);
         }
     }
 
