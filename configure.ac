@@ -27,7 +27,7 @@ AC_CHECK_HEADER(experimental/any, ,[AC_MSG_ERROR([Could not find experimental/an
 LT_INIT # Required for systemd linking
 
 # Check/set gtest specific functions.
-PKG_CHECK_MODULES([GTEST], [gtest], [], [AC_MSG_NOTICE([gtest not found, tests will not build])])
+PKG_CHECK_MODULES([GTEST], [gtest_main], [], [AC_MSG_NOTICE([gtest not found, tests will not build])])
 PKG_CHECK_MODULES([GMOCK], [gmock], [], [AC_MSG_NOTICE([gmock not found, tests will not build])])
 AX_PTHREAD([GTEST_CFLAGS+=" -DGTEST_HAS_PTHREAD=1 "],[GTEST_CFLAGS+=" -DGTEST_HAS_PTHREAD=0 "])
 
