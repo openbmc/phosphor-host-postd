@@ -1,0 +1,9 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+1: Kun Yi <kunyi731@gmail.com>
+Code-Review+2: Patrick Venture <venture@google.com>
+Submitted-by: Patrick Venture <venture@google.com>
+Submitted-at: Tue, 24 Jul 2018 14:43:20 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/11493
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
