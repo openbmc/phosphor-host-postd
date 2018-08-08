@@ -129,10 +129,13 @@ int main(int argc, char* argv[])
 
     bool deferSignals = true;
 
+    // clang-format off
     static const struct option long_options[] = {
-        {"bytes", required_argument, NULL, 'b'},
+        {"bytes",  required_argument, NULL, 'b'},
         {"device", required_argument, NULL, 'd'},
-        {0, 0, 0, 0}};
+        {0, 0, 0, 0}
+    };
+    // clang-format on
 
     while ((opt = getopt_long(argc, argv, "b:d:", long_options, NULL)) != -1)
     {
