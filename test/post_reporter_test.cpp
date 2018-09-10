@@ -1,15 +1,16 @@
-#include <gmock/gmock.h>
-#include <gtest/gtest.h>
+#include "lpcsnoop/snoop.hpp"
+
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/test/sdbus_mock.hpp>
 
-#include "lpcsnoop/snoop.hpp"
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
+using ::testing::_;
 using ::testing::IsNull;
 using ::testing::NiceMock;
 using ::testing::Return;
 using ::testing::StrEq;
-using ::testing::_;
 
 namespace
 {

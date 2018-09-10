@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
+#include "lpcsnoop/snoop.hpp"
+
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/message.hpp>
 #include <sdbusplus/server.hpp>
-
-#include "lpcsnoop/snoop.hpp"
 
 namespace lpcsnoop
 {

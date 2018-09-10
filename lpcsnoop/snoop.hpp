@@ -2,8 +2,7 @@
 
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/server.hpp>
-
-#include "xyz/openbmc_project/State/Boot/Raw/server.hpp"
+#include <xyz/openbmc_project/State/Boot/Raw/server.hpp>
 
 /* The LPC snoop on port 80h is mapped to this dbus path. */
 #define SNOOP_OBJECTPATH "/xyz/openbmc_project/state/boot/raw"

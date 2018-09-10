@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
+#include "lpcsnoop/snoop_listen.hpp"
+
 #include <cinttypes>
 #include <cstdio>
 #include <iostream>
 #include <memory>
-
-#include "lpcsnoop/snoop_listen.hpp"
 
 /* Example PostCode handler which simply prints them */
 static void printPostcode(uint64_t postcode)

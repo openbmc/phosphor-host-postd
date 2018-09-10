@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
+#include "lpcsnoop/snoop.hpp"
+
 #include <fcntl.h>
 #include <getopt.h>
+#include <sys/epoll.h>
+#include <systemd/sd-event.h>
 #include <unistd.h>
 
 #include <array>
 #include <cstdint>
 #include <iostream>
 #include <memory>
-#include <sys/epoll.h>
-#include <systemd/sd-event.h>
 #include <thread>
-
-#include "lpcsnoop/snoop.hpp"
 
 static const char* snoopFilename = "/dev/aspeed-lpc-snoop0";
 static size_t codeSize = 1; /* Size of each POST code in bytes */
