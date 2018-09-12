@@ -17,9 +17,9 @@ AX_CXX_COMPILE_STDCXX_17([noext])
 AX_APPEND_COMPILE_FLAGS([-fpic -Wall -Werror], [CXXFLAGS])
 
 # Checks for libraries.
-# AC_CHECK_LIB([mapper], [mapper_get_service], ,[AC_MSG_ERROR([Could not find libmapper...openbmc/phosphor-objmgr package required])])
 PKG_CHECK_MODULES([SYSTEMD], [libsystemd >= 221], [], [AC_MSG_ERROR(["systemd required and not found"])])
 PKG_CHECK_MODULES([SDBUSPLUS], [sdbusplus], ,[AC_MSG_ERROR([The openbmc/sdbusplus package is required])])
+PKG_CHECK_MODULES([SDEVENTPLUS], [sdeventplus], ,[AC_MSG_ERROR([The openbmc/sdeventplus package is required])])
 PKG_CHECK_MODULES([PHOSPHOR_DBUS_INTERFACES], [phosphor-dbus-interfaces], [], [AC_MSG_ERROR(["phosphor-dbus-interfaces required and not found."])])
 AC_CHECK_HEADER(experimental/any, ,[AC_MSG_ERROR([Could not find experimental/any...libstdc++fs development package required])])
 
