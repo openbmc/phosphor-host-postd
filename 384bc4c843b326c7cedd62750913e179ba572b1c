@@ -1,0 +1,11 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+1: Vernon Mauery <vernon.mauery@linux.intel.com>
+Code-Review+2: Kun Yi <kunyi731@gmail.com>
+Ok-To-Test+1: Kun Yi <kunyi731@gmail.com>
+Verified+1: Kun Yi <kunyi731@gmail.com>
+Submitted-by: Kun Yi <kunyi731@gmail.com>
+Submitted-at: Wed, 12 Sep 2018 17:13:09 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/12653
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
