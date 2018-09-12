@@ -24,8 +24,12 @@
 
 #include <array>
 #include <cstdint>
+#include <exception>
 #include <iostream>
 #include <memory>
+#include <sdeventplus/event.hpp>
+#include <sdeventplus/source/event.hpp>
+#include <sdeventplus/source/io.hpp>
 #include <thread>
 
 static const char* snoopFilename = "/dev/aspeed-lpc-snoop0";
@@ -66,41 +70,35 @@ static uint64_t assembleBytes(std::array<uint8_t, BUFFER_SIZE> buf, int start,
  * Callback handling IO event from the POST code fd. i.e. there is new
  * POST code available to read.
  */
-int PostCodeEventHandler(sd_event_source* s, int postFd, uint32_t revents,
-                         void* userdata)
+void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd,
+                          uint32_t revents, PostReporter* reporter)
 {
-    PostReporter* reporter = static_cast<PostReporter*>(userdata);
     std::array<uint8_t, BUFFER_SIZE> buffer;
     int readb;
 
-    // TODO(kunyi): more error handling for EPOLLPRI/EPOLLERR.
-    if (revents & EPOLLIN)
+    readb = read(postFd, buffer.data(), buffer.size());
+    if (readb < 0)
     {
-        readb = read(postFd, buffer.data(), buffer.size());
-        if (readb < 0)
-        {
-            /* Read failure. */
-            return readb;
-        }
-
-        if (readb % codeSize != 0)
-        {
-            fprintf(stderr,
-                    "Warning: read size %d not a multiple of "
-                    "POST code length %zu. Some codes may be "
-                    "corrupt or missing\n",
-                    readb, codeSize);
-            readb -= (readb % codeSize);
-        }
-
-        /* Broadcast the values read. */
-        for (int i = 0; i < readb; i += codeSize)
-        {
-            reporter->value(assembleBytes(buffer, i, codeSize));
-        }
+        /* Read failure. */
+        s.get_event().exit(1);
+        return;
     }
 
-    return 0;
+    if (readb % codeSize != 0)
+    {
+        fprintf(stderr,
+                "Warning: read size %d not a multiple of "
+                "POST code length %zu. Some codes may be "
+                "corrupt or missing\n",
+                readb, codeSize);
+        readb -= (readb % codeSize);
+    }
+
+    /* Broadcast the values read. */
+    for (int i = 0; i < readb; i += codeSize)
+    {
+        reporter->value(assembleBytes(buffer, i, codeSize));
+    }
 }
 
 /*
@@ -115,7 +113,6 @@ int main(int argc, char* argv[])
     int rc = 0;
     int opt;
     int postFd = -1;
-    sd_event* event = NULL;
 
     /*
      * These string constants are only used in this method within this object
@@ -177,35 +174,26 @@ int main(int argc, char* argv[])
     sdbusplus::server::manager::manager(bus, snoopObject);
 
     PostReporter reporter(bus, snoopObject, deferSignals);
-
-    // Create sdevent and add IO source
-    // TODO(kunyi): the current interface is really C-style. Move to a C++
-    // wrapper when there is a SdEventPlus or some sort of that is ready.
-    rc = sd_event_default(&event);
-
-    if (rc < 0)
-    {
-        fprintf(stderr, "Failed to allocate event loop:%s\n", strerror(-rc));
-        goto finish;
-    }
-
-    sd_event_source* source;
-    rc = sd_event_add_io(event, &source, postFd, EPOLLIN, PostCodeEventHandler,
-                         &reporter);
-    if (rc < 0)
-    {
-        fprintf(stderr, "Failed to add sdevent io source:%s\n", strerror(-rc));
-        goto finish;
-    }
-
-    // Enable bus to handle incoming IO and bus events
     reporter.emit_object_added();
     bus.request_name(snoopDbus);
-    bus.attach_event(event, SD_EVENT_PRIORITY_NORMAL);
 
-    rc = sd_event_loop(event);
+    // Create sdevent and add IO source
+    try
+    {
+        sdeventplus::Event event = sdeventplus::Event::get_default();
+        sdeventplus::source::IO reporterSource(
+            event, postFd, EPOLLIN,
+            std::bind(PostCodeEventHandler, std::placeholders::_1,
+                      std::placeholders::_2, std::placeholders::_3, &reporter));
+        // Enable bus to handle incoming IO and bus events
+        bus.attach_event(event.get(), SD_EVENT_PRIORITY_NORMAL);
+        rc = event.loop();
+    }
+    catch (const std::exception& e)
+    {
+        fprintf(stderr, "%s\n", e.what());
+    }
 
-finish:
     if (postFd > -1)
     {
         close(postFd);
