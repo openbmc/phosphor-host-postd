@@ -1,0 +1,10 @@
+Ok-To-Test+1: Kun Yi <kunyi731@gmail.com>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+1: William A. Kennington III <wak@google.com>
+Code-Review+1: Patrick Venture <venture@google.com>
+Code-Review+2: Benjamin Fair <benjaminfair@google.com>
+Submitted-by: Kun Yi <kunyi731@gmail.com>
+Submitted-at: Fri, 14 Sep 2018 18:05:02 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/12746
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
