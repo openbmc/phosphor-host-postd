@@ -1,5 +1,10 @@
 AM_DEFAULT_SOURCE_EXT = .cpp
 
+if HAVE_SYSTEMD
+systemdsystemunit_DATA = \
+  lpcsnoop.service
+endif
+
 sbin_PROGRAMS = snoopd snooper
 
 snoopd_SOURCES = main.cpp
