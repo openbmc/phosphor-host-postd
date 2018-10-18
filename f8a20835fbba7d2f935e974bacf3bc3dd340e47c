@@ -1,0 +1,8 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+2: Benjamin Fair <benjaminfair@google.com>
+Submitted-by: Benjamin Fair <benjaminfair@google.com>
+Submitted-at: Thu, 18 Oct 2018 00:01:05 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/13974
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
