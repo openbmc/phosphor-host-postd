@@ -26,6 +26,25 @@ AC_CHECK_HEADER(experimental/filesystem, ,[AC_MSG_ERROR([Could not find experime
 # Checks for library functions.
 LT_INIT # Required for systemd linking
 
+AC_ARG_VAR(SNOOP_DEVICE, "Path to snoop device")
+AC_ARG_VAR(POST_CODE_BYTES, "Post code byte size"))
+
+PKG_PROG_PKG_CONFIG
+AC_ARG_WITH([systemdsystemunitdir],
+     [AS_HELP_STRING([--with-systemdsystemunitdir=DIR], [Directory for systemd service files])],,
+     [with_systemdsystemunitdir=auto])
+AS_IF([test "x$with_systemdsystemunitdir" = "xyes" -o "x$with_systemdsystemunitdir" = "xauto"], [
+     def_systemdsystemunitdir=$($PKG_CONFIG --variable=systemdsystemunitdir systemd)
+
+     AS_IF([test "x$def_systemdsystemunitdir" = "x"],
+   [AS_IF([test "x$with_systemdsystemunitdir" = "xyes"],
+    [AC_MSG_ERROR([systemd support requested but pkg-config unable to query systemd package])])
+    with_systemdsystemunitdir=no],
+   [with_systemdsystemunitdir="$def_systemdsystemunitdir"])])
+AS_IF([test "x$with_systemdsystemunitdir" != "xno"],
+      [AC_SUBST([systemdsystemunitdir], [$with_systemdsystemunitdir])])
+AM_CONDITIONAL([HAVE_SYSTEMD], [test "x$with_systemdsystemunitdir" != "xno"])
+
 # Check/set gtest specific functions.
 PKG_CHECK_MODULES([GTEST], [gtest_main], [], [AC_MSG_NOTICE([gtest not found, tests will not build])])
 PKG_CHECK_MODULES([GMOCK], [gmock], [], [AC_MSG_NOTICE([gmock not found, tests will not build])])
@@ -57,4 +76,5 @@ AS_IF([test "x$enable_oe_sdk" == "xyes"],
 
 # Create configured output
 AC_CONFIG_FILES([Makefile test/Makefile])
+AC_CONFIG_FILES([lpcsnoop.service])
 AC_OUTPUT
