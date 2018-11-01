@@ -29,8 +29,6 @@ LT_INIT # Required for systemd linking
 AC_ARG_VAR(SNOOP_DEVICE, "Path to snoop device")
 AC_ARG_VAR(POST_CODE_BYTES, "Post code byte size")
 AC_ARG_VAR(SYSTEMD_TARGET, "Target for starting this service")
-AC_ARG_VAR(sbindir, "sbin full path")
-AS_IF([test "x$sbindir" == "x"], [sbindir="/usr/sbin"])
 
 PKG_PROG_PKG_CONFIG
 AC_ARG_WITH([systemdsystemunitdir],
