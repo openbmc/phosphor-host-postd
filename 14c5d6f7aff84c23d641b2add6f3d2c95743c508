@@ -1,0 +1,10 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+1: Brad Bishop <bradleyb@fuzziesquirrel.com>
+Code-Review+2: Kun Yi <kunyi731@gmail.com>
+Code-Review+1: Benjamin Fair <benjaminfair@google.com>
+Submitted-by: Kun Yi <kunyi731@gmail.com>
+Submitted-at: Fri, 02 Nov 2018 21:05:47 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/15149
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
