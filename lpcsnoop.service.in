@@ -4,7 +4,7 @@ After=systemd-modules-load.service
 
 [Service]
 Restart=always
-ExecStart=@sbindir@/snoopd -d "/dev/@SNOOP_DEVICE@" -b "@POST_CODE_BYTES@"
+ExecStart=@bindir@/snoopd -d "/dev/@SNOOP_DEVICE@" -b "@POST_CODE_BYTES@"
 
 [Install]
 WantedBy=@SYSTEMD_TARGET@

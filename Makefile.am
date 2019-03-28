@@ -5,7 +5,7 @@ systemdsystemunit_DATA = \
   lpcsnoop.service
 endif
 
-sbin_PROGRAMS = snoopd snooper
+bin_PROGRAMS = snoopd snooper
 
 snoopd_SOURCES = main.cpp
 snoopd_LDADD = $(SDBUSPLUS_LIBS) $(SDEVENTPLUS_LIBS) $(PHOSPHOR_DBUS_INTERFACES_LIBS) -lpthread
