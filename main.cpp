@@ -161,7 +161,7 @@ int main(int argc, char* argv[])
         }
     }
 
-    postFd = open(snoopFilename, 0);
+    postFd = open(snoopFilename, O_NONBLOCK);
     if (postFd < 0)
     {
         fprintf(stderr, "Unable to open: %s\n", snoopFilename);
