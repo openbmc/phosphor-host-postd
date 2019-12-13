@@ -16,6 +16,7 @@
 
 #include "lpcsnoop/snoop.hpp"
 
+#include <endian.h>
 #include <fcntl.h>
 #include <getopt.h>
 #include <sys/epoll.h>
@@ -35,13 +36,6 @@
 static const char* snoopFilename = "/dev/aspeed-lpc-snoop0";
 static size_t codeSize = 1; /* Size of each POST code in bytes */
 
-/*
- * 256 bytes is a nice amount.  It's improbable we'd need this many, but its
- * gives us leg room in the event the driver poll doesn't return in a timely
- * fashion.  So, mostly arbitrarily chosen.
- */
-static constexpr size_t BUFFER_SIZE = 256;
-
 static void usage(const char* name)
 {
     fprintf(stderr,
@@ -52,20 +46,6 @@ static void usage(const char* name)
             name, codeSize, snoopFilename);
 }
 
-static uint64_t assembleBytes(std::array<uint8_t, BUFFER_SIZE> buf, int start,
-                              int size)
-{
-    uint64_t result = 0;
-
-    for (int i = start + size - 1; i >= start; i--)
-    {
-        result <<= 8;
-        result |= buf[i];
-    }
-
-    return result;
-}
-
 /*
  * Callback handling IO event from the POST code fd. i.e. there is new
  * POST code available to read.
@@ -73,32 +53,15 @@ static uint64_t assembleBytes(std::array<uint8_t, BUFFER_SIZE> buf, int start,
 void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd,
                           uint32_t revents, PostReporter* reporter)
 {
-    std::array<uint8_t, BUFFER_SIZE> buffer;
-    int readb;
-
-    readb = read(postFd, buffer.data(), buffer.size());
+    uint64_t code = 0;
+    readb = read(postFd, &code, codeSize);
     if (readb < 0)
     {
         /* Read failure. */
         s.get_event().exit(1);
         return;
     }
-
-    if (readb % codeSize != 0)
-    {
-        fprintf(stderr,
-                "Warning: read size %d not a multiple of "
-                "POST code length %zu. Some codes may be "
-                "corrupt or missing\n",
-                readb, codeSize);
-        readb -= (readb % codeSize);
-    }
-
-    /* Broadcast the values read. */
-    for (int i = 0; i < readb; i += codeSize)
-    {
-        reporter->value(assembleBytes(buffer, i, codeSize));
-    }
+    reporter->value(le64toh(code));
 }
 
 /*
