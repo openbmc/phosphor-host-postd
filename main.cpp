@@ -62,7 +62,12 @@ void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd,
     }
     if (readb > 0)
     {
-        reporter->value(le64toh(code));
+        code = le64toh(code);
+        // HACK: Always send property changed signal even for the same code
+        // since we are single threaded, external users will never see the
+        // first value.
+        reporter->value(~code, true);
+        reporter->value(code);
     }
 }
 
