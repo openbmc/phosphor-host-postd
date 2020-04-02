@@ -1,0 +1,14 @@
+[Unit]
+Description=SevenSeg POSTcode daemon for /dev/%I
+# TODO: the 'BindsTo' dependency on dev-%i.device timed out on
+# systemd 241 + kernel 5.1, need to understand and rework the udev rules.
+After=dev-%i.device
+After=lpcsnoop.service
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/env postcode_7seg /dev/%I
+
+[Install]
+WantedBy=multi-user.target

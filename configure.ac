@@ -51,6 +51,19 @@ PKG_CHECK_MODULES([GTEST], [gtest_main], [], [AC_MSG_NOTICE([gtest not found, te
 PKG_CHECK_MODULES([GMOCK], [gmock], [], [AC_MSG_NOTICE([gmock not found, tests will not build])])
 AX_PTHREAD([GTEST_CFLAGS+=" -DGTEST_HAS_PTHREAD=1 "],[GTEST_CFLAGS+=" -DGTEST_HAS_PTHREAD=0 "])
 
+AC_ARG_ENABLE([7seg],
+    AS_HELP_STRING([--enable-7seg], [Build daemon to send POST codes to a 7-segment display.])
+)
+AM_CONDITIONAL([ENABLE_7SEG], [test "x$enable_7seg" = "xyes"])
+
+AS_IF([test "x$enable_7seg" = "xyes"], [
+    PKG_CHECK_VAR([UDEVRULESDIR], [udev], [udevdir])
+    AC_MSG_CHECKING([udev rules path])
+    AS_IF([test "x$UDEVRULESDIR" = "x"], [
+        AC_MSG_FAILURE([Unable to identify udev rules path.])
+    ])
+])
+
 # Add --enable-oe-sdk flag to configure script
 AC_ARG_ENABLE([oe-sdk],
     AS_HELP_STRING([--enable-oe-sdk], [Link testcases absolutely against OE SDK so they can be ran within it.])
