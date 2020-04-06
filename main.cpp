@@ -50,9 +50,8 @@ static void usage(const char* name)
  * Callback handling IO event from the POST code fd. i.e. there is new
  * POST code available to read.
  */
-void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd,
-                          uint32_t revents, PostReporter* reporter,
-                          bool verbose)
+void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd, uint32_t,
+                          PostReporter* reporter, bool verbose)
 {
     uint64_t code = 0;
     ssize_t readb;
