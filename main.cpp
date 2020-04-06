@@ -50,7 +50,7 @@ static void usage(const char* name)
  * POST code available to read.
  */
 void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd,
-                          uint32_t revents, PostReporter* reporter)
+                          uint32_t, PostReporter* reporter)
 {
     uint64_t code = 0;
     ssize_t readb = read(postFd, &code, codeSize);
