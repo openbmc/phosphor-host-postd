@@ -59,7 +59,7 @@ static void printPostcode(uint64_t postcode)
  * This application simply creates an object that registers for incoming value
  * updates for the POST code dbus object.
  */
-int main(int argc, char* argv[])
+int main()
 {
     auto ListenBus = sdbusplus::bus::new_default();
     lpcsnoop::SnoopListen snoop(ListenBus, printPostcode);
