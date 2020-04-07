@@ -9,7 +9,7 @@ bin_PROGRAMS = snoopd snooper
 
 if ENABLE_7SEG
 if HAVE_SYSTEMD
-systemdsystemunit_DATA += postcode-7seg.service
+systemdsystemunit_DATA += postcode-7seg@.service
 endif # HAVE_SYSTEMD
 
 bin_PROGRAMS += postcode_7seg
