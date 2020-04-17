@@ -53,14 +53,8 @@ void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd,
                           uint32_t revents, PostReporter* reporter)
 {
     uint64_t code = 0;
-    ssize_t readb = read(postFd, &code, codeSize);
-    if (readb < 0)
-    {
-        /* Read failure. */
-        s.get_event().exit(1);
-        return;
-    }
-    if (readb > 0)
+    ssize_t readb;
+    while ((readb = read(postFd, &code, codeSize)) > 0)
     {
         code = le64toh(code);
         // HACK: Always send property changed signal even for the same code
@@ -68,7 +62,17 @@ void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd,
         // first value.
         reporter->value(~code, true);
         reporter->value(code);
+        code = 0;
     }
+
+    if (readb < 0 && (errno == EAGAIN || errno == EWOULDBLOCK))
+    {
+        return;
+    }
+
+    /* Read failure. */
+    s.get_event().exit(1);
+    return;
 }
 
 /*
@@ -152,7 +156,7 @@ int main(int argc, char* argv[])
     {
         sdeventplus::Event event = sdeventplus::Event::get_default();
         sdeventplus::source::IO reporterSource(
-            event, postFd, EPOLLIN,
+            event, postFd, EPOLLIN | EPOLLET,
             std::bind(PostCodeEventHandler, std::placeholders::_1,
                       std::placeholders::_2, std::placeholders::_3, &reporter));
         // Enable bus to handle incoming IO and bus events
