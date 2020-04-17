@@ -41,7 +41,8 @@ static void usage(const char* name)
             "Usage: %s [-d <DEVICE>]\n"
             "  -b, --bytes <SIZE>     set POST code length to <SIZE> bytes. "
             "Default is %zu\n"
-            "  -d, --device <DEVICE>  use <DEVICE> file. Default is '%s'\n\n",
+            "  -d, --device <DEVICE>  use <DEVICE> file. Default is '%s'\n"
+            "  -v, --verbose  Prints verbose information while running\n\n",
             name, codeSize, snoopFilename);
 }
 
@@ -50,13 +51,18 @@ static void usage(const char* name)
  * POST code available to read.
  */
 void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd,
-                          uint32_t revents, PostReporter* reporter)
+                          uint32_t revents, PostReporter* reporter,
+                          bool verbose)
 {
     uint64_t code = 0;
     ssize_t readb;
     while ((readb = read(postFd, &code, codeSize)) > 0)
     {
         code = le64toh(code);
+        if (verbose)
+        {
+            fprintf(stderr, "Code: 0x%" PRIx64 "\n", code);
+        }
         // HACK: Always send property changed signal even for the same code
         // since we are single threaded, external users will never see the
         // first value.
@@ -109,11 +115,13 @@ int main(int argc, char* argv[])
     const char* snoopDbus = SNOOP_BUSNAME;
 
     bool deferSignals = true;
+    bool verbose = false;
 
     // clang-format off
     static const struct option long_options[] = {
         {"bytes",  required_argument, NULL, 'b'},
         {"device", required_argument, NULL, 'd'},
+        {"verbose", no_argument, NULL, 'v'},
         {0, 0, 0, 0}
     };
     // clang-format on
@@ -138,6 +146,9 @@ int main(int argc, char* argv[])
                 break;
             case 'd':
                 snoopFilename = optarg;
+                break;
+            case 'v':
+                verbose = true;
                 break;
             default:
                 usage(argv[0]);
@@ -168,7 +179,8 @@ int main(int argc, char* argv[])
         sdeventplus::source::IO reporterSource(
             event, postFd, EPOLLIN | EPOLLET,
             std::bind(PostCodeEventHandler, std::placeholders::_1,
-                      std::placeholders::_2, std::placeholders::_3, &reporter));
+                      std::placeholders::_2, std::placeholders::_3, &reporter,
+                      verbose));
         // Enable bus to handle incoming IO and bus events
         bus.attach_event(event.get(), SD_EVENT_PRIORITY_NORMAL);
         rc = event.loop();
