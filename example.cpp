@@ -35,10 +35,8 @@ static void printPostcode(uint64_t postcode)
  *
  * static void PrintMessageMap(sdbusplus::message::message& m)
  * {
- *     using sdbusplus::message::variant_ns::get;
  *     std::string messageBusName;
- *     std::map<std::string, sdbusplus::message::variant<uint64_t>>
- *         messageData;
+ *     std::map<std::string, std::variant<uint64_t>> messageData;
  *
  *     m.read(messageBusName, messageData);
  *

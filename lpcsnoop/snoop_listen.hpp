@@ -22,7 +22,7 @@
 
 namespace lpcsnoop
 {
-using sdbusplus::message::variant_ns::get;
+using std::get;
 
 /* Returns matching string for what signal to listen on Dbus */
 static const std::string GetMatchRule()
