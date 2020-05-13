@@ -74,8 +74,7 @@ class SnoopListen
                                       sdbusplus::message::message& m)
     {
         std::string messageBusName;
-        std::map<std::string, sdbusplus::message::variant<uint64_t>>
-            messageData;
+        std::map<std::string, std::variant<uint64_t>> messageData;
         constexpr char propertyKey[] = "Value";
 
         m.read(messageBusName, messageData);
