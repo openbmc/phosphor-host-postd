@@ -18,6 +18,12 @@ phosphor_dbus_interfaces = dependency('phosphor-dbus-interfaces')
 sdbusplus = dependency('sdbusplus')
 sdeventplus = dependency('sdeventplus')
 systemd = dependency('systemd')
+libgpiod = dependency('libgpiod')
+
+boost_args = ['-DBOOST_ASIO_DISABLE_THREADS',
+              '-DBOOST_ERROR_CODE_HEADER_ONLY',
+              '-DBOOST_SYSTEM_NO_DEPRECATED']
+
 
 conf_data = configuration_data()
 conf_data.set('bindir', get_option('prefix') / get_option('bindir'))
@@ -39,7 +45,9 @@ executable(
     sdbusplus,
     sdeventplus,
     phosphor_dbus_interfaces,
+    libgpiod,
   ],
+  cpp_args: boost_args,
   install: true,
 )
 
@@ -50,7 +58,9 @@ executable(
     sdbusplus,
     sdeventplus,
     phosphor_dbus_interfaces,
+    libgpiod,
   ],
+  cpp_args: boost_args,
   install: true,
 )
 
