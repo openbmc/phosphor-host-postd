@@ -26,6 +26,7 @@ boost_args = ['-DBOOST_ASIO_DISABLE_THREADS',
               '-DBOOST_SYSTEM_NO_DEPRECATED']
 
 
+
 conf_data = configuration_data()
 conf_data.set('bindir', get_option('prefix') / get_option('bindir'))
 conf_data.set('SNOOP_DEVICE', get_option('snoop-device'))
