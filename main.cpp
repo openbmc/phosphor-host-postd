@@ -14,23 +14,13 @@
  * limitations under the License.
  */
 
+#include "ipmisnoop/ipmisnoop.hpp"
 #include "lpcsnoop/snoop.hpp"
 
-#include <endian.h>
-#include <fcntl.h>
 #include <getopt.h>
-#include <sys/epoll.h>
-#include <systemd/sd-event.h>
-#include <unistd.h>
 
-#include <cstdint>
-#include <exception>
-#include <iostream>
-#include <memory>
-#include <sdeventplus/event.hpp>
-#include <sdeventplus/source/event.hpp>
 #include <sdeventplus/source/io.hpp>
-#include <thread>
+#include <string>
 
 static const char* snoopFilename = "/dev/aspeed-lpc-snoop0";
 static size_t codeSize = 1; /* Size of each POST code in bytes */
@@ -90,6 +80,45 @@ void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd, uint32_t,
     s.get_event().exit(1);
 }
 
+// handle muti-host D-bus
+int postCodeIpmiHandler(const char* snoopObject, const char* snoopDbus)
+{
+    int ret = 0;
+
+    auto bus = sdbusplus::bus::new_default();
+
+    for (int iteration = 0; iteration < numOfHost; iteration++)
+    {
+        auto objPathInst =
+            std::string{snoopObject} + std::to_string(iteration + 1);
+
+        sdbusplus::server::manager_t m{bus, objPathInst.c_str()};
+
+        /* Create a monitor object and let it do all the rest */
+        reporters.push_back(std::make_unique<IpmiPostReporter>(
+            bus, objPathInst.c_str()));
+
+        reporters[iteration]->emit_object_added();
+    }
+
+    bus.request_name(snoopDbus);
+
+    // Configure seven segment dsiplay connected to GPIOs as output
+    ret = configGPIODirOutput();
+    if (ret < 0)
+    {
+        std::cerr << "Failed find the gpio line\n";
+    }
+
+    while (true)
+    {
+        bus.process_discard();
+        std::cout.flush();
+        bus.wait();
+    }
+    exit(EXIT_SUCCESS);
+}
+
 /*
  * TODO(venture): this only listens one of the possible snoop ports, but
  * doesn't share the namespace.
@@ -118,6 +147,7 @@ int main(int argc, char* argv[])
 
     // clang-format off
     static const struct option long_options[] = {
+        {"ipmi", required_argument, NULL, 'i'},
         {"bytes",  required_argument, NULL, 'b'},
         {"device", required_argument, NULL, 'd'},
         {"verbose", no_argument, NULL, 'v'},
@@ -125,11 +155,31 @@ int main(int argc, char* argv[])
     };
     // clang-format on
 
-    while ((opt = getopt_long(argc, argv, "b:d:v", long_options, NULL)) != -1)
+    while ((opt = getopt_long(argc, argv, "i:b:d:v", long_options, NULL)) != -1)
     {
         switch (opt)
         {
             case 0:
+                break;
+            case 'i':
+                numOfHost = atoi(optarg);
+                if (numOfHost)
+                {
+                    rc = postCodeIpmiHandler(snoopObject, snoopDbus);
+                    if (rc < 0)
+                    {
+                        fprintf(stderr, "Failed to create object\n");
+                        exit(EXIT_FAILURE);
+                    }
+                }
+                else
+                {
+                    fprintf(stderr,
+                            "Invalid host count '%s'. Must be "
+                            "an greater than 0.\n",
+                            optarg);
+                    exit(EXIT_FAILURE);
+                }
                 break;
             case 'b':
                 codeSize = atoi(optarg);
