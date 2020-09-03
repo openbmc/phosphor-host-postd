@@ -14,10 +14,17 @@ build_tests = get_option('tests')
 
 postd_headers = include_directories('.')
 
+libgpiod = dependency('libgpiod')
 phosphor_dbus_interfaces = dependency('phosphor-dbus-interfaces')
 sdbusplus = dependency('sdbusplus')
 sdeventplus = dependency('sdeventplus')
 systemd = dependency('systemd')
+
+
+boost_args = ['-DBOOST_ASIO_DISABLE_THREADS',
+              '-DBOOST_ERROR_CODE_HEADER_ONLY',
+              '-DBOOST_SYSTEM_NO_DEPRECATED']
+
 
 conf_data = configuration_data()
 conf_data.set('bindir', get_option('prefix') / get_option('bindir'))
@@ -36,10 +43,12 @@ executable(
   'snoopd',
   'main.cpp',
   dependencies: [
+    libgpiod,
     sdbusplus,
     sdeventplus,
     phosphor_dbus_interfaces,
   ],
+  cpp_args: boost_args,
   install: true,
 )
 
@@ -47,10 +56,12 @@ executable(
   'snooper',
   'example.cpp',
   dependencies: [
+    libgpiod,
     sdbusplus,
     sdeventplus,
     phosphor_dbus_interfaces,
   ],
+  cpp_args: boost_args,
   install: true,
 )
 
