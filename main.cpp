@@ -118,6 +118,7 @@ int main(int argc, char* argv[])
 
     // clang-format off
     static const struct option long_options[] = {
+        {"ipmi", required_argument, NULL, 'i'},
         {"bytes",  required_argument, NULL, 'b'},
         {"device", required_argument, NULL, 'd'},
         {"verbose", no_argument, NULL, 'v'},
