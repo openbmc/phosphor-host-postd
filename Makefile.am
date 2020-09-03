@@ -22,13 +22,16 @@ udevrulesdir = $(UDEVRULESDIR)
 udevrules_DATA = 80-7seg.rules
 endif # ENABLE_7SEG
 
+libdir=/usr/lib
+includedir=/usr/include
+
 snoopd_SOURCES = main.cpp
-snoopd_LDADD = $(SDBUSPLUS_LIBS) $(SDEVENTPLUS_LIBS) $(PHOSPHOR_DBUS_INTERFACES_LIBS) -lpthread
-snoopd_CXXFLAGS = $(SDBUSPLUS_CFLAGS) $(SDEVENTPLUS_CFLAGS) $(PHOSPHOR_DBUS_INTERFACES_CFLAGS)
+snoopd_LDADD = $(SDBUSPLUS_LIBS) $(SDEVENTPLUS_LIBS) $(PHOSPHOR_DBUS_INTERFACES_LIBS) -L${libdir} -lgpiod -lpthread
+snoopd_CXXFLAGS = $(SDBUSPLUS_CFLAGS) $(SDEVENTPLUS_CFLAGS) $(PHOSPHOR_DBUS_INTERFACES_CFLAGS) -I${includedir}
 
 snooper_SOURCES = example.cpp
-snooper_LDADD = $(SDBUSPLUS_LIBS) $(PHOSPHOR_DBUS_INTERFACES_LIBS)
-snooper_CXXFLAGS = $(SDBUSPLUS_CFLAGS) $(PHOSPHOR_DBUS_INTERFACES_CFLAGS)
+snooper_LDADD = $(SDBUSPLUS_LIBS) $(PHOSPHOR_DBUS_INTERFACES_LIBS) -L${libdir} -lgpiod
+snooper_CXXFLAGS = $(SDBUSPLUS_CFLAGS) $(PHOSPHOR_DBUS_INTERFACES_CFLAGS) -I${includedir}
 
 # Installs in $(includedir)/lpcsnoop/
 nobase_include_HEADERS = lpcsnoop/snoop.hpp lpcsnoop/snoop_listen.hpp
