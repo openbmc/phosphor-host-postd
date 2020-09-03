@@ -16,5 +16,6 @@ foreach t : tests
                        gmock,
                        phosphor_dbus_interfaces,
                        sdbusplus,
+                       libgpiod,
                     ]))
 endforeach
