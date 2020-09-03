@@ -1,11 +1,13 @@
 # Common flags for all binaries in this subdirectory.
 # Per-program specific flags can be specified using
 # prg_CPPFLAGS = ....
+
 AM_CPPFLAGS = -I${top_srcdir} \
               $(GTEST_CFLAGS) \
               $(GMOCK_CFLAGS) \
               $(SDBUSPLUS_CFLAGS) \
-              $(PHOSPHOR_DBUS_INTERFACES_CFLAGS)
+              $(PHOSPHOR_DBUS_INTERFACES_CFLAGS) \
+              $(LIBGPIOD_CFLAGS)
 
 AM_CXXFLAGS = $(PTHREAD_CFLAGS) \
               $(GTEST_CFLAGS)
@@ -15,7 +17,8 @@ AM_LDFLAGS = $(GTEST_LIBS) \
              $(GMOCK_LIBS) \
              $(OESDK_TESTCASE_FLAGS) \
              $(SDBUSPLUS_LIBS) \
-             $(PHOSPHOR_DBUS_INTERFACES_LIBS)
+             $(PHOSPHOR_DBUS_INTERFACES_LIBS) \
+             $(LIBGPIOD_LIBS) \
 
 # The list of unit test programs we are building and running.
 check_PROGRAMS = post_reporter_test
