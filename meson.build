@@ -18,12 +18,25 @@ phosphor_dbus_interfaces = dependency('phosphor-dbus-interfaces')
 sdbusplus = dependency('sdbusplus')
 sdeventplus = dependency('sdeventplus')
 systemd = dependency('systemd')
+libgpiod = dependency('libgpiod')
+
+boost_args = ['-DBOOST_ASIO_DISABLE_THREADS',
+              '-DBOOST_ERROR_CODE_HEADER_ONLY',
+              '-DBOOST_SYSTEM_NO_DEPRECATED']
 
 conf_data = configuration_data()
 conf_data.set('bindir', get_option('prefix') / get_option('bindir'))
 conf_data.set('SNOOP_DEVICE', get_option('snoop-device'))
 conf_data.set('POST_CODE_BYTES', get_option('post-code-bytes'))
+conf_data.set('NUMBER_OF_HOST', get_option('number-of-host'))
+
 conf_data.set('SYSTEMD_TARGET', get_option('systemd-target'))
+
+snoopd_args = '-b ' + get_option('post-code-bytes').to_string()
+if get_option('snoop-device') != ''
+  snoopd_args += ' -d /dev/' + get_option('snoop-device')
+endif
+conf_data.set('SNOOPD_ARGS', snoopd_args)
 
 configure_file(
   input: 'lpcsnoop.service.in',
@@ -39,7 +52,9 @@ executable(
     sdbusplus,
     sdeventplus,
     phosphor_dbus_interfaces,
+    libgpiod,
   ],
+  cpp_args: boost_args,
   install: true,
 )
 
