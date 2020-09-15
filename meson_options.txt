@@ -10,6 +10,12 @@ option(
     value: 1,
 )
 option(
+    'number-of-host',
+    description: 'total number of the host',
+    type: 'integer',
+    value: -1,
+)
+option(
     'systemd-target',
     description: 'Target for starting this service.',
     type: 'string'
