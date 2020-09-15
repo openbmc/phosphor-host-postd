@@ -4,7 +4,7 @@ project(
   default_options: [
     'warning_level=3',
     'werror=true',
-    'cpp_std=c++17'
+    'cpp_std=c++17',
   ],
   license: 'Apache-2.0',
   version: '1.0',
@@ -23,7 +23,21 @@ conf_data = configuration_data()
 conf_data.set('bindir', get_option('prefix') / get_option('bindir'))
 conf_data.set('SNOOP_DEVICE', get_option('snoop-device'))
 conf_data.set('POST_CODE_BYTES', get_option('post-code-bytes'))
+conf_data.set('NUMBER_OF_HOST', get_option('number-of-host'))
+
 conf_data.set('SYSTEMD_TARGET', get_option('systemd-target'))
+
+if(get_option('snoop').enabled())
+    libgpiod = dependency('libgpiod')
+    libgpiodcxx = dependency('libgpiodcxx')
+    add_project_arguments('-DENABLE_IPMI_SNOOP',language:'cpp')
+endif
+
+snoopd_args = '-b ' + get_option('post-code-bytes').to_string()
+if get_option('snoop-device') != ''
+  snoopd_args += ' -d /dev/' + get_option('snoop-device')
+endif
+conf_data.set('SNOOPD_ARGS', snoopd_args)
 
 configure_file(
   input: 'lpcsnoop.service.in',
@@ -39,6 +53,8 @@ executable(
     sdbusplus,
     sdeventplus,
     phosphor_dbus_interfaces,
+    libgpiod,
+    libgpiodcxx,
   ],
   install: true,
 )
