@@ -1,0 +1,482 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfdb58f1_01bd60d5",
+        "filename": "configure.ac",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Please rebase this commit onto https://gerrit.openbmc-project.xyz/c/openbmc/phosphor-host-postd/+/31051 so we can avoid keeping the autotools portions up to date.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c1cbe98_948d59c9",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "You should also add a `rules::argN(0, InterfaceName)` where InterfaceName is the interface which you are expecting to emit this PropertiesChanged signal.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40676056_ce35c10d",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "This assumes that \u0027raw\u0027 only shows up once in the path which is a bad assumption.  I would suggest using std::filesystem methods to obtain the last path segment.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29aff59a_7cc6fc58",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Simplify the logic by adding this?\n\n```\nif (pos \u003d\u003d std::string::npos)\n    return;\n```\n\nIt seems like npos is an error condition.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f43e1f_afeab441",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Why \u0027+ 3\u0027?  This is a magic number.  Use constants.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c86ed47_b3955e49",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "What is this { } scope for?",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eded827d_d18a127a",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "It seems odd to me that you\u0027ve defined the variant as uint64_t and passing it, but the function takes a uint8_t.  This is silently truncating.  Why not just read from dbus as a uint8_t?  What is the type sent along dbus?  Do you need error reporting if the postcode \u003e 255?",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 66
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8d2881_dc244e54",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Do the maintainers want cout/cerr logging or phosphor-logging?",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab23c24e_f9b5fe77",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Why is this interesting to log?",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72ac6326_73ada950",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Please don\u0027t use rc-style returns in C++ code.  Throw an exception if something went bad that someone can usefully recover from.  If nobody ever cares, then just return void and eat/log the error inside this function.\n\nThis comment goes for all your functions here.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37bc5685_b6f25b90",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Why this type?",
+      "range": {
+        "startLine": 70,
+        "startChar": 40,
+        "endLine": 70,
+        "endChar": 53
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "733673af_21a10731",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Should this be \u0027extern\u0027?  You\u0027re defining a global for some reason in a header file.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a13f523_b86c2a1b",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Do you really want to read the property or should you be listening to signals from it also/instead?  You could just cache the signal value.\n\nAlso, how do you handle if the selector changes position?  Shouldn\u0027t you update the display after the selector changes position?  (again, you need to listen to a signal)",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 1
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ded81146_4713bcbc",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "This seems very wrong to create a static asio context inside a function and then operate on it synchronously.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 66
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "713dcf4a_bb7e3981",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Should you be using sdbusplus::asio::getProperty?",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ee7853c_3a9e70b6",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "This will never be true for a synchronous method call.\n\nYou might get an exception from line 93 though.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d55fac_9098b70a",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "I don\u0027t think \u0027int\u0027 is the right type on this based on the proposed dbus interfaces.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcd4ce20_deb5c395",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Why did you include gpiod.hpp (the C++ file) and then use C APIs?  I suggest using the C++ APIs directly.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba0fd297_a495ddc5",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "The C++ APIs allow you to create a \u0027line_bulk\u0027 object to hold all the GPIOs associated with post code and set them all in one go.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "312122f4_4653e2ee",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Isn\u0027t there a kernel module that turns a set of GPIOs into a 7seg display?  Isn\u0027t that what \u00277seg.cpp\u0027 is using?  Is there a reason we\u0027re not using that?",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f059ceb6_a14ee20c",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Isn\u0027t there some place that we need to do a translation from \u0027status\u0027 into a 7seg display?  Simple bit-shifting doesn\u0027t seem to cover it to me.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 9
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55bf3cc0_ed822fe6",
+        "filename": "main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "My suggestion is that these are two different compile-time options.  I don\u0027t think any machine will be using both options, would they?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe205447_7c31805a",
+        "filename": "main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Can you integrate this code into \u0027main\u0027?  Right now we\u0027ve got this main function that handles creating dbus constructs for lpcsnoop and this separate function for your new ipmisnoop.  They should be mostly common.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cea4f32_c161d222",
+        "filename": "meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Suggest this is optional based on compile flag (if even needed anymore based on recommendation of using 7seg kernel module).",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e58939c_eac486f3",
+        "filename": "meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "It isn\u0027t obvious why your commit needs these options.  If they\u0027re unrelated to your commit, please put into a separate commit.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "415eac8b_ffc511f0",
+        "filename": "meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-11T17:39:14Z",
+      "side": 1,
+      "message": "Why would any of these header files be installed??  We\u0027re not providing a library here.",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
