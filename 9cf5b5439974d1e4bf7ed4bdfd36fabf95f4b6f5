@@ -165,6 +165,30 @@
       "revId": "9cf5b5439974d1e4bf7ed4bdfd36fabf95f4b6f5",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87334395_828b5501",
+        "filename": "lpcsnoop/snoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000218
+      },
+      "writtenOn": "2020-12-22T06:05:02Z",
+      "side": 1,
+      "message": "First quick thought is that at line 100 to check \"postcodeDataHolderObj-\u003enode\" whether it is the single host platform like \"-1\" which is passed by single host service.",
+      "parentUuid": "66f47f04_ea27e6f2",
+      "range": {
+        "startLine": 8,
+        "startChar": 58,
+        "endLine": 8,
+        "endChar": 62
+      },
+      "revId": "9cf5b5439974d1e4bf7ed4bdfd36fabf95f4b6f5",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
     }
   ]
 }
