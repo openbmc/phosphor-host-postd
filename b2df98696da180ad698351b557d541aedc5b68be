@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60f57ada_01f7bb9b",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-11T22:45:29Z",
+      "side": 1,
+      "message": "Why 3?  Please document.\n\nWhy aren\u0027t you looking for \u0027raw\u0027 anymore?",
+      "revId": "b2df98696da180ad698351b557d541aedc5b68be",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bffc714_1444a8a1",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-11T22:45:29Z",
+      "side": 1,
+      "message": "Please don\u0027t mix C/C++.",
+      "revId": "b2df98696da180ad698351b557d541aedc5b68be",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
