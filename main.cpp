@@ -26,13 +26,22 @@
 #include <cstdint>
 #include <exception>
 #include <iostream>
+#include <iterator>
 #include <memory>
 #include <sdeventplus/event.hpp>
 #include <sdeventplus/source/event.hpp>
 #include <sdeventplus/source/io.hpp>
+#include <sstream>
 #include <thread>
 
-static const char* snoopFilename = "/dev/aspeed-lpc-snoop0";
+struct snoopChannel
+{
+    std::string filename;
+    int handle;
+};
+
+static std::vector<struct snoopChannel> snoopChannels = {
+    {"aspeed-lpc-snoop0", -1}};
 static size_t codeSize = 1; /* Size of each POST code in bytes */
 
 static void usage(const char* name)
@@ -43,34 +52,75 @@ static void usage(const char* name)
             "Default is %zu\n"
             "  -d, --device <DEVICE>  use <DEVICE> file. Default is '%s'\n"
             "  -v, --verbose  Prints verbose information while running\n\n",
-            name, codeSize, snoopFilename);
+            name, codeSize, snoopChannels[0].filename.c_str());
+}
+
+static void parse_device_string(const char* devices)
+{
+    std::string s(devices);
+    std::istringstream iss(s);
+    std::vector<std::string> v((std::istream_iterator<std::string>(iss)),
+                               std::istream_iterator<std::string>());
+    snoopChannels.clear();
+    for (auto e : v)
+    {
+        struct snoopChannel p
+        {
+            "/dev/" + e, -1
+        };
+        snoopChannels.push_back(p);
+    }
 }
 
 /*
  * Callback handling IO event from the POST code fd. i.e. there is new
  * POST code available to read.
  */
-void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd, uint32_t,
+void PostCodeEventHandler(sdeventplus::source::IO& s, int, uint32_t,
                           PostReporter* reporter, bool verbose)
 {
     uint64_t code = 0;
+    uint64_t combined_code = 0;
     ssize_t readb;
-    while ((readb = read(postFd, &code, codeSize)) > 0)
+    bool status = true;
+
+    while (status)
     {
-        code = le64toh(code);
+        combined_code = 0;
+        // if data is ready on the first snoop channel,
+        // we should check all of them
+        for (unsigned int i = 0; i < snoopChannels.size(); i++)
+        {
+            // read depends on old data being cleared
+            // since it doesn't always read the full code size
+            code = 0;
+            readb = read(snoopChannels[i].handle, &code, codeSize);
+            if (readb > 0)
+            {
+                code = le64toh(code);
+                combined_code |= (code << (8 * i));
+            }
+            else
+            {
+                status = false;
+                break;
+            }
+        }
+        if (!status)
+        {
+            break;
+        }
+
         if (verbose)
         {
-            fprintf(stderr, "Code: 0x%" PRIx64 "\n", code);
+            fprintf(stderr, "Code: 0x%" PRIx64 "\n", combined_code);
         }
+
         // HACK: Always send property changed signal even for the same code
         // since we are single threaded, external users will never see the
         // first value.
-        reporter->value(~code, true);
-        reporter->value(code);
-
-        // read depends on old data being cleared since it doens't always read
-        // the full code size
-        code = 0;
+        reporter->value(~combined_code, true);
+        reporter->value(combined_code);
     }
 
     if (readb < 0 && (errno == EAGAIN || errno == EWOULDBLOCK))
@@ -101,7 +151,6 @@ int main(int argc, char* argv[])
 {
     int rc = 0;
     int opt;
-    int postFd = -1;
 
     /*
      * These string constants are only used in this method within this object
@@ -144,7 +193,7 @@ int main(int argc, char* argv[])
                 }
                 break;
             case 'd':
-                snoopFilename = optarg;
+                parse_device_string(optarg);
                 break;
             case 'v':
                 verbose = true;
@@ -155,11 +204,21 @@ int main(int argc, char* argv[])
         }
     }
 
-    postFd = open(snoopFilename, O_NONBLOCK);
-    if (postFd < 0)
+    if ((codeSize > 1) && (snoopChannels.size() != 1))
     {
-        fprintf(stderr, "Unable to open: %s\n", snoopFilename);
-        return -1;
+        fprintf(stderr, "Error, setting codeSize>1 with several "
+                        "active snoopChannels is not supported\n");
+        exit(EXIT_FAILURE);
+    }
+
+    for (auto& ch : snoopChannels)
+    {
+        ch.handle = open(ch.filename.c_str(), O_NONBLOCK);
+        if (ch.handle < 0)
+        {
+            fprintf(stderr, "Unable to open: %s\n", ch.filename.c_str());
+            return -1;
+        }
     }
 
     auto bus = sdbusplus::bus::new_default();
@@ -174,9 +233,11 @@ int main(int argc, char* argv[])
     // Create sdevent and add IO source
     try
     {
+
         sdeventplus::Event event = sdeventplus::Event::get_default();
+        // Handle POST code if there is data on the first snoop channel
         sdeventplus::source::IO reporterSource(
-            event, postFd, EPOLLIN | EPOLLET,
+            event, snoopChannels[0].handle, EPOLLIN | EPOLLET,
             std::bind(PostCodeEventHandler, std::placeholders::_1,
                       std::placeholders::_2, std::placeholders::_3, &reporter,
                       verbose));
@@ -189,10 +250,12 @@ int main(int argc, char* argv[])
         fprintf(stderr, "%s\n", e.what());
     }
 
-    if (postFd > -1)
+    for (auto ch : snoopChannels)
     {
-        close(postFd);
+        if (ch.handle > -1)
+        {
+            close(ch.handle);
+        }
     }
-
     return rc;
 }
