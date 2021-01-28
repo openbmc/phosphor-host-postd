@@ -16,6 +16,24 @@
       "revId": "4b6955450fe8d5b829c7ff8f78c7bd9146427705",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a7210e_19de07f2",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000926
+      },
+      "writtenOn": "2021-01-28T15:18:31Z",
+      "side": 1,
+      "message": "This function (le64toh) is from the original codebase.\nIt was added in the commit https://github.com/openbmc/phosphor-host-postd/commit/6dac4c5e5529eac30c6c2d35db9023c9914cc798\nFor me it seems like it is necessary for the Nuvoton BMCs, for the systems where POST codes are multibyte, but come from the same LPC snoop channel. And the data comes LSB first, so we need to invert the data buffer to get a POST code. This patch keeps compatibility with this case.\n\nFrom my observations on ASPEED controller \u0027le64toh\u0027 doesn\u0027t affect anything.\n\nSo it seems like the error you describe would arise only in a Nuvoton controller when we set \"codeSize\u003d1\", but the problem is not in this patch, but rather in a aforementioned commit.",
+      "parentUuid": "fc186398_a720bfc2",
+      "revId": "4b6955450fe8d5b829c7ff8f78c7bd9146427705",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
     }
   ]
 }
