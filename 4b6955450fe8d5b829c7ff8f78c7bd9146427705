@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc186398_a720bfc2",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-28T12:29:05Z",
+      "side": 1,
+      "message": "This is really not obvious why this is necessary since you\u0027re already reading them byte-wise on line 100.  If \u0027snoopChannels.size() \u003d\u003d 1\u0027, I think line 100 would put the byte into the lower position and then you\u0027re going to byte swap it in 112, which would be wrong.\n\nPostcode \u003d 0xab;\nAfter 100, combined_code \u003d 0xab;\nAfter 112, combined_code \u003d 0xab00...00;\n\nCan\u0027t we just read this into the right position to begin with?  \u0027code \u003c\u003c (8 * (snoopChannels.size() - (i + 1))\u0027 maybe?",
+      "revId": "4b6955450fe8d5b829c7ff8f78c7bd9146427705",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
