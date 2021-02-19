@@ -25,6 +25,11 @@ conf_data.set('SNOOP_DEVICE', get_option('snoop-device'))
 conf_data.set('POST_CODE_BYTES', get_option('post-code-bytes'))
 conf_data.set('SYSTEMD_TARGET', get_option('systemd-target'))
 
+if (get_option('no-snoop').enabled())
+  add_project_arguments('-DNO_SNOOP_SUPPORT',language:'cpp')
+endif
+
+
 configure_file(
   input: 'lpcsnoop.service.in',
   output: 'lpcsnoop.service',
