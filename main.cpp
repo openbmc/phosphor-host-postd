@@ -32,7 +32,6 @@
 #include <sdeventplus/source/io.hpp>
 #include <thread>
 
-static const char* snoopFilename = "/dev/aspeed-lpc-snoop0";
 static size_t codeSize = 1; /* Size of each POST code in bytes */
 
 static void usage(const char* name)
@@ -41,9 +40,9 @@ static void usage(const char* name)
             "Usage: %s [-d <DEVICE>]\n"
             "  -b, --bytes <SIZE>     set POST code length to <SIZE> bytes. "
             "Default is %zu\n"
-            "  -d, --device <DEVICE>  use <DEVICE> file. Default is '%s'\n"
+            "  -d, --device <DEVICE>  use <DEVICE> file.\n"
             "  -v, --verbose  Prints verbose information while running\n\n",
-            name, codeSize, snoopFilename);
+            name, codeSize);
 }
 
 /*
@@ -119,7 +118,7 @@ int main(int argc, char* argv[])
     // clang-format off
     static const struct option long_options[] = {
         {"bytes",  required_argument, NULL, 'b'},
-        {"device", required_argument, NULL, 'd'},
+        {"device", optional_argument, NULL, 'd'},
         {"verbose", no_argument, NULL, 'v'},
         {0, 0, 0, 0}
     };
@@ -144,7 +143,13 @@ int main(int argc, char* argv[])
                 }
                 break;
             case 'd':
-                snoopFilename = optarg;
+                postFd = open(optarg, O_NONBLOCK);
+                if (postFd < 0)
+                {
+                    fprintf(stderr, "Unable to open: %s\n", optarg);
+                    return -1;
+                }
+
                 break;
             case 'v':
                 verbose = true;
@@ -153,13 +158,6 @@ int main(int argc, char* argv[])
                 usage(argv[0]);
                 exit(EXIT_FAILURE);
         }
-    }
-
-    postFd = open(snoopFilename, O_NONBLOCK);
-    if (postFd < 0)
-    {
-        fprintf(stderr, "Unable to open: %s\n", snoopFilename);
-        return -1;
     }
 
     auto bus = sdbusplus::bus::new_default();
@@ -175,11 +173,15 @@ int main(int argc, char* argv[])
     try
     {
         sdeventplus::Event event = sdeventplus::Event::get_default();
-        sdeventplus::source::IO reporterSource(
-            event, postFd, EPOLLIN | EPOLLET,
-            std::bind(PostCodeEventHandler, std::placeholders::_1,
-                      std::placeholders::_2, std::placeholders::_3, &reporter,
-                      verbose));
+        if (postFd > 0)
+        {
+
+            sdeventplus::source::IO reporterSource(
+                event, postFd, EPOLLIN | EPOLLET,
+                std::bind(PostCodeEventHandler, std::placeholders::_1,
+                          std::placeholders::_2, std::placeholders::_3,
+                          &reporter, verbose));
+        }
         // Enable bus to handle incoming IO and bus events
         bus.attach_event(event.get(), SD_EVENT_PRIORITY_NORMAL);
         rc = event.loop();
