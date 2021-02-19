@@ -14,6 +14,9 @@ option(
     description: 'Target for starting this service.',
     type: 'string'
 )
+option('no-snoop',
+       type:'feature',
+       description:'Builds the daemon with no-snooping support')
 option(
     '7seg', type: 'feature', description: 'Enable building 7seg POST daemon.',
 )

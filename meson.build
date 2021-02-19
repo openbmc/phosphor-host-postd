@@ -21,16 +21,20 @@ systemd = dependency('systemd')
 
 conf_data = configuration_data()
 conf_data.set('bindir', get_option('prefix') / get_option('bindir'))
-conf_data.set('SNOOP_DEVICE', get_option('snoop-device'))
-conf_data.set('POST_CODE_BYTES', get_option('post-code-bytes'))
 conf_data.set('SYSTEMD_TARGET', get_option('systemd-target'))
 
+snoopd_args = '-b ' + get_option('post-code-bytes').to_string()
+if get_option('snoop-device') != ''
+  snoopd_args += ' -d /dev/' + get_option('snoop-device')
+endif
+conf_data.set('SNOOPD_ARGS', snoopd_args)
+
 configure_file(
-  input: 'lpcsnoop.service.in',
-  output: 'lpcsnoop.service',
-  configuration: conf_data,
-  install: true,
-  install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'))
+   input: 'lpcsnoop.service.in',
+   output: 'lpcsnoop.service',
+   configuration: conf_data,
+   install: true,
+   install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'))
 
 executable(
   'snoopd',
