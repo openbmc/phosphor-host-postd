@@ -114,12 +114,16 @@ int main(int argc, char* argv[])
     const char* snoopDbus = SNOOP_BUSNAME;
 
     bool deferSignals = true;
-    bool verbose = false;
+    [[maybe_unused]] bool verbose = false;
 
     // clang-format off
     static const struct option long_options[] = {
-        {"bytes",  required_argument, NULL, 'b'},
+#ifdef NO_SNOOP_SUPPORT
+        {"device", optional_argument, NULL, 'd'},
+#else
         {"device", required_argument, NULL, 'd'},
+#endif
+        {"bytes",  required_argument, NULL, 'b'},
         {"verbose", no_argument, NULL, 'v'},
         {0, 0, 0, 0}
     };
@@ -155,12 +159,14 @@ int main(int argc, char* argv[])
         }
     }
 
+#ifdef NO_SNOOP_SUPPORT
     postFd = open(snoopFilename, O_NONBLOCK);
     if (postFd < 0)
     {
         fprintf(stderr, "Unable to open: %s\n", snoopFilename);
         return -1;
     }
+#endif
 
     auto bus = sdbusplus::bus::new_default();
 
@@ -175,11 +181,13 @@ int main(int argc, char* argv[])
     try
     {
         sdeventplus::Event event = sdeventplus::Event::get_default();
+#ifdef NO_SNOOP_SUPPORT
         sdeventplus::source::IO reporterSource(
             event, postFd, EPOLLIN | EPOLLET,
             std::bind(PostCodeEventHandler, std::placeholders::_1,
                       std::placeholders::_2, std::placeholders::_3, &reporter,
                       verbose));
+#endif
         // Enable bus to handle incoming IO and bus events
         bus.attach_event(event.get(), SD_EVENT_PRIORITY_NORMAL);
         rc = event.loop();
