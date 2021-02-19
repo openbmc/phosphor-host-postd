@@ -25,12 +25,23 @@ conf_data.set('SNOOP_DEVICE', get_option('snoop-device'))
 conf_data.set('POST_CODE_BYTES', get_option('post-code-bytes'))
 conf_data.set('SYSTEMD_TARGET', get_option('systemd-target'))
 
-configure_file(
-  input: 'lpcsnoop.service.in',
-  output: 'lpcsnoop.service',
-  configuration: conf_data,
-  install: true,
-  install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'))
+
+if get_option('no-snoop').enabled()
+  configure_file(
+   input: 'nolpcsnoop.service.in',
+   output: 'lpcsnoop.service',
+   configuration: conf_data,
+   install: true,
+   install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'))
+else
+  configure_file(
+   input: 'lpcsnoop.service.in',
+   output: 'lpcsnoop.service',
+   configuration: conf_data,
+   install: true,
+   install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'))
+endif
+
 
 executable(
   'snoopd',
