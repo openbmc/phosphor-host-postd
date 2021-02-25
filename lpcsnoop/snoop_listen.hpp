@@ -36,7 +36,7 @@ static const std::string GetMatchRule()
 class SnoopListen
 {
     using message_handler_t = std::function<void(sdbusplus::message::message&)>;
-    using postcode_handler_t = std::function<void(uint64_t)>;
+    using postcode_handler_t = std::function<void(postcode_t)>;
 
   public:
     SnoopListen(sdbusplus::bus::bus& busIn, sd_bus_message_handler_t handler) :
@@ -74,7 +74,7 @@ class SnoopListen
                                       sdbusplus::message::message& m)
     {
         std::string messageBusName;
-        std::map<std::string, std::variant<uint64_t>> messageData;
+        std::map<std::string, std::variant<postcode_t>> messageData;
         constexpr char propertyKey[] = "Value";
 
         m.read(messageBusName, messageData);
@@ -82,7 +82,7 @@ class SnoopListen
         if (messageBusName == SNOOP_BUSNAME &&
             messageData.find(propertyKey) != messageData.end())
         {
-            handler(get<uint64_t>(messageData[propertyKey]));
+            handler(get<postcode_t>(messageData[propertyKey]));
         }
     }
 };
