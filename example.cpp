@@ -22,10 +22,10 @@
 #include <memory>
 
 /* Example PostCode handler which simply prints them */
-static void printPostcode(uint64_t postcode)
+static void printPostcode(std::tuple<uint64_t, std::vector<uint64_t>> postcode)
 {
     /* Print output to verify the example program is receiving values. */
-    std::printf("recv: 0x%" PRIx64 "\n", postcode);
+    std::printf("recv: 0x%" PRIx64 "\n", std::get<PRIMARY_POST_CODE>(postcode));
 }
 
 /*
