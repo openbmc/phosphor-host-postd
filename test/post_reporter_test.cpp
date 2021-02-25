@@ -55,29 +55,51 @@ TEST_F(PostReporterTest, AddsObjectWithExpectedName)
 TEST_F(PostReporterTest, ValueReadsDefaultToZero)
 {
     PostReporter testReporter(bus, SNOOP_OBJECTPATH, true);
-    EXPECT_EQ(0, testReporter.value());
+    EXPECT_EQ(0, std::get<PRIMARY_POST_CODE>(testReporter.value()));
 }
 
 TEST_F(PostReporterTest, SetValueToPositiveValueWorks)
 {
     PostReporter testReporter(bus, SNOOP_OBJECTPATH, true);
-    testReporter.value(65537);
-    EXPECT_EQ(65537, testReporter.value());
+    std::vector<uint8_t> secondaryCode = {123, 124, 125};
+    testReporter.value(std::make_tuple(65537, secondaryCode));
+    EXPECT_EQ(65537, std::get<PRIMARY_POST_CODE>(testReporter.value()));
+    EXPECT_EQ(secondaryCode,
+              std::get<SECONDARY_POST_CODE>(testReporter.value()));
 }
 
 TEST_F(PostReporterTest, SetValueMultipleTimesWorks)
 {
     PostReporter testReporter(bus, SNOOP_OBJECTPATH, true);
-    testReporter.value(123);
-    EXPECT_EQ(123, testReporter.value());
-    testReporter.value(456);
-    EXPECT_EQ(456, testReporter.value());
-    testReporter.value(0);
-    EXPECT_EQ(0, testReporter.value());
-    testReporter.value(456);
-    EXPECT_EQ(456, testReporter.value());
-    testReporter.value(456);
-    EXPECT_EQ(456, testReporter.value());
+    std::vector<uint8_t> secondaryCode = {10, 40, 0, 245, 56};
+    testReporter.value(std::make_tuple(123, secondaryCode));
+    EXPECT_EQ(123, std::get<0>(testReporter.value()));
+    EXPECT_EQ(secondaryCode,
+              std::get<SECONDARY_POST_CODE>(testReporter.value()));
+
+    secondaryCode = {0, 0, 0, 0, 0};
+    testReporter.value(std::make_tuple(45, secondaryCode));
+    EXPECT_EQ(45, std::get<0>(testReporter.value()));
+    EXPECT_EQ(secondaryCode,
+              std::get<SECONDARY_POST_CODE>(testReporter.value()));
+
+    secondaryCode = {23, 200, 0, 45, 2};
+    testReporter.value(std::make_tuple(0, secondaryCode));
+    EXPECT_EQ(0, std::get<0>(testReporter.value()));
+    EXPECT_EQ(secondaryCode,
+              std::get<SECONDARY_POST_CODE>(testReporter.value()));
+
+    secondaryCode = {10, 40, 0, 35, 78};
+    testReporter.value(std::make_tuple(46, secondaryCode));
+    EXPECT_EQ(46, std::get<0>(testReporter.value()));
+    EXPECT_EQ(secondaryCode,
+              std::get<SECONDARY_POST_CODE>(testReporter.value()));
+
+    secondaryCode = {10, 40, 0, 35, 78};
+    testReporter.value(std::make_tuple(46, secondaryCode));
+    EXPECT_EQ(46, std::get<0>(testReporter.value()));
+    EXPECT_EQ(secondaryCode,
+              std::get<SECONDARY_POST_CODE>(testReporter.value()));
 }
 
 } // namespace
