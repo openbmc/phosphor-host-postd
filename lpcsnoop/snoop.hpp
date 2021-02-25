@@ -14,6 +14,12 @@ using ServerObject = typename sdbusplus::server::object::object<T...>;
 using PostInterface = sdbusplus::xyz::openbmc_project::State::Boot::server::Raw;
 using PostObject = ServerObject<PostInterface>;
 
+enum PostCodeFields
+{
+    PRIMARY_POST_CODE,
+    SECONDARY_POST_CODE,
+};
+
 class PostReporter : public PostObject
 {
   public:

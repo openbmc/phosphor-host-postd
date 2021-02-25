@@ -65,8 +65,10 @@ void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd, uint32_t,
         // HACK: Always send property changed signal even for the same code
         // since we are single threaded, external users will never see the
         // first value.
-        reporter->value(~code, true);
-        reporter->value(code);
+        std::tuple<uint64_t, std::vector<uint64_t>> postcode;
+        std::get<PRIMARY_POST_CODE>(postcode) = code;
+        reporter->value(std::make_tuple(~code, std::vector<uint64_t>{}), true);
+        reporter->value(postcode);
 
         // read depends on old data being cleared since it doens't always read
         // the full code size
