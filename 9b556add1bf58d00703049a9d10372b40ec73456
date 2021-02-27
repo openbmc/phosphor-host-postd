@@ -1,0 +1,11 @@
+Code-Review+1: Sampa Misra <sampmisr@in.ibm.com>
+Code-Review+1: Jayashankar Padath <jayashankar.padath@in.ibm.com>
+Code-Review+2: Benjamin Fair <benjaminfair@google.com>
+Code-Review+1: Zhikui Ren <zhikui.ren@intel.com>
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Ok-To-Test+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Submitted-by: ManojKiran Eda <manojkiran.eda@gmail.com>
+Submitted-at: Sat, 27 Feb 2021 00:08:09 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/phosphor-host-postd/+/40928
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
