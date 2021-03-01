@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8915f8ae_1655c9f3",
+        "filename": "example.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-01T18:25:05Z",
+      "side": 1,
+      "message": "Can we use a \u0027decltype\u0027 from the Postcode.Raw generated binding instead of needing to keep changing this type?",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 68
+      },
+      "revId": "109d89941266cce5def66d1bd84d33a4bf0512bd",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd463efd_b461149b",
+        "filename": "example.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-01T18:25:05Z",
+      "side": 1,
+      "message": "I\u0027m quite confused by this being an enumeration pulling something from a tuple.  I think you\u0027re trying to remove the \"magic\" values by making an enumeration, but why not just use the type?",
+      "range": {
+        "startLine": 28,
+        "startChar": 50,
+        "endLine": 28,
+        "endChar": 67
+      },
+      "revId": "109d89941266cce5def66d1bd84d33a4bf0512bd",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71cc4d0d_07fa7429",
+        "filename": "lpcsnoop/snoop.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-01T18:25:05Z",
+      "side": 1,
+      "message": "And here you\u0027re not assigning a value to the enumerations you use to pull out the tuple, but assuming that the compiler assigns them 0,1 in order.\n\nWhy not type-alias?\n\nusing primary_post_code_t \u003d uint64;",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "109d89941266cce5def66d1bd84d33a4bf0512bd",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d9610f_9b093a49",
+        "filename": "lpcsnoop/snoop_listen.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-01T18:25:05Z",
+      "side": 1,
+      "message": "Would also be nice for us to define a type alias and/or decltype(Postcode.Raw) we can use throughout all this code.  We\u0027ve got a lot of repeating yourself with a very noisy template.",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 69
+      },
+      "revId": "109d89941266cce5def66d1bd84d33a4bf0512bd",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
