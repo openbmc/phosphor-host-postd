@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ceda810_b57384a2",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000233
+      },
+      "writtenOn": "2021-03-03T19:00:26Z",
+      "side": 1,
+      "message": "Since we have more complex, customized sets of arguments now, why not just construct the whole argument string here?\n\ne.g.,\n```\nsnoopd_args \u003d \u0027-b \u0027 + get_option(\u0027post-code-bytes\u0027)\nif get_option(\u0027snoop-device\u0027) !\u003d \u0027\u0027\n  snoopd_args +\u003d \u0027-d \u0027 + get_option(\u0027snoop-device\u0027)\nendif\n\nconf_data.set(\u0027SNOOPD_ARGS\u0027, snoopd_args)\n```\n\nThen we can get rid of the new option and avoid having multiple copies of the service file",
+      "revId": "9d8e070afca9138e86ebf515e835248e2e095b4e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
