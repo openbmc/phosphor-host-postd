@@ -70,6 +70,24 @@
       "revId": "55701e45f03d032c4e4990c02d3c387d69ca1c7f",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9194683_25b563e5",
+        "filename": "main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2021-03-03T03:48:55Z",
+      "side": 1,
+      "message": "That\u0027s my initial thought as well, but the only thing that concerned me was that, the code looks to be written in such as way that we exit when we does not see the snooping port, so i thought that was a requirement which is why i had gone for the #ifdef to remove that piece of code from compiling.\n\nBut if i that is okay, i have made changes to make it optional \u0026 pushed the patchset.I still could not get rid of the no-snoop meson option because the lpcsnoop.service.in file is hardcoded with -d option.",
+      "parentUuid": "326a84d1_464519cc",
+      "revId": "55701e45f03d032c4e4990c02d3c387d69ca1c7f",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
     }
   ]
 }
