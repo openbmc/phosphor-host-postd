@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "598ca9e4_55ee1478",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000559
+      },
+      "writtenOn": "2021-03-05T17:38:29Z",
+      "side": 1,
+      "message": "With the default build without snoop-device defined, this require recipe change to use it with snoopd, correct?",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 57
+      },
+      "revId": "aade4adb3987778a3e6f8e2e623109563cf7fd72",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
