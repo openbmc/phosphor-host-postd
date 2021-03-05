@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffc8b061_05ef542c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000233
+      },
+      "writtenOn": "2021-03-05T01:48:24Z",
+      "side": 1,
+      "message": "Code looks perfect! Just need to update the commit message and it\u0027ll be ready to merge :)",
+      "revId": "441d63b7759380585eeecdaa34162638d2fa45bd",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
