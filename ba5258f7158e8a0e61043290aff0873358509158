@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ac3ecc6_162cdc47",
+        "filename": "lpcsnoop/snoop.hpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-10T13:53:00Z",
+      "side": 1,
+      "message": "It would be slightly better to use a \u0027decltype(Raw::value())\u0027 on this (syntax is not 100% correct) but this seems reasonable to start with.",
+      "revId": "ba5258f7158e8a0e61043290aff0873358509158",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
