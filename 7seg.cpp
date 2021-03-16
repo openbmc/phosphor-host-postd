@@ -24,8 +24,9 @@ static const char* device_node_path;
 
 namespace fs = std::experimental::filesystem;
 
-static void DisplayDbusValue(uint64_t postcode)
+static void DisplayDbusValue(postcode_t postcodes)
 {
+    auto postcode = std::get<primary_post_code_t>(postcodes);
     // Uses cstdio instead of streams because the device file has
     // very strict requirements about the data format and streaming
     // abstractions tend to muck it up.
