@@ -70,6 +70,29 @@
       "revId": "aade4adb3987778a3e6f8e2e623109563cf7fd72",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95aa40cb_c1be239a",
+        "filename": "main.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000272
+      },
+      "writtenOn": "2021-04-01T15:06:09Z",
+      "side": 1,
+      "message": "This would break normal use cases. If the postFd is existed, the reporterSource construct and destructed immediately, so the event is never registered into the eventloop.\n\nI\u0027ll submit a patch for this, please help review.",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 184,
+        "endChar": 9
+      },
+      "revId": "aade4adb3987778a3e6f8e2e623109563cf7fd72",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
     }
   ]
 }
