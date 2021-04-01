@@ -173,10 +173,10 @@ int main(int argc, char* argv[])
     try
     {
         sdeventplus::Event event = sdeventplus::Event::get_default();
+        std::unique_ptr<sdeventplus::source::IO> reporterSource;
         if (postFd > 0)
         {
-
-            sdeventplus::source::IO reporterSource(
+            reporterSource = std::make_unique<sdeventplus::source::IO>(
                 event, postFd, EPOLLIN | EPOLLET,
                 std::bind(PostCodeEventHandler, std::placeholders::_1,
                           std::placeholders::_2, std::placeholders::_3,
