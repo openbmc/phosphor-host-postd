@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebbf180d_20e118c5",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-04-01T16:21:38Z",
+      "side": 1,
+      "message": "Use a unique_ptr for this not a raw pointer.",
+      "revId": "f963e40352e6ef59853497f425831696d16d38a1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
