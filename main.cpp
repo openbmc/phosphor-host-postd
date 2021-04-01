@@ -168,7 +168,7 @@ int main(int argc, char* argv[])
     PostReporter reporter(bus, snoopObject, deferSignals);
     reporter.emit_object_added();
     bus.request_name(snoopDbus);
-
+    sdeventplus::source::IO *reporterSource = nullptr;
     // Create sdevent and add IO source
     try
     {
@@ -176,7 +176,7 @@ int main(int argc, char* argv[])
         if (postFd > 0)
         {
 
-            sdeventplus::source::IO reporterSource(
+            reporterSource = new sdeventplus::source::IO(
                 event, postFd, EPOLLIN | EPOLLET,
                 std::bind(PostCodeEventHandler, std::placeholders::_1,
                           std::placeholders::_2, std::placeholders::_3,
@@ -190,6 +190,9 @@ int main(int argc, char* argv[])
     {
         fprintf(stderr, "%s\n", e.what());
     }
+
+    if (reporterSource)
+        delete reporterSource;
 
     if (postFd > -1)
     {
