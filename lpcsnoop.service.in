@@ -4,7 +4,7 @@ After=systemd-modules-load.service
 
 [Service]
 Restart=always
-ExecStart=@bindir@/snoopd @SNOOPD_ARGS@
+ExecStart=@bindir@/snoopd -b 1 -h 4
 
 [Install]
 WantedBy=@SYSTEMD_TARGET@

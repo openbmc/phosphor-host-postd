@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include "ipmisnoop/ipmisnoop.hpp"
 #include "lpcsnoop/snoop.hpp"
 
 #include <endian.h>
@@ -33,6 +34,10 @@
 #include <thread>
 
 static size_t codeSize = 1; /* Size of each POST code in bytes */
+static int numOfHost = 0;   /* Number of host */
+
+// To handle multi-host postcode
+std::vector<std::unique_ptr<IpmiPostReporter>> reporters;
 
 static void usage(const char* name)
 {
@@ -41,8 +46,9 @@ static void usage(const char* name)
             "  -b, --bytes <SIZE>     set POST code length to <SIZE> bytes. "
             "Default is %zu\n"
             "  -d, --device <DEVICE>  use <DEVICE> file.\n"
+            "  -h, --host <TOTAL HOST>  . Default is '%d'\n"
             "  -v, --verbose  Prints verbose information while running\n\n",
-            name, codeSize);
+            name, codeSize, numOfHost);
 }
 
 /*
@@ -89,6 +95,54 @@ void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd, uint32_t,
     s.get_event().exit(1);
 }
 
+// handle muti-host D-bus
+int postCodeIpmiHandler(const char* snoopObject, const char* snoopDbus)
+{
+    int ret = 0;
+
+    auto bus = sdbusplus::bus::new_default();
+
+    try
+    {
+
+        for (int iteration = 0; iteration < numOfHost; iteration++)
+        {
+            auto objPathInst =
+                std::string{snoopObject} + std::to_string(iteration + 1);
+
+            sdbusplus::server::manager_t m{bus, objPathInst.c_str()};
+
+            /* Create a monitor object and let it do all the rest */
+            reporters.push_back(
+                std::make_unique<IpmiPostReporter>(bus, objPathInst.c_str()));
+
+            reporters[iteration]->emit_object_added();
+        }
+
+        bus.request_name(snoopDbus);
+    }
+
+    catch (const std::exception& e)
+    {
+        fprintf(stderr, "%s\n", e.what());
+    }
+
+    // Configure seven segment dsiplay connected to GPIOs as output
+#if 1
+    ret = configGPIODirOutput();
+    if (ret < 0)
+    {
+        fprintf(stderr, "Failed find the gpio line\n");
+    }
+#endif
+    while (true)
+    {
+        bus.process_discard();
+        bus.wait();
+    }
+    exit(EXIT_SUCCESS);
+}
+
 /*
  * TODO(venture): this only listens one of the possible snoop ports, but
  * doesn't share the namespace.
@@ -117,6 +171,7 @@ int main(int argc, char* argv[])
 
     // clang-format off
     static const struct option long_options[] = {
+        {"host", required_argument, NULL, 'h'},
         {"bytes",  required_argument, NULL, 'b'},
         {"device", optional_argument, NULL, 'd'},
         {"verbose", no_argument, NULL, 'v'},
@@ -124,11 +179,14 @@ int main(int argc, char* argv[])
     };
     // clang-format on
 
-    while ((opt = getopt_long(argc, argv, "b:d:v", long_options, NULL)) != -1)
+    while ((opt = getopt_long(argc, argv, "h:b:d:v", long_options, NULL)) != -1)
     {
         switch (opt)
         {
             case 0:
+                break;
+            case 'h':
+                numOfHost = atoi(optarg);
                 break;
             case 'b':
                 codeSize = atoi(optarg);
@@ -143,13 +201,23 @@ int main(int argc, char* argv[])
                 }
                 break;
             case 'd':
-                postFd = open(optarg, O_NONBLOCK);
-                if (postFd < 0)
+
+                fprintf(stderr, "numOfHost %d\n", numOfHost);
+
+                if (numOfHost < 0)
                 {
-                    fprintf(stderr, "Unable to open: %s\n", optarg);
-                    return -1;
+                    fprintf(stderr, "numOfHost %d\n", numOfHost);
                 }
 
+                else
+                {
+                    postFd = open(optarg, O_NONBLOCK);
+                    if (postFd < 0)
+                    {
+                        fprintf(stderr, "Unable to open: %s\n", optarg);
+                        return -1;
+                    }
+                }
                 break;
             case 'v':
                 verbose = true;
@@ -162,39 +230,52 @@ int main(int argc, char* argv[])
 
     auto bus = sdbusplus::bus::new_default();
 
-    // Add systemd object manager.
-    sdbusplus::server::manager::manager(bus, snoopObject);
-
-    PostReporter reporter(bus, snoopObject, deferSignals);
-    reporter.emit_object_added();
-    bus.request_name(snoopDbus);
-
-    // Create sdevent and add IO source
-    try
+    if (numOfHost < 0)
     {
-        sdeventplus::Event event = sdeventplus::Event::get_default();
-        std::unique_ptr<sdeventplus::source::IO> reporterSource;
-        if (postFd > 0)
+
+        fprintf(stderr, "%d\n", numOfHost);
+
+        // Add systemd object manager.
+        sdbusplus::server::manager::manager(bus, snoopObject);
+
+        PostReporter reporter(bus, snoopObject, deferSignals);
+        reporter.emit_object_added();
+        bus.request_name(snoopDbus);
+
+        // Create sdevent and add IO source
+        try
         {
-            reporterSource = std::make_unique<sdeventplus::source::IO>(
-                event, postFd, EPOLLIN | EPOLLET,
-                std::bind(PostCodeEventHandler, std::placeholders::_1,
-                          std::placeholders::_2, std::placeholders::_3,
-                          &reporter, verbose));
+            sdeventplus::Event event = sdeventplus::Event::get_default();
+            if (postFd > 0)
+            {
+
+                sdeventplus::source::IO reporterSource(
+                    event, postFd, EPOLLIN | EPOLLET,
+                    std::bind(PostCodeEventHandler, std::placeholders::_1,
+                              std::placeholders::_2, std::placeholders::_3,
+                              &reporter, verbose));
+            }
+            // Enable bus to handle incoming IO and bus events
+            bus.attach_event(event.get(), SD_EVENT_PRIORITY_NORMAL);
+            rc = event.loop();
         }
-        // Enable bus to handle incoming IO and bus events
-        bus.attach_event(event.get(), SD_EVENT_PRIORITY_NORMAL);
-        rc = event.loop();
-    }
-    catch (const std::exception& e)
-    {
-        fprintf(stderr, "%s\n", e.what());
-    }
+        catch (const std::exception& e)
+        {
+            fprintf(stderr, "numOfHost:%s\n", e.what());
+        }
 
-    if (postFd > -1)
-    {
-        close(postFd);
-    }
+        if (postFd > -1)
+        {
+            close(postFd);
+        }
 
-    return rc;
+        return rc;
+    }
+    else
+    {
+
+        const char* ipmiSnoopObject = IPMI_SNOOP_OBJECTPATH;
+        fprintf(stderr, "numOfHost:%d\n", numOfHost);
+        postCodeIpmiHandler(ipmiSnoopObject, snoopDbus);
+    }
 }
