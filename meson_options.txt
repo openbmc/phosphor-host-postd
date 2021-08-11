@@ -10,6 +10,16 @@ option(
     value: 1,
 )
 option(
+    'host-instances',
+    description: 'obmc instances of the host',
+    type: 'string',
+)
+option(
+    'snoop',
+    type: 'feature',
+    description: 'Compile time flag to enable Ipmi snoop.'
+)
+option(
     'systemd-target',
     description: 'Target for starting this service.',
     type: 'string'
