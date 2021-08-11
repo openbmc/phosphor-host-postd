@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+#ifdef ENABLE_IPMI_SNOOP
+#include "ipmisnoop/ipmisnoop.hpp"
+#endif
+
 #include "lpcsnoop/snoop.hpp"
 
 #include <endian.h>
@@ -28,6 +32,8 @@
 #include <functional>
 #include <iostream>
 #include <optional>
+#include <filesystem>
+#include <memory>
 #include <sdeventplus/event.hpp>
 #include <sdeventplus/source/event.hpp>
 #include <sdeventplus/source/io.hpp>
@@ -35,7 +41,67 @@
 #include <stdplus/signal.hpp>
 #include <thread>
 
+#include <boost/asio.hpp>
+#include <sdbusplus/asio/connection.hpp>
+#include <sdbusplus/asio/object_server.hpp>
+#include <sdbusplus/asio/property.hpp>
+#include <sdbusplus/bus.hpp>
+#include <sdbusplus/server.hpp>
+#include <xyz/openbmc_project/State/Boot/Raw/server.hpp>
+
 static size_t codeSize = 1; /* Size of each POST code in bytes */
+
+std::vector<std::string> host;
+
+const char* defaultHostInstances = "0";
+const uint8_t minPositionVal = 0;
+const uint8_t maxPositionVal = 5;
+
+#ifdef ENABLE_IPMI_SNOOP
+std::vector<std::unique_ptr<IpmiPostReporter>> reporters;
+#endif
+
+#ifdef ENABLE_IPMI_SNOOP
+void IpmiPostReporter::getSelectorPositionSignal(sdbusplus::bus::bus& bus)
+{
+    size_t posVal = 0;
+
+    matchSignal = std::make_unique<sdbusplus::bus::match_t>(
+        bus,
+        sdbusplus::bus::match::rules::propertiesChanged(selectorObject,
+                                                        selectorIface),
+        [&](sdbusplus::message::message& msg) {
+            std::string objectName;
+            std::map<std::string, Selector::PropertiesVariant> msgData;
+            msg.read(objectName, msgData);
+
+            auto valPropMap = msgData.find("Position");
+            {
+                if (valPropMap != msgData.end())
+                {
+                    posVal = std::get<size_t>(valPropMap->second);
+
+                    if (posVal > minPositionVal && posVal < maxPositionVal)
+                    {
+                        std::tuple<uint64_t, secondary_post_code_t> postcodes =
+                            reporters[posVal - 1]->value();
+                        uint64_t postcode = std::get<uint64_t>(postcodes);
+
+                        // write postcode into seven segment display
+                        if (postCodeDisplay(postcode) < 0)
+                        {
+                            fprintf(stderr, "Error in display the postcode\n");
+                        }
+                    }
+                }
+                else
+                {
+                    std::cerr << " Position property not found " << std::endl;
+                }
+            }
+        });
+}
+#endif
 
 static void usage(const char* name)
 {
@@ -44,8 +110,9 @@ static void usage(const char* name)
             "  -b, --bytes <SIZE>     set POST code length to <SIZE> bytes. "
             "Default is %zu\n"
             "  -d, --device <DEVICE>  use <DEVICE> file.\n"
+            "  -h, --host <host instances>  . Default is '%s'\n"
             "  -v, --verbose  Prints verbose information while running\n\n",
-            name, codeSize);
+            name, codeSize, defaultHostInstances);
 }
 
 /*
@@ -92,6 +159,52 @@ void PostCodeEventHandler(PostReporter* reporter, bool verbose,
     s.get_event().exit(1);
 }
 
+#ifdef ENABLE_IPMI_SNOOP
+// handle muti-host D-bus
+int postCodeIpmiHandler(const char* snoopObject, const char* snoopDbus,
+                        sdbusplus::bus::bus& bus)
+{
+    int ret = 0;
+
+    try
+    {
+        for (uint8_t iteration = 0; iteration < host.size(); iteration++)
+        {
+            auto objPathInst = std::string{snoopObject} + host[iteration];
+
+            sdbusplus::server::manager_t m{bus, objPathInst.c_str()};
+
+            /* Create a monitor object and let it do all the rest */
+            reporters.emplace_back(
+                std::make_unique<IpmiPostReporter>(bus, objPathInst.c_str()));
+
+            reporters[iteration]->emit_object_added();
+        }
+
+        bus.request_name(snoopDbus);
+        reporters[0]->getSelectorPositionSignal(bus);
+    }
+    catch (const std::exception& e)
+    {
+        fprintf(stderr, "%s\n", e.what());
+    }
+
+    // Configure seven segment dsiplay connected to GPIOs as output
+    ret = configGPIODirOutput();
+    if (ret < 0)
+    {
+        fprintf(stderr, "Failed find the gpio line\n");
+    }
+
+    while (true)
+    {
+        bus.process_discard();
+        bus.wait();
+    }
+    exit(EXIT_SUCCESS);
+}
+#endif
+
 /*
  * TODO(venture): this only listens one of the possible snoop ports, but
  * doesn't share the namespace.
@@ -101,9 +214,15 @@ void PostCodeEventHandler(PostReporter* reporter, bool verbose,
  */
 int main(int argc, char* argv[])
 {
-    int rc = 0;
-    int opt;
+
+#ifndef ENABLE_IPMI_SNOOP
+
     int postFd = -1;
+
+#endif
+
+    int opt;
+    bool verbose = false;
 
     /*
      * These string constants are only used in this method within this object
@@ -112,28 +231,41 @@ int main(int argc, char* argv[])
      * If however, another object is added to this binary it would be proper
      * to move these declarations to be global and extern to the other object.
      */
-    const char* snoopObject = SNOOP_OBJECTPATH;
-    const char* snoopDbus = SNOOP_BUSNAME;
-
-    bool deferSignals = true;
-    bool verbose = false;
 
     // clang-format off
     static const struct option long_options[] = {
+        {"host", required_argument, NULL, 'h'},
         {"bytes",  required_argument, NULL, 'b'},
+        #ifndef ENABLE_IPMI_SNOOP
         {"device", optional_argument, NULL, 'd'},
+        #endif
         {"verbose", no_argument, NULL, 'v'},
         {0, 0, 0, 0}
     };
     // clang-format on
 
-    while ((opt = getopt_long(argc, argv, "b:d:v", long_options, NULL)) != -1)
+    while ((opt = getopt_long(argc, argv, "h:b:d:v", long_options, NULL)) != -1)
     {
         switch (opt)
         {
             case 0:
                 break;
-            case 'b':
+            case 'h': {
+                std::string instances = optarg;
+                std::string delimiter = " ";
+                size_t pos = 0;
+                std::string token;
+
+                while ((pos = instances.find(delimiter)) != std::string::npos)
+                {
+                    token = instances.substr(0, pos);
+                    host.push_back(token);
+                    instances.erase(0, pos + delimiter.length());
+                }
+                host.push_back(instances);
+                break;
+            }
+            case 'b': {
                 codeSize = atoi(optarg);
 
                 if (codeSize < 1 || codeSize > 8)
@@ -145,25 +277,34 @@ int main(int argc, char* argv[])
                     exit(EXIT_FAILURE);
                 }
                 break;
+            }
+#ifndef ENABLE_IPMI_SNOOP
             case 'd':
+
                 postFd = open(optarg, O_NONBLOCK);
                 if (postFd < 0)
                 {
                     fprintf(stderr, "Unable to open: %s\n", optarg);
                     return -1;
                 }
-
                 break;
+
+#endif
             case 'v':
                 verbose = true;
                 break;
             default:
                 usage(argv[0]);
-                exit(EXIT_FAILURE);
         }
     }
 
     auto bus = sdbusplus::bus::new_default();
+
+#ifndef ENABLE_IPMI_SNOOP
+
+    int rc = 0;
+
+    bool deferSignals = true;
 
     // Add systemd object manager.
     sdbusplus::server::manager::manager snoopdManager(bus, snoopObject);
@@ -175,11 +316,11 @@ int main(int argc, char* argv[])
     // Create sdevent and add IO source
     try
     {
-        auto event = sdeventplus::Event::get_default();
-        std::optional<sdeventplus::source::IO> reporterSource;
+        sdeventplus::Event event = sdeventplus::Event::get_default();
         if (postFd > 0)
         {
-            reporterSource.emplace(
+
+            sdeventplus::source::IO reporterSource(
                 event, postFd, EPOLLIN | EPOLLET,
                 std::bind_front(PostCodeEventHandler, &reporter, verbose));
         }
@@ -207,4 +348,10 @@ int main(int argc, char* argv[])
     }
 
     return rc;
+#endif
+
+#ifdef ENABLE_IPMI_SNOOP
+    std::cout << "Verbose = " << verbose << std::endl;
+    postCodeIpmiHandler(ipmiSnoopObject, snoopDbus, bus);
+#endif
 }
