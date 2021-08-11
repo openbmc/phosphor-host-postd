@@ -35,7 +35,7 @@ TEST_F(PostReporterTest, EmitsObjectsOnExpectedDbusPath)
 {
 
     EXPECT_CALL(bus_mock,
-                sd_bus_emit_object_added(IsNull(), StrEq(SNOOP_OBJECTPATH)))
+                sd_bus_emit_object_added(IsNull(), StrEq(snoopObject)))
         .WillOnce(Return(0));
 
     PostReporter testReporter(bus, SNOOP_OBJECTPATH, true);
@@ -45,8 +45,8 @@ TEST_F(PostReporterTest, EmitsObjectsOnExpectedDbusPath)
 TEST_F(PostReporterTest, AddsObjectWithExpectedName)
 {
     EXPECT_CALL(bus_mock,
-                sd_bus_add_object_vtable(IsNull(), _, StrEq(SNOOP_OBJECTPATH),
-                                         StrEq(SNOOP_BUSNAME), _, _))
+                sd_bus_add_object_vtable(IsNull(), _, StrEq(snoopObject),
+                                         StrEq(snoopDbus), _, _))
         .WillOnce(Return(0));
 
     PostReporter testReporter(bus, SNOOP_OBJECTPATH, true);
@@ -54,13 +54,13 @@ TEST_F(PostReporterTest, AddsObjectWithExpectedName)
 
 TEST_F(PostReporterTest, ValueReadsDefaultToZero)
 {
-    PostReporter testReporter(bus, SNOOP_OBJECTPATH, true);
+    PostReporter testReporter(bus, snoopObject, true);
     EXPECT_EQ(0, std::get<primary_post_code_t>(testReporter.value()));
 }
 
 TEST_F(PostReporterTest, SetValueToPositiveValueWorks)
 {
-    PostReporter testReporter(bus, SNOOP_OBJECTPATH, true);
+    PostReporter testReporter(bus, snoopObject, true);
     secondary_post_code_t secondaryCode = {123, 124, 125};
     testReporter.value(std::make_tuple(65537, secondaryCode));
     EXPECT_EQ(65537, std::get<primary_post_code_t>(testReporter.value()));
@@ -70,7 +70,7 @@ TEST_F(PostReporterTest, SetValueToPositiveValueWorks)
 
 TEST_F(PostReporterTest, SetValueMultipleTimesWorks)
 {
-    PostReporter testReporter(bus, SNOOP_OBJECTPATH, true);
+    PostReporter testReporter(bus, snoopObject, true);
     secondary_post_code_t secondaryCode = {10, 40, 0, 245, 56};
     testReporter.value(std::make_tuple(123, secondaryCode));
     EXPECT_EQ(123, std::get<primary_post_code_t>(testReporter.value()));
