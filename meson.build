@@ -19,12 +19,22 @@ phosphor_dbus_interfaces = dependency('phosphor-dbus-interfaces')
 sdbusplus = dependency('sdbusplus')
 sdeventplus = dependency('sdeventplus')
 systemd = dependency('systemd')
+libgpiodcxx = dependency('libgpiodcxx')
 
 conf_data = configuration_data()
 conf_data.set('bindir', get_option('prefix') / get_option('bindir'))
+conf_data.set('SNOOP_DEVICE', get_option('snoop-device'))
+conf_data.set('POST_CODE_BYTES', get_option('post-code-bytes'))
+conf_data.set('HOST_INSTANCES', get_option('host-instances'))
+
 conf_data.set('SYSTEMD_TARGET', get_option('systemd-target'))
 
+if not get_option('snoop').disabled()
+    add_project_arguments('-DENABLE_IPMI_SNOOP',language:'cpp')
+endif
+
 snoopd_args = '-b ' + get_option('post-code-bytes').to_string()
+snoopd_args += '-h ' + get_option('host-instances')
 if get_option('snoop-device') != ''
   snoopd_args += ' -d /dev/' + get_option('snoop-device')
 endif
@@ -44,6 +54,7 @@ executable(
     sdbusplus,
     sdeventplus,
     phosphor_dbus_interfaces,
+    libgpiodcxx,
   ],
   install: true,
 )
