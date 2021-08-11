@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "18b3349d_fb91eba1",
+        "filename": "configure.ac",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "This patch is already merged with master.",
+      "parentUuid": "cfdb58f1_01bd60d5",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c1cbe98_948d59c9",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "e21a160b_605ddf10",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1c982b_cfd2fac7",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40676056_ce35c10d",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -68,6 +104,24 @@
       "revId": "d679884a151b1e56476b94c544443f062b09f830",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "535a8cb3_ae1e8b93",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40676056_ce35c10d",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "609576d1_6bdff9a4",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29aff59a_7cc6fc58",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16f43e1f_afeab441",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "70f6aa23_8bf6b593",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done. To parse the host num from the object.",
+      "parentUuid": "16f43e1f_afeab441",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c86ed47_b3955e49",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -119,6 +209,24 @@
       "revId": "d679884a151b1e56476b94c544443f062b09f830",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb28e889_cd82927e",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "0c86ed47_b3955e49",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +253,30 @@
     },
     {
       "key": {
+        "uuid": "94daa462_c786c158",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "The Value reading from dbus is Variant type. Phosphor-dbus-iterfaces has type as uint16_t.",
+      "parentUuid": "eded827d_d18a127a",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 66
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb8d2881_dc244e54",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -162,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "f07c3baf_2dcd7673",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb8d2881_dc244e54",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab23c24e_f9b5fe77",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -176,6 +326,24 @@
       "revId": "d679884a151b1e56476b94c544443f062b09f830",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f35c36f3_a823e2dc",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab23c24e_f9b5fe77",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -219,6 +387,48 @@
     },
     {
       "key": {
+        "uuid": "4e7a656f_456239bf",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72ac6326_73ada950",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3f03158_d6948ba6",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37bc5685_b6f25b90",
+      "range": {
+        "startLine": 70,
+        "startChar": 40,
+        "endLine": 70,
+        "endChar": 53
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "733673af_21a10731",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -233,6 +443,24 @@
       "revId": "d679884a151b1e56476b94c544443f062b09f830",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88cc1fa0_61fbf558",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "moved to main.cpp",
+      "parentUuid": "733673af_21a10731",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -259,6 +487,30 @@
     },
     {
       "key": {
+        "uuid": "b0a09d22_07f49e82",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Modified this function and created aysnc_get function to get the properties.",
+      "parentUuid": "4a13f523_b86c2a1b",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 1
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ded81146_4713bcbc",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -282,6 +534,30 @@
     },
     {
       "key": {
+        "uuid": "41aab869_43d65d3b",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ded81146_4713bcbc",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 66
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "713dcf4a_bb7e3981",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -296,6 +572,24 @@
       "revId": "d679884a151b1e56476b94c544443f062b09f830",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deea7e92_865c37f4",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "713dcf4a_bb7e3981",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -316,6 +610,24 @@
     },
     {
       "key": {
+        "uuid": "62fd1910_ecd839f6",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ee7853c_3a9e70b6",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23d55fac_9098b70a",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -330,6 +642,24 @@
       "revId": "d679884a151b1e56476b94c544443f062b09f830",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e7099e8_423ef481",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23d55fac_9098b70a",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -350,6 +680,24 @@
     },
     {
       "key": {
+        "uuid": "83510dcd_6bab2d55",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcd4ce20_deb5c395",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0fd297_a495ddc5",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -364,6 +712,24 @@
       "revId": "d679884a151b1e56476b94c544443f062b09f830",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e001aad_84a7ca48",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba0fd297_a495ddc5",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -384,6 +750,24 @@
     },
     {
       "key": {
+        "uuid": "42913234_5ce3af90",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "The kernel community is not accepting the below patch. So, we are not using 7seg.cpp\nhttps://lore.kernel.org/patchwork/cover/743571/",
+      "parentUuid": "312122f4_4653e2ee",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f059ceb6_a14ee20c",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
@@ -395,6 +779,30 @@
       "writtenOn": "2020-12-11T17:39:14Z",
       "side": 1,
       "message": "Isn\u0027t there some place that we need to do a translation from \u0027status\u0027 into a 7seg display?  Simple bit-shifting doesn\u0027t seem to cover it to me.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 9
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe3c2a00_96a7a4f7",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Translation is not needed. Debug card displays the one byte data in the 7seg display by default.",
+      "parentUuid": "f059ceb6_a14ee20c",
       "range": {
         "startLine": 168,
         "startChar": 0,
@@ -427,6 +835,30 @@
       "revId": "d679884a151b1e56476b94c544443f062b09f830",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d6ec27_bdd00861",
+        "filename": "main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55bf3cc0_ed822fe6",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -464,6 +896,24 @@
     },
     {
       "key": {
+        "uuid": "043e20a6_fd512336",
+        "filename": "meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cea4f32_c161d222",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e58939c_eac486f3",
         "filename": "meson.build",
         "patchSetId": 1
@@ -481,6 +931,24 @@
     },
     {
       "key": {
+        "uuid": "a985cf3d_df725513",
+        "filename": "meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e58939c_eac486f3",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "415eac8b_ffc511f0",
         "filename": "meson.build",
         "patchSetId": 1
@@ -495,6 +963,24 @@
       "revId": "d679884a151b1e56476b94c544443f062b09f830",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6bc2b97_522f1f00",
+        "filename": "meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-08-11T05:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "415eac8b_ffc511f0",
+      "revId": "d679884a151b1e56476b94c544443f062b09f830",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     }
   ]
 }
