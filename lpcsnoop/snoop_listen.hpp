@@ -30,7 +30,7 @@ static const std::string GetMatchRule()
     using namespace sdbusplus::bus::match::rules;
 
     return type::signal() + interface("org.freedesktop.DBus.Properties") +
-           member("PropertiesChanged") + path(SNOOP_OBJECTPATH);
+           member("PropertiesChanged") + path(snoopObject);
 }
 
 class SnoopListen
@@ -78,7 +78,7 @@ class SnoopListen
 
         m.read(messageBusName, messageData);
 
-        if (messageBusName == SNOOP_BUSNAME &&
+        if (messageBusName == snoopDbus &&
             messageData.find(propertyKey) != messageData.end())
         {
             handler(get<postcode_t>(messageData[propertyKey]));
