@@ -1,0 +1,563 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "347e79dd_c9dec507",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Prefer \u0027auto\u0027.",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "409aa224_2ef2c848",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "\u0027const\u0027 is redundant when you already have \u0027constexpr\u0027",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f07396e9_07a45cc0",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Please avoid #define in C++ code.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 7
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c494c4e3_28a24aa8",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Is there even a reason to call this \"ipmi snoop\"?  That seems like the implementation, but this code would work 100% the same if there were a (for example) PLDM implementation of the same interface, right?",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "842ae9eb_8cdb71fc",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "There is a sdbusplus helper for PropertiesChanged signals, please use that rather than creating your own.",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 76
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81ad4e6c_14d7b89a",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Why are we restricting post codes to 1 byte?  AMD uses 32 or 64 bit post codes.",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f964b76_1ea2e8e3",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "This implies that 0xFF is an invalid post code.  Is that true?",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70f75e8_1b45e455",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Is there a good reason to mix using the sdbuspp-generated classes and the boost code?  This is a little confusing to me.\n\n\nWhy do we need this async_get?  Can\u0027t we simply listen to a PropertyChanged signal for the selector?",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4b90534_c469ac57",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "How do we know this ends up being the service name?  Can we use mapper instead of hard-coding service names?",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "177da3df_edebdc25",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Suggest setting [[nodiscard]] on this so that the bug that you have on line 173 doesn\u0027t happen.",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a889028f_795bc85f",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Rather than control these GPIOs from userspace like this, there was once a proposal for a 7-segment display driver in the kernel.  Can you follow up what happened with it?\n\nhttps://lore.kernel.org/openbmc/CANsWYUW3sdbUguaOOMLkvbaTOHsCMBo8n0CDpVYiSkbZBuRThQ@mail.gmail.com/\n\nI think the \u00277seg.cpp\u0027 is also related to this.",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc968d38_ecf67bf1",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "GPIOs like this should be defined in https://github.com/openbmc/docs/blob/master/designs/device-tree-gpio-naming.md.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 44
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "733d9edb_338488ab",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "You are getting a lambda here and then doing nothing with it.  I suspect that isn\u0027t what you intended.",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c464ea1_9f65c10d",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "I don\u0027t understand how this is expected to work.  You did an async call on line 169 to get the latest value of the selector, but you do nothing here to wait for it, so you are guaranteed to always be using the *old* value of the selector, aren\u0027t you?\n\nDon\u0027t you need to do something to update the postCodeDisplay to the current host whenever the selector changes as well?  Otherwise the 7 seg display will continue to display a post code for the previously selected host, which is pretty confusing to a human.",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6ff83d6_d9df2c58",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 182,
+        "startChar": 15,
+        "endLine": 182,
+        "endChar": 20
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d37c959_3981d71a",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "I\u0027m relatively confused here.  Aren\u0027t we missing this whole transformation?\n\nhttps://en.wikipedia.org/wiki/Seven-segment_display#Hexadecimal",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b03b0cc_5609f8ee",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "I don\u0027t think this is accurate anymore.  Is it really \"TOTAL HOST\" or is it a per-instance number for this daemon?",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be7137fe_0aa1179a",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Should this be emplace_back?",
+      "range": {
+        "startLine": 121,
+        "startChar": 22,
+        "endLine": 121,
+        "endChar": 31
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a5f4614_d6f3892a",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Does this break current users in any way?  Are there any recipe updates or service file updates we need to do to make sure this is \u00270\u0027 by default?",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5820d37e_5b3646d7",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "How do you know they are listed \"1 2 3\" and not \"3 2 1\"?\n\nWhat happens if the list is \"1 3 5\"?  Do we end up creating useless handlers for 2/4?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 42
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff14c227_534f923b",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "This makes it seem like you should #ifdef around device on line 183 also, right?",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fa2009a_32977244",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "There is some bad behavior here that \u0027-d foo\u0027 ends up causing \u0027-v\u0027 when ENABLE_IPMI_SNOOP is on (inadvertent fall-through).",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 6
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53ba6c6a_d302793f",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Why is this change done?",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 38
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a0955c9_48e6356e",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Why do we have two different constants here?  Can you refactor this so that \u0027lpcsnoop\u0027 and \u0027ipmisnoop\u0027 both append the appropriate host value from `-h`?  Please refactor this code so that the \u0027lpcsnoop\u0027 is all inside a function similar to the one here for \u0027postCodeIpmiHandler\u0027.  I think this will make it so that the only difference is which handler function you\u0027re calling here.",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92f8b99f_b0e24ca9",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Why?\n\nAnd why are we mixing printf and cout?",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a6ec25e_69e667f6",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "It appears that only ipmisnoop.hpp utilizes libgpiod.  Should this (and/or libgpiodcxx) only be used when the ipmisnoop is enabled?",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0541364a_29255e27",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Why do we need both?  Doesn\u0027t libgpiodcxx depend on libgpiod itself?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b869520_d983860a",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "Since the code already has \u0027lpcsnoop\u0027, I would suggest that \u0027snoop\u0027 is not a great name for this.\n\nShould ipmi and lpc snoop be incompatible or can both be enabled at the same time?  You may need two different options for \u0027lpcsnoop\u0027 and \u0027ipmisnoop\u0027 (and use some meson settings to ensure only one can be set) or else have a single \u0027snoop\u0027 option which is configurable with a set `{ \u0027lpc\u0027, \u0027ipmi\u0027 }`.\n\nDo we need to do any refactoring to the code so that lpcsnoop is disabled when ipmisnoop is enabled?",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dc8d10b_ada553a8",
+        "filename": "meson_options.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-26T14:01:51Z",
+      "side": 1,
+      "message": "It appears that the rest of the options have taken to use dashes and not underscores.",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
