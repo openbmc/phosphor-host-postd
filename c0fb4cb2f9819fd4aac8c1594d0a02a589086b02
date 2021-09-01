@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5b632d0f_c7e8e181",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "347e79dd_c9dec507",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f07396e9_07a45cc0",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 8
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "5d5078c2_42feca5c",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f07396e9_07a45cc0",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 7
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c494c4e3_28a24aa8",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 8
@@ -85,6 +133,24 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdcacff0_7887cfd3",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c494c4e3_28a24aa8",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -108,6 +174,30 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd3ea517_bf542e77",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack. working on it.",
+      "parentUuid": "842ae9eb_8cdb71fc",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 76
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +235,24 @@
     },
     {
       "key": {
+        "uuid": "2f0bb8b3_1e821412",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5f964b76_1ea2e8e3",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c70f75e8_1b45e455",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 8
@@ -162,6 +270,24 @@
     },
     {
       "key": {
+        "uuid": "5c0f2791_84213907",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c70f75e8_1b45e455",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4b90534_c469ac57",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 8
@@ -176,6 +302,24 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def63f39_0d18c89c",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f4b90534_c469ac57",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -293,6 +437,30 @@
     },
     {
       "key": {
+        "uuid": "4319aedb_cc395016",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6ff83d6_d9df2c58",
+      "range": {
+        "startLine": 182,
+        "startChar": 15,
+        "endLine": 182,
+        "endChar": 20
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d37c959_3981d71a",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 8
@@ -327,6 +495,24 @@
     },
     {
       "key": {
+        "uuid": "12d5d0c9_c3ad74cf",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5b03b0cc_5609f8ee",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be7137fe_0aa1179a",
         "filename": "main.cpp",
         "patchSetId": 8
@@ -347,6 +533,30 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7e37159_a5a784c5",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be7137fe_0aa1179a",
+      "range": {
+        "startLine": 121,
+        "startChar": 22,
+        "endLine": 121,
+        "endChar": 31
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -387,6 +597,30 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "782e4a4f_c2db593c",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5820d37e_5b3646d7",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 42
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -453,6 +687,30 @@
     },
     {
       "key": {
+        "uuid": "494e83e8_e07e3766",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "not needed. Will remove",
+      "parentUuid": "53ba6c6a_d302793f",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 38
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a0955c9_48e6356e",
         "filename": "main.cpp",
         "patchSetId": 8
@@ -487,6 +745,24 @@
     },
     {
       "key": {
+        "uuid": "919781b1_8c9b7049",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "92f8b99f_b0e24ca9",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a6ec25e_69e667f6",
         "filename": "meson.build",
         "patchSetId": 8
@@ -504,6 +780,24 @@
     },
     {
       "key": {
+        "uuid": "6581f668_1850f97e",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a6ec25e_69e667f6",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0541364a_29255e27",
         "filename": "meson.build",
         "patchSetId": 8
@@ -515,6 +809,30 @@
       "writtenOn": "2021-08-26T14:01:51Z",
       "side": 1,
       "message": "Why do we need both?  Doesn\u0027t libgpiodcxx depend on libgpiod itself?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dc73332_52d85dce",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "C++ functions like line bulk objects needs libgpiodcxx. If we provide only libgpiod, it not accepts C++ API\u0027s.",
+      "parentUuid": "0541364a_29255e27",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -544,6 +862,24 @@
     },
     {
       "key": {
+        "uuid": "78b11866_cc997b5b",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b869520_d983860a",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dc8d10b_ada553a8",
         "filename": "meson_options.txt",
         "patchSetId": 8
@@ -558,6 +894,24 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5179a4ee_85c8a26b",
+        "filename": "meson_options.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-09-01T06:08:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4dc8d10b_ada553a8",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     }
   ]
 }
