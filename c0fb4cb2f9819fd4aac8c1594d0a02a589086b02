@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a5fdc278_cc2ff50a",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "409aa224_2ef2c848",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f07396e9_07a45cc0",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 8
@@ -218,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "8442824b_21433bb5",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "81ad4e6c_14d7b89a",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f964b76_1ea2e8e3",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 8
@@ -340,6 +382,24 @@
     },
     {
       "key": {
+        "uuid": "6f97ea75_59daae1f",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "177da3df_edebdc25",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a889028f_795bc85f",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 8
@@ -354,6 +414,24 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a8aec5_34619794",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "This driver is related to 7seg only. But they are using 16 bits for displaying values in 7 Seg.\nthey use abcdefg pins of 7 segment. But our LCD debugcard needs 8 bits only. We can\u0027t use this driver.",
+      "parentUuid": "a889028f_795bc85f",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -380,6 +458,30 @@
     },
     {
       "key": {
+        "uuid": "8133e92d_e800257f",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Ack. Will update the document",
+      "parentUuid": "fc968d38_ecf67bf1",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 44
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "733d9edb_338488ab",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 8
@@ -397,6 +499,24 @@
     },
     {
       "key": {
+        "uuid": "e0b23981_a58287c2",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "733d9edb_338488ab",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c464ea1_9f65c10d",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 8
@@ -411,6 +531,24 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc9b60f6_f6076461",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c464ea1_9f65c10d",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -475,6 +613,24 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54999f7a_358ff949",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Ack. Our LCD Debug card converts 8 bits data and directly displaying the postcodes in the 7seg display.",
+      "parentUuid": "0d37c959_3981d71a",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -577,6 +733,24 @@
     },
     {
       "key": {
+        "uuid": "fa932ae1_a12e72c4",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Yes. In the recipe, they should have OBMC_HOST_INSTANCES by default as \"0\".",
+      "parentUuid": "7a5f4614_d6f3892a",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5820d37e_5b3646d7",
         "filename": "main.cpp",
         "patchSetId": 8
@@ -624,6 +798,30 @@
     },
     {
       "key": {
+        "uuid": "f65905f1_55e1fe49",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "No. Count the instances based on the delimiter(space).\n\"1 2 3\" and \"3 2 1\"  \u003d 3.\n\"1 3 5\" \u003d 3. \n\nTwo terms : total number of host and instance.\ntotal number of host - based on the delimiter we can count.\nInstance - we need to parse from the obmc-host-instances.\n\nNow, we are getting both number of host and instances",
+      "parentUuid": "782e4a4f_c2db593c",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 42
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff14c227_534f923b",
         "filename": "main.cpp",
         "patchSetId": 8
@@ -638,6 +836,24 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad5614da_1fa3450e",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff14c227_534f923b",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -661,6 +877,30 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d3688a1_52667442",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa2009a_32977244",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 6
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -711,6 +951,30 @@
     },
     {
       "key": {
+        "uuid": "c8b28c65_8d54e85c",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "494e83e8_e07e3766",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 38
+      },
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a0955c9_48e6356e",
         "filename": "main.cpp",
         "patchSetId": 8
@@ -725,6 +989,24 @@
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123dccd6_edd28565",
+        "filename": "main.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a0955c9_48e6356e",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -898,6 +1180,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "2b869520_d983860a",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc962025_7595f915",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2021-10-05T13:42:37Z",
+      "side": 1,
+      "message": "Single snoop option configure with lpc or ipmi.\n\nDo we need to do any refactoring to the code so that lpcsnoop is disabled when ipmisnoop is enabled?  --\u003e No I think, Based on the compiler option any one snoop should be enabled.",
+      "parentUuid": "78b11866_cc997b5b",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": false
