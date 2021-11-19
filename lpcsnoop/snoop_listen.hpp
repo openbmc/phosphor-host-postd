@@ -17,8 +17,8 @@
 #include "lpcsnoop/snoop.hpp"
 
 #include <sdbusplus/bus.hpp>
+#include <sdbusplus/bus/match.hpp>
 #include <sdbusplus/message.hpp>
-#include <sdbusplus/server.hpp>
 
 namespace lpcsnoop
 {
@@ -64,7 +64,7 @@ class SnoopListen
 
   private:
     sdbusplus::bus::bus& bus;
-    sdbusplus::server::match::match signal;
+    sdbusplus::bus::match_t signal;
 
     /*
      * Default message handler which listens to published messages on snoop
