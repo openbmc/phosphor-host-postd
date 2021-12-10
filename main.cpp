@@ -165,7 +165,7 @@ int main(int argc, char* argv[])
     auto bus = sdbusplus::bus::new_default();
 
     // Add systemd object manager.
-    sdbusplus::server::manager::manager(bus, snoopObject);
+    sdbusplus::server::manager::manager snoopdManager(bus, snoopObject);
 
     PostReporter reporter(bus, snoopObject, deferSignals);
     reporter.emit_object_added();
