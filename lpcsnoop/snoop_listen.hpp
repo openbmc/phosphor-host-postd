@@ -40,12 +40,12 @@ class SnoopListen
 
   public:
     SnoopListen(sdbusplus::bus::bus& busIn, sd_bus_message_handler_t handler) :
-        bus(busIn), signal(busIn, GetMatchRule().c_str(), handler, this)
+        signal(busIn, GetMatchRule().c_str(), handler, this)
     {
     }
 
     SnoopListen(sdbusplus::bus::bus& busIn, message_handler_t handler) :
-        bus(busIn), signal(busIn, GetMatchRule(), handler)
+        signal(busIn, GetMatchRule(), handler)
     {
     }
 
@@ -63,7 +63,6 @@ class SnoopListen
     SnoopListen& operator=(SnoopListen&&) = default;
 
   private:
-    sdbusplus::bus::bus& bus;
     sdbusplus::server::match::match signal;
 
     /*

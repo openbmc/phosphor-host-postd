@@ -1,5 +1,6 @@
 #pragma once
 
+#include <chrono>
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/server.hpp>
 #include <xyz/openbmc_project/State/Boot/Raw/server.hpp>
@@ -21,7 +22,11 @@ class PostReporter : public PostObject
 {
   public:
     PostReporter(sdbusplus::bus::bus& bus, const char* objPath, bool defer) :
-        PostObject(bus, objPath, defer)
+        PostObject(bus, objPath, defer), count(0)
     {
     }
+
+  private:
+    uint64_t count;
+    system_clock::time_point currentTime;
 };
