@@ -24,6 +24,9 @@ static const char* device_node_path;
 
 namespace fs = std::experimental::filesystem;
 
+lpcsnoop::SnoopListen&
+    lpcsnoop::SnoopListen::operator=(SnoopListen&&) noexcept = default;
+
 static void DisplayDbusValue(postcode_t postcodes)
 {
     auto postcode = std::get<primary_post_code_t>(postcodes);
