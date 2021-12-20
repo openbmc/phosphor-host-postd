@@ -26,7 +26,7 @@
 #include <cstdint>
 #include <exception>
 #include <iostream>
-#include <memory>
+#include <optional>
 #include <sdeventplus/event.hpp>
 #include <sdeventplus/source/event.hpp>
 #include <sdeventplus/source/io.hpp>
@@ -172,11 +172,11 @@ int main(int argc, char* argv[])
     // Create sdevent and add IO source
     try
     {
-        sdeventplus::Event event = sdeventplus::Event::get_default();
-        std::unique_ptr<sdeventplus::source::IO> reporterSource;
+        auto event = sdeventplus::Event::get_default();
+        std::optional<sdeventplus::source::IO> reporterSource;
         if (postFd > 0)
         {
-            reporterSource = std::make_unique<sdeventplus::source::IO>(
+            reporterSource.emplace(
                 event, postFd, EPOLLIN | EPOLLET,
                 std::bind(PostCodeEventHandler, std::placeholders::_1,
                           std::placeholders::_2, std::placeholders::_3,
