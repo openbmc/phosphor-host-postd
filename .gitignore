@@ -1,2 +1,5 @@
 /build*/
 /subprojects/*
+!/subprojects/phosphor-dbus-interfaces.wrap
+!/subprojects/sdbusplus.wrap
+!/subprojects/sdeventplus.wrap
