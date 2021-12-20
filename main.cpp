@@ -30,6 +30,8 @@
 #include <sdeventplus/event.hpp>
 #include <sdeventplus/source/event.hpp>
 #include <sdeventplus/source/io.hpp>
+#include <sdeventplus/source/signal.hpp>
+#include <stdplus/signal.hpp>
 #include <thread>
 
 static size_t codeSize = 1; /* Size of each POST code in bytes */
@@ -184,6 +186,15 @@ int main(int argc, char* argv[])
         }
         // Enable bus to handle incoming IO and bus events
         bus.attach_event(event.get(), SD_EVENT_PRIORITY_NORMAL);
+        auto intCb = [](sdeventplus::source::Signal& source,
+                         const struct signalfd_siginfo*) {
+            source.get_event().exit(0);
+        };
+        stdplus::signal::block(SIGINT);
+        sdeventplus::source::Signal(event, SIGINT, intCb).set_floating(true);
+        stdplus::signal::block(SIGTERM);
+        sdeventplus::source::Signal(event, SIGTERM, std::move(intCb))
+            .set_floating(true);
         rc = event.loop();
     }
     catch (const std::exception& e)
