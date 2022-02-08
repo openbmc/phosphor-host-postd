@@ -1,0 +1,8 @@
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Code-Review+1: Brandon Kim <brandonkim@google.com>
+Code-Review+2: Benjamin Fair <benjaminfair@google.com>
+Submitted-by: Willy Tu <wltu@google.com>
+Submitted-at: Tue, 08 Feb 2022 01:19:33 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/phosphor-host-postd/+/49610
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
