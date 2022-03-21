@@ -25,6 +25,7 @@
 
 #include <cstdint>
 #include <exception>
+#include <functional>
 #include <iostream>
 #include <optional>
 #include <sdeventplus/event.hpp>
@@ -51,8 +52,8 @@ static void usage(const char* name)
  * Callback handling IO event from the POST code fd. i.e. there is new
  * POST code available to read.
  */
-void PostCodeEventHandler(sdeventplus::source::IO& s, int postFd, uint32_t,
-                          PostReporter* reporter, bool verbose)
+void PostCodeEventHandler(PostReporter* reporter, bool verbose,
+                          sdeventplus::source::IO& s, int postFd, uint32_t)
 {
     uint64_t code = 0;
     ssize_t readb;
@@ -180,9 +181,7 @@ int main(int argc, char* argv[])
         {
             reporterSource.emplace(
                 event, postFd, EPOLLIN | EPOLLET,
-                std::bind(PostCodeEventHandler, std::placeholders::_1,
-                          std::placeholders::_2, std::placeholders::_3,
-                          &reporter, verbose));
+                std::bind_front(PostCodeEventHandler, &reporter, verbose));
         }
         // Enable bus to handle incoming IO and bus events
         bus.attach_event(event.get(), SD_EVENT_PRIORITY_NORMAL);
