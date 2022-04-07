@@ -21,7 +21,9 @@ class PostReporter : public PostObject
 {
   public:
     PostReporter(sdbusplus::bus::bus& bus, const char* objPath, bool defer) :
-        PostObject(bus, objPath, defer)
+        PostObject(bus, objPath,
+                   defer ? PostObject::action::defer_emit
+                         : PostObject::action::emit_object_added)
     {
     }
 };
