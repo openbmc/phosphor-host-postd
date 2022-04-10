@@ -1,0 +1,7 @@
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Code-Review+2: Willy Tu <wltu@google.com>
+Submitted-by: Willy Tu <wltu@google.com>
+Submitted-at: Sun, 10 Apr 2022 00:33:13 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/phosphor-host-postd/+/52723
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
