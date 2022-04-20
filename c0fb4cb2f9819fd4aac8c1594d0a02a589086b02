@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "347e79dd_c9dec507",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -20,10 +21,10 @@
         "endChar": 28
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "409aa224_2ef2c848",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -43,10 +44,10 @@
         "endChar": 5
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "5b632d0f_c7e8e181",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -67,10 +68,10 @@
         "endChar": 28
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "a5fdc278_cc2ff50a",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -91,10 +92,10 @@
         "endChar": 5
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "310b189e_eeecf6b3",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -115,10 +116,10 @@
         "endChar": 5
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "0af0fedb_1e206b96",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -139,10 +140,10 @@
         "endChar": 28
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f07396e9_07a45cc0",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -162,10 +163,10 @@
         "endChar": 7
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "5d5078c2_42feca5c",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -186,10 +187,10 @@
         "endChar": 7
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "e3f5d681_eb3c9d53",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -210,10 +211,10 @@
         "endChar": 7
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c494c4e3_28a24aa8",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -227,10 +228,10 @@
       "side": 1,
       "message": "Is there even a reason to call this \"ipmi snoop\"?  That seems like the implementation, but this code would work 100% the same if there were a (for example) PLDM implementation of the same interface, right?",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "bdcacff0_7887cfd3",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -245,10 +246,10 @@
       "message": "Ack",
       "parentUuid": "c494c4e3_28a24aa8",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "155ec511_674d61fb",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -263,10 +264,10 @@
       "message": "Done",
       "parentUuid": "bdcacff0_7887cfd3",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "842ae9eb_8cdb71fc",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -286,10 +287,10 @@
         "endChar": 76
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "bd3ea517_bf542e77",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -310,10 +311,10 @@
         "endChar": 76
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "537c788b_45acd46c",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -334,10 +335,10 @@
         "endChar": 76
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "81ad4e6c_14d7b89a",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -351,10 +352,10 @@
       "side": 1,
       "message": "Why are we restricting post codes to 1 byte?  AMD uses 32 or 64 bit post codes.",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "8442824b_21433bb5",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -369,10 +370,10 @@
       "message": "Ack",
       "parentUuid": "81ad4e6c_14d7b89a",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "bace17c6_235f34b7",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -387,10 +388,10 @@
       "message": "Done",
       "parentUuid": "8442824b_21433bb5",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5f964b76_1ea2e8e3",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -404,10 +405,10 @@
       "side": 1,
       "message": "This implies that 0xFF is an invalid post code.  Is that true?",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "2f0bb8b3_1e821412",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -422,10 +423,10 @@
       "message": "Ack",
       "parentUuid": "5f964b76_1ea2e8e3",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "ee57fa0e_50cdc7c0",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -440,10 +441,10 @@
       "message": "Done",
       "parentUuid": "2f0bb8b3_1e821412",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c70f75e8_1b45e455",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -457,10 +458,10 @@
       "side": 1,
       "message": "Is there a good reason to mix using the sdbuspp-generated classes and the boost code?  This is a little confusing to me.\n\n\nWhy do we need this async_get?  Can\u0027t we simply listen to a PropertyChanged signal for the selector?",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "5c0f2791_84213907",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -475,10 +476,10 @@
       "message": "Ack",
       "parentUuid": "c70f75e8_1b45e455",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "346e87d9_273cc6e9",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -493,10 +494,10 @@
       "message": "Done",
       "parentUuid": "5c0f2791_84213907",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f4b90534_c469ac57",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -510,10 +511,10 @@
       "side": 1,
       "message": "How do we know this ends up being the service name?  Can we use mapper instead of hard-coding service names?",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "def63f39_0d18c89c",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -528,10 +529,10 @@
       "message": "Ack",
       "parentUuid": "f4b90534_c469ac57",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "beae1166_675018ef",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -546,10 +547,10 @@
       "message": "Done",
       "parentUuid": "def63f39_0d18c89c",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "177da3df_edebdc25",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -563,10 +564,10 @@
       "side": 1,
       "message": "Suggest setting [[nodiscard]] on this so that the bug that you have on line 173 doesn\u0027t happen.",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "6f97ea75_59daae1f",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -581,10 +582,10 @@
       "message": "Ack",
       "parentUuid": "177da3df_edebdc25",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f9a9209b_ab2469bc",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -599,10 +600,10 @@
       "message": "Done",
       "parentUuid": "6f97ea75_59daae1f",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a889028f_795bc85f",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -616,10 +617,10 @@
       "side": 1,
       "message": "Rather than control these GPIOs from userspace like this, there was once a proposal for a 7-segment display driver in the kernel.  Can you follow up what happened with it?\n\nhttps://lore.kernel.org/openbmc/CANsWYUW3sdbUguaOOMLkvbaTOHsCMBo8n0CDpVYiSkbZBuRThQ@mail.gmail.com/\n\nI think the \u00277seg.cpp\u0027 is also related to this.",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "81a8aec5_34619794",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -634,10 +635,10 @@
       "message": "This driver is related to 7seg only. But they are using 16 bits for displaying values in 7 Seg.\nthey use abcdefg pins of 7 segment. But our LCD debugcard needs 8 bits only. We can\u0027t use this driver.",
       "parentUuid": "a889028f_795bc85f",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fc968d38_ecf67bf1",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -657,10 +658,10 @@
         "endChar": 44
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "8133e92d_e800257f",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -681,10 +682,10 @@
         "endChar": 44
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "733d9edb_338488ab",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -698,10 +699,10 @@
       "side": 1,
       "message": "You are getting a lambda here and then doing nothing with it.  I suspect that isn\u0027t what you intended.",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "e0b23981_a58287c2",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -716,10 +717,10 @@
       "message": "Ack",
       "parentUuid": "733d9edb_338488ab",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4a53b25d_d3af6b44",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -734,10 +735,10 @@
       "message": "Done",
       "parentUuid": "e0b23981_a58287c2",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9c464ea1_9f65c10d",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -751,10 +752,10 @@
       "side": 1,
       "message": "I don\u0027t understand how this is expected to work.  You did an async call on line 169 to get the latest value of the selector, but you do nothing here to wait for it, so you are guaranteed to always be using the *old* value of the selector, aren\u0027t you?\n\nDon\u0027t you need to do something to update the postCodeDisplay to the current host whenever the selector changes as well?  Otherwise the 7 seg display will continue to display a post code for the previously selected host, which is pretty confusing to a human.",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "fc9b60f6_f6076461",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -769,10 +770,10 @@
       "message": "Ack",
       "parentUuid": "9c464ea1_9f65c10d",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "ed2413c7_82f51039",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -787,10 +788,10 @@
       "message": "Done",
       "parentUuid": "fc9b60f6_f6076461",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e6ff83d6_d9df2c58",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -810,10 +811,10 @@
         "endChar": 20
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4319aedb_cc395016",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -834,10 +835,10 @@
         "endChar": 20
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "2bb80944_321020fa",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -858,10 +859,10 @@
         "endChar": 20
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0d37c959_3981d71a",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -875,10 +876,10 @@
       "side": 1,
       "message": "I\u0027m relatively confused here.  Aren\u0027t we missing this whole transformation?\n\nhttps://en.wikipedia.org/wiki/Seven-segment_display#Hexadecimal",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "54999f7a_358ff949",
         "filename": "ipmisnoop/ipmisnoop.hpp",
@@ -893,10 +894,28 @@
       "message": "Ack. Our LCD Debug card converts 8 bits data and directly displaying the postcodes in the 7seg display.",
       "parentUuid": "0d37c959_3981d71a",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed3612e1_387fe6bd",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-04-20T06:03:18Z",
+      "side": 1,
+      "message": "Facebook server uses the removable Debug card which has the 7seg display.\n\nThe Debug card has micro controller which is responsible to receive the postcode from the BMC via GPIO and converts into hex value.\n\nPlease refer the below link.\nhttps://www.opencompute.org/documents/facebook-ocp-debug-card-with-lcd-spec_v1p0",
+      "parentUuid": "54999f7a_358ff949",
+      "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "5b03b0cc_5609f8ee",
         "filename": "main.cpp",
@@ -910,10 +929,10 @@
       "side": 1,
       "message": "I don\u0027t think this is accurate anymore.  Is it really \"TOTAL HOST\" or is it a per-instance number for this daemon?",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "12d5d0c9_c3ad74cf",
         "filename": "main.cpp",
@@ -928,10 +947,10 @@
       "message": "Ack",
       "parentUuid": "5b03b0cc_5609f8ee",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "be7137fe_0aa1179a",
         "filename": "main.cpp",
@@ -951,10 +970,10 @@
         "endChar": 31
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "b7e37159_a5a784c5",
         "filename": "main.cpp",
@@ -975,10 +994,10 @@
         "endChar": 31
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "7a5f4614_d6f3892a",
         "filename": "main.cpp",
@@ -992,10 +1011,10 @@
       "side": 1,
       "message": "Does this break current users in any way?  Are there any recipe updates or service file updates we need to do to make sure this is \u00270\u0027 by default?",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "fa932ae1_a12e72c4",
         "filename": "main.cpp",
@@ -1010,10 +1029,10 @@
       "message": "Yes. In the recipe, they should have OBMC_HOST_INSTANCES by default as \"0\".",
       "parentUuid": "7a5f4614_d6f3892a",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5820d37e_5b3646d7",
         "filename": "main.cpp",
@@ -1033,10 +1052,10 @@
         "endChar": 42
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "782e4a4f_c2db593c",
         "filename": "main.cpp",
@@ -1057,10 +1076,10 @@
         "endChar": 42
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f65905f1_55e1fe49",
         "filename": "main.cpp",
@@ -1081,10 +1100,10 @@
         "endChar": 42
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ff14c227_534f923b",
         "filename": "main.cpp",
@@ -1098,10 +1117,10 @@
       "side": 1,
       "message": "This makes it seem like you should #ifdef around device on line 183 also, right?",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "ad5614da_1fa3450e",
         "filename": "main.cpp",
@@ -1116,10 +1135,10 @@
       "message": "Done",
       "parentUuid": "ff14c227_534f923b",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5fa2009a_32977244",
         "filename": "main.cpp",
@@ -1139,10 +1158,10 @@
         "endChar": 6
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "5d3688a1_52667442",
         "filename": "main.cpp",
@@ -1163,10 +1182,10 @@
         "endChar": 6
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "53ba6c6a_d302793f",
         "filename": "main.cpp",
@@ -1186,10 +1205,10 @@
         "endChar": 38
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "494e83e8_e07e3766",
         "filename": "main.cpp",
@@ -1210,10 +1229,10 @@
         "endChar": 38
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "c8b28c65_8d54e85c",
         "filename": "main.cpp",
@@ -1234,10 +1253,10 @@
         "endChar": 38
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1a0955c9_48e6356e",
         "filename": "main.cpp",
@@ -1251,10 +1270,10 @@
       "side": 1,
       "message": "Why do we have two different constants here?  Can you refactor this so that \u0027lpcsnoop\u0027 and \u0027ipmisnoop\u0027 both append the appropriate host value from `-h`?  Please refactor this code so that the \u0027lpcsnoop\u0027 is all inside a function similar to the one here for \u0027postCodeIpmiHandler\u0027.  I think this will make it so that the only difference is which handler function you\u0027re calling here.",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "123dccd6_edd28565",
         "filename": "main.cpp",
@@ -1269,10 +1288,10 @@
       "message": "Ack",
       "parentUuid": "1a0955c9_48e6356e",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f87d9f93_4b4bbdcd",
         "filename": "main.cpp",
@@ -1287,10 +1306,10 @@
       "message": "Done",
       "parentUuid": "123dccd6_edd28565",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "92f8b99f_b0e24ca9",
         "filename": "main.cpp",
@@ -1304,10 +1323,10 @@
       "side": 1,
       "message": "Why?\n\nAnd why are we mixing printf and cout?",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "919781b1_8c9b7049",
         "filename": "main.cpp",
@@ -1322,10 +1341,10 @@
       "message": "Ack",
       "parentUuid": "92f8b99f_b0e24ca9",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3a6ec25e_69e667f6",
         "filename": "meson.build",
@@ -1339,10 +1358,10 @@
       "side": 1,
       "message": "It appears that only ipmisnoop.hpp utilizes libgpiod.  Should this (and/or libgpiodcxx) only be used when the ipmisnoop is enabled?",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "6581f668_1850f97e",
         "filename": "meson.build",
@@ -1357,10 +1376,10 @@
       "message": "Ack",
       "parentUuid": "3a6ec25e_69e667f6",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0541364a_29255e27",
         "filename": "meson.build",
@@ -1380,10 +1399,10 @@
         "endChar": 39
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2dc73332_52d85dce",
         "filename": "meson.build",
@@ -1404,10 +1423,10 @@
         "endChar": 39
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "6d4c9b6e_69ddd6e8",
         "filename": "meson.build",
@@ -1428,10 +1447,10 @@
         "endChar": 39
       },
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2b869520_d983860a",
         "filename": "meson.build",
@@ -1445,10 +1464,10 @@
       "side": 1,
       "message": "Since the code already has \u0027lpcsnoop\u0027, I would suggest that \u0027snoop\u0027 is not a great name for this.\n\nShould ipmi and lpc snoop be incompatible or can both be enabled at the same time?  You may need two different options for \u0027lpcsnoop\u0027 and \u0027ipmisnoop\u0027 (and use some meson settings to ensure only one can be set) or else have a single \u0027snoop\u0027 option which is configurable with a set `{ \u0027lpc\u0027, \u0027ipmi\u0027 }`.\n\nDo we need to do any refactoring to the code so that lpcsnoop is disabled when ipmisnoop is enabled?",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "78b11866_cc997b5b",
         "filename": "meson.build",
@@ -1463,10 +1482,10 @@
       "message": "Ack",
       "parentUuid": "2b869520_d983860a",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "fc962025_7595f915",
         "filename": "meson.build",
@@ -1481,10 +1500,10 @@
       "message": "Single snoop option configure with lpc or ipmi.\n\nDo we need to do any refactoring to the code so that lpcsnoop is disabled when ipmisnoop is enabled?  --\u003e No I think, Based on the compiler option any one snoop should be enabled.",
       "parentUuid": "78b11866_cc997b5b",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "4dc8d10b_ada553a8",
         "filename": "meson_options.txt",
@@ -1498,10 +1517,10 @@
       "side": 1,
       "message": "It appears that the rest of the options have taken to use dashes and not underscores.",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": true
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "5179a4ee_85c8a26b",
         "filename": "meson_options.txt",
@@ -1516,8 +1535,7 @@
       "message": "Ack",
       "parentUuid": "4dc8d10b_ada553a8",
       "revId": "c0fb4cb2f9819fd4aac8c1594d0a02a589086b02",
-      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
-      "unresolved": false
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
