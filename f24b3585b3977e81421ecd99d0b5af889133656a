@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf8145ae_389f5317",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "cleanup to fit line limit. Same with the lines below.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 76
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f385a8c_d532b379",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "constexpr",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "648eae0f_1c0e099c",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "should also be `constexpr char*` for consistency.\n\nand `PropertiesIntf` should be camcelCase -\u003e propertiesIntf",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0d96f1_1d83b833",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "duplicate from snoop.hpp? can we just include that folder? or refactor it to make it easier.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb7c04b_9f02a16f",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "flip the logic to save horizontal spaces.\n\nif (valPropMap \u003d\u003d msgData.end()){\n log error\n  return\n}\n\nother code...\n\n----\n\nSame can be applied for the other if statements.",
+      "range": {
+        "startLine": 102,
+        "startChar": 15,
+        "endLine": 102,
+        "endChar": 48
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c68693_ca470819",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "static_cast\u003cuint8_t\u003e",
+      "range": {
+        "startLine": 112,
+        "startChar": 31,
+        "endLine": 112,
+        "endChar": 41
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a9197b_830d9105",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "can delete? or set to default",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 5
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d20c212_4838eff4",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 147,
+        "startChar": 24,
+        "endLine": 147,
+        "endChar": 28
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22194d49_b71bee6c",
+        "filename": "lpcsnoop/snoop.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "constexpr",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 5
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d661872c_ff8c9d05",
+        "filename": "main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "most of the new headers here looks like might not be used? also for the used one it should also be in `#ifdef ENABLE_IPMI_SNOOP`?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd32889e_b32214e4",
+        "filename": "main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "does this need to be global?\n\nIt seems like it is just used in one function, maybe we can just pass a span to the function instead?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 30
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820bd42c_6e7d8027",
+        "filename": "main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "I would prefer this being std::string_view",
+      "range": {
+        "startLine": 163,
+        "startChar": 24,
+        "endLine": 163,
+        "endChar": 70
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c1a8476_78837b45",
+        "filename": "main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 170,
+        "startChar": 13,
+        "endLine": 170,
+        "endChar": 20
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8187071_a97f0a85",
+        "filename": "main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-20T06:52:28Z",
+      "side": 1,
+      "message": "#else\n\nwill cover this case.",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 24
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
