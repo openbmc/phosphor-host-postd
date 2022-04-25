@@ -91,6 +91,29 @@
       },
       "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b13587_d0586fca",
+        "filename": "main.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-25T16:18:42Z",
+      "side": 1,
+      "message": "std::string_view to avoid copy\n\nand do\n\n```\n  while ((pos \u003d instances.find(\u0027 \u0027)) !\u003d std::string::npos) {\n    host.emplace_back(instances.substr(0, pos));\n    instances \u003d instances.substr(pos + 1);\n  }\n  host.emplace_back(instances);\n```",
+      "range": {
+        "startLine": 248,
+        "startChar": 16,
+        "endLine": 248,
+        "endChar": 37
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
