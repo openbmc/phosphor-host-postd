@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db693952_783701f7",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-25T16:04:08Z",
+      "side": 1,
+      "message": "no need for the else since you return in the statement above.",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 104,
+        "endChar": 17
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa44a3e9_482be7d2",
+        "filename": "lpcsnoop/snoop.hpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-25T16:04:08Z",
+      "side": 1,
+      "message": "same here with constexpr",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f0ee73_78a30b0d",
+        "filename": "main.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-25T16:04:08Z",
+      "side": 1,
+      "message": "same here. No need for the else.",
+      "range": {
+        "startLine": 76,
+        "startChar": 13,
+        "endLine": 77,
+        "endChar": 17
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e117857e_383839c0",
+        "filename": "main.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-25T16:04:08Z",
+      "side": 1,
+      "message": "for vector it should be `const std::vector\u003cstd::string\u003e\u0026` since we don\u0027t want to modify it in the function.\n\nSince this is read-only, prefer `std::span\u003cstd:string\u003e` instead.",
+      "range": {
+        "startLine": 158,
+        "startChar": 24,
+        "endLine": 158,
+        "endChar": 49
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
