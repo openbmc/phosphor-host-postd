@@ -167,6 +167,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5b5fe06_265737b5",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-04-26T16:14:25Z",
+      "side": 1,
+      "message": "Yes. constexpr with std::string is not working. It should be literal. \n\nGetting the below error.\n\nerror: the type ‘const string’ {aka ‘const std::__cxx11::basic_string’} of ‘constexpr’ variable ‘ipmiSnoopObject’ is not literal.",
+      "parentUuid": "7c9e2a8c_d6f9e732",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "648eae0f_1c0e099c",
@@ -891,6 +915,30 @@
       "side": 1,
       "message": "should be `const std::string\u0026` to avoid copy.\n\nPrefer `std::string_view` instead.",
       "parentUuid": "84013b45_77f7d1e8",
+      "range": {
+        "startLine": 163,
+        "startChar": 24,
+        "endLine": 163,
+        "endChar": 70
+      },
+      "revId": "f24b3585b3977e81421ecd99d0b5af889133656a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0081cfe_9312de64",
+        "filename": "main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-04-26T16:14:25Z",
+      "side": 1,
+      "message": "Updated with const std::string\u0026.  If we use std::string_view, not able to convert or concat with std::string.",
+      "parentUuid": "49311f8c_7140ac8c",
       "range": {
         "startLine": 163,
         "startChar": 24,

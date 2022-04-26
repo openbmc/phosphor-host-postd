@@ -24,6 +24,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e5ee93a_e9b3b8ef",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-04-26T16:14:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db693952_783701f7",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 104,
+        "endChar": 17
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa44a3e9_482be7d2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-25T16:04:08Z",
       "side": 1,
       "message": "same here with constexpr",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d0e6b6e_4dc06892",
+        "filename": "lpcsnoop/snoop.hpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-04-26T16:14:25Z",
+      "side": 1,
+      "message": "constexpr with std::string is not working as mentioned above.",
+      "parentUuid": "fa44a3e9_482be7d2",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00d95c24_8ed5fc90",
+        "filename": "main.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-04-26T16:14:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87f0ee73_78a30b0d",
+      "range": {
+        "startLine": 76,
+        "startChar": 13,
+        "endLine": 77,
+        "endChar": 17
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e117857e_383839c0",
@@ -93,6 +165,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ad3280d_fda2deb9",
+        "filename": "main.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-04-26T16:14:25Z",
+      "side": 1,
+      "message": "Updated with `const std::vector\u003cstd::string\u003e\u0026` .\n\nstd::span doesn\u0027t have emplace_back(), push_back(), insert() operation to insert the elements into span.  Please suggest on this.",
+      "parentUuid": "e117857e_383839c0",
+      "range": {
+        "startLine": 158,
+        "startChar": 24,
+        "endLine": 158,
+        "endChar": 49
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65b13587_d0586fca",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-04-25T16:18:42Z",
       "side": 1,
       "message": "std::string_view to avoid copy\n\nand do\n\n```\n  while ((pos \u003d instances.find(\u0027 \u0027)) !\u003d std::string::npos) {\n    host.emplace_back(instances.substr(0, pos));\n    instances \u003d instances.substr(pos + 1);\n  }\n  host.emplace_back(instances);\n```",
+      "range": {
+        "startLine": 248,
+        "startChar": 16,
+        "endLine": 248,
+        "endChar": 37
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e67011_d9153ceb",
+        "filename": "main.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-04-26T16:14:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b13587_d0586fca",
       "range": {
         "startLine": 248,
         "startChar": 16,
