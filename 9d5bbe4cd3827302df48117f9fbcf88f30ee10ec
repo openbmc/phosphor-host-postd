@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342c45e2_7cd99c7f",
+        "filename": "main.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-26T16:50:03Z",
+      "side": 1,
+      "message": "const since you don\u0027t need to update it. But I would just use \u0027 \u0027 directly in the find function.",
+      "range": {
+        "startLine": 247,
+        "startChar": 16,
+        "endLine": 247,
+        "endChar": 27
+      },
+      "revId": "9d5bbe4cd3827302df48117f9fbcf88f30ee10ec",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b581bbe0_ffa52668",
+        "filename": "main.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-26T16:50:03Z",
+      "side": 1,
+      "message": "combine.\n\nno need to create `token`.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 45
+      },
+      "revId": "9d5bbe4cd3827302df48117f9fbcf88f30ee10ec",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}

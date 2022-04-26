@@ -189,6 +189,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51645360_3bc2d0e2",
+        "filename": "main.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-26T16:50:03Z",
+      "side": 1,
+      "message": "you are not adding anything in this function and shouldn\u0027t matter. (unless I missed it)\n\nconst std::vector\u003cstd::string\u003e\u0026 -\u003e std::span\u003cstd::string\u003e should just work.\n\nAlso `const std::string\u0026` could also be `std::string_view`",
+      "parentUuid": "7ad3280d_fda2deb9",
+      "range": {
+        "startLine": 158,
+        "startChar": 24,
+        "endLine": 158,
+        "endChar": 49
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65b13587_d0586fca",
