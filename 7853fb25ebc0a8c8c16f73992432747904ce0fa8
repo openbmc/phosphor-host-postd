@@ -213,6 +213,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b007048_c5bf0ff5",
+        "filename": "main.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-04-27T11:29:02Z",
+      "side": 1,
+      "message": "Updated with std::span\u003cstd::string\u003e.\n\nnot able to use std::string_view. Getting compilation issue. If we use std::string_view, not able to convert or concat with std::string.",
+      "parentUuid": "51645360_3bc2d0e2",
+      "range": {
+        "startLine": 158,
+        "startChar": 24,
+        "endLine": 158,
+        "endChar": 49
+      },
+      "revId": "7853fb25ebc0a8c8c16f73992432747904ce0fa8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65b13587_d0586fca",
