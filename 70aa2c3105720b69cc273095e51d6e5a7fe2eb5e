@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8756e572_7b88073a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-27T18:03:22Z",
+      "side": 1,
+      "message": "probably the last set of comments. lets make all of the changes for `ENABLE_IPMI_SNOOP` only and will not affect existing systems.",
+      "revId": "70aa2c3105720b69cc273095e51d6e5a7fe2eb5e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d80d8d0a_3a13e2d3",
+        "filename": "main.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-27T18:03:22Z",
+      "side": 1,
+      "message": "should only be used in ENABLE_IPMI_SNOOP",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 34
+      },
+      "revId": "70aa2c3105720b69cc273095e51d6e5a7fe2eb5e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32560483_f5f8337e",
+        "filename": "main.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-27T18:03:22Z",
+      "side": 1,
+      "message": "only used in ENABLE_IPMI_SNOOP",
+      "range": {
+        "startLine": 230,
+        "startChar": 7,
+        "endLine": 230,
+        "endChar": 47
+      },
+      "revId": "70aa2c3105720b69cc273095e51d6e5a7fe2eb5e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c2998a_55bfb4cf",
+        "filename": "main.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-27T18:03:22Z",
+      "side": 1,
+      "message": "only used in ENABLE_IPMI_SNOOP",
+      "range": {
+        "startLine": 246,
+        "startChar": 12,
+        "endLine": 257,
+        "endChar": 13
+      },
+      "revId": "70aa2c3105720b69cc273095e51d6e5a7fe2eb5e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f5d5e32_34dd3010",
+        "filename": "main.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-27T18:03:22Z",
+      "side": 1,
+      "message": "flip logic and just do\n\n#ifdef ENABLE_IPMI_SNOOP\n    std::cout \u003c\u003c \"Verbose \u003d \" \u003c\u003c verbose \u003c\u003c std::endl;\n    return postCodeIpmiHandler(ipmiSnoopObject, snoopDbus, bus, host);\n#endif",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "70aa2c3105720b69cc273095e51d6e5a7fe2eb5e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9f0ddc4_1024a751",
+        "filename": "meson.build",
+        "patchSetId": 20
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-27T18:03:22Z",
+      "side": 1,
+      "message": "this forces it to be required and it used to be optional.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 57
+      },
+      "revId": "70aa2c3105720b69cc273095e51d6e5a7fe2eb5e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "611c73f4_3fe6cee2",
+        "filename": "meson.build",
+        "patchSetId": 20
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-27T18:03:22Z",
+      "side": 1,
+      "message": "can we just append host-instances to SNOOPD_ARGS and make it optional. So that it will work like before without it.\n\nand make `snoop-device` dependent on `snoop`.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "70aa2c3105720b69cc273095e51d6e5a7fe2eb5e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
