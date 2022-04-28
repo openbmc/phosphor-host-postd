@@ -226,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3aae2831_e27a1e69",
+        "filename": "main.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-28T17:22:49Z",
+      "side": 1,
+      "message": "I was thinking to move this before the other block of code\n\nand remove the compile flag for `#ifndef ENABLE_IPMI_SNOOP` so that we always build it but that\u0027s probably not a good idea.\n\nLet\u0027s revert this and just make sure that return the error code with\n\n```\nreturn postCodeIpmiHandler(ipmiSnoopObject, snoopDbus, bus, host);\n```",
+      "parentUuid": "9e572a44_8338aa15",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "70aa2c3105720b69cc273095e51d6e5a7fe2eb5e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9f0ddc4_1024a751",
         "filename": "meson.build",
         "patchSetId": 20
@@ -355,6 +379,30 @@
       "side": 1,
       "message": "Added host-instances to SNOOPD_ARGS with optional. \n\nsnoop, snoop-device are different meson options. snoop is used to enable IPMISNOOP and snoop-device refers to linux module snoop-device.",
       "parentUuid": "611c73f4_3fe6cee2",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "70aa2c3105720b69cc273095e51d6e5a7fe2eb5e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb528502_1ab0eeae",
+        "filename": "meson.build",
+        "patchSetId": 20
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-04-28T17:22:49Z",
+      "side": 1,
+      "message": "I was thinking of \n\n```\nsnoopd_args \u003d \u0027-b \u0027 + get_option(\u0027post-code-bytes\u0027).to_string()\nif not get_option(\u0027snoop\u0027).disabled()\n  add_project_arguments(\u0027-DENABLE_IPMI_SNOOP\u0027,language:\u0027cpp\u0027)\n  snoopd_args +\u003d \u0027-h \u0027 + get_option(\u0027host-instances\u0027)\nendif\n\nif get_option(\u0027snoop-device\u0027) !\u003d \u0027\u0027\n  snoopd_args +\u003d \u0027 -d /dev/\u0027 + get_option(\u0027snoop-device\u0027)\nendif\nconf_data.set(\u0027SNOOPD_ARGS\u0027, snoopd_args)\n```\n\nand in the service file just have\n\n```\nExecStart\u003d@bindir@/snoopd @SNOOPD_ARGS@\n```\nlike before.\n\nThis allow us to support exiting systems while supporting the new change.",
+      "parentUuid": "791b1687_ca024e5b",
       "range": {
         "startLine": 26,
         "startChar": 0,
