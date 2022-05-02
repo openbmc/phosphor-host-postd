@@ -1,5 +1,5 @@
 /**
- * Copyright 2017 Google Inc.
+ * Copyright 2022 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,23 @@
 
 #include "lpcsnoop/snoop.hpp"
 
+#include <functional>
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/bus/match.hpp>
 #include <sdbusplus/message.hpp>
 
 namespace lpcsnoop
 {
+using sdbusplus::bus::match::rules::interface;
+using sdbusplus::bus::match::rules::member;
+using sdbusplus::bus::match::rules::path;
+using sdbusplus::bus::match::rules::type::signal;
 using std::get;
 
 /* Returns matching string for what signal to listen on Dbus */
 static const std::string GetMatchRule()
 {
-    using namespace sdbusplus::bus::match::rules;
-
-    return type::signal() + interface("org.freedesktop.DBus.Properties") +
+    return signal() + interface("org.freedesktop.DBus.Properties") +
            member("PropertiesChanged") + path(SNOOP_OBJECTPATH);
 }
 
@@ -50,8 +53,7 @@ class SnoopListen
     }
 
     SnoopListen(sdbusplus::bus::bus& busIn, postcode_handler_t handler) :
-        SnoopListen(busIn, std::bind(defaultMessageHandler, handler,
-                                     std::placeholders::_1))
+        SnoopListen(busIn, std::bind_front(defaultMessageHandler, handler))
     {
     }
 
