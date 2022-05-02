@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd17e19_9a434cee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-02T17:25:45Z",
+      "side": 1,
+      "message": "Just looked over the functionality and just wondering if we can expand on top of the 7seg.cpp?\n\nIf not, we can take a closer look next time. Last set of comments and we can submit for now and can clean it up if needed.",
+      "revId": "6b2bac2d15d4b95ec8737cb6c7a36ceb36dfc996",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73c358b_0f522aa5",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-02T17:25:45Z",
+      "side": 1,
+      "message": "Is this not trying to do the same thing as https://github.com/openbmc/phosphor-host-postd/blob/master/7seg.cpp?\n\nIt just read the dbus and post it on 7segment, right?",
+      "revId": "6b2bac2d15d4b95ec8737cb6c7a36ceb36dfc996",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fe095c_235329b1",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-02T17:25:45Z",
+      "side": 1,
+      "message": "this should be raw0?",
+      "range": {
+        "startLine": 17,
+        "startChar": 37,
+        "endLine": 17,
+        "endChar": 73
+      },
+      "revId": "6b2bac2d15d4b95ec8737cb6c7a36ceb36dfc996",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ab5a2f_8f79ce9f",
+        "filename": "lpcsnoop/snoop.hpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-02T17:25:45Z",
+      "side": 1,
+      "message": "show come this is different from \n\nconstexpr char snoopObject[] ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "6b2bac2d15d4b95ec8737cb6c7a36ceb36dfc996",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa5588e0_99da6228",
+        "filename": "meson.build",
+        "patchSetId": 22
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-02T17:25:45Z",
+      "side": 1,
+      "message": "include this only for not get_option(\u0027snoop\u0027).disabled()",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "6b2bac2d15d4b95ec8737cb6c7a36ceb36dfc996",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
