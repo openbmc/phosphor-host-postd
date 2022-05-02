@@ -248,6 +248,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac6a09d_5efe3e4b",
+        "filename": "main.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-05-02T17:03:12Z",
+      "side": 1,
+      "message": "Done. \nMoved #ifdef ENABLE_IPMI_SNOOP block before #ifndef ENABLE_IPMI_SNOOP and return. Not removed #ifndef ENABLE_IPMI_SNOOP block. because some variables are declared in that blocks. if we remove this getting compilation issue.\n\nPls let me know if any changes required here.",
+      "parentUuid": "3aae2831_e27a1e69",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "70aa2c3105720b69cc273095e51d6e5a7fe2eb5e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9f0ddc4_1024a751",
@@ -403,6 +427,30 @@
       "side": 1,
       "message": "I was thinking of \n\n```\nsnoopd_args \u003d \u0027-b \u0027 + get_option(\u0027post-code-bytes\u0027).to_string()\nif not get_option(\u0027snoop\u0027).disabled()\n  add_project_arguments(\u0027-DENABLE_IPMI_SNOOP\u0027,language:\u0027cpp\u0027)\n  snoopd_args +\u003d \u0027-h \u0027 + get_option(\u0027host-instances\u0027)\nendif\n\nif get_option(\u0027snoop-device\u0027) !\u003d \u0027\u0027\n  snoopd_args +\u003d \u0027 -d /dev/\u0027 + get_option(\u0027snoop-device\u0027)\nendif\nconf_data.set(\u0027SNOOPD_ARGS\u0027, snoopd_args)\n```\n\nand in the service file just have\n\n```\nExecStart\u003d@bindir@/snoopd @SNOOPD_ARGS@\n```\nlike before.\n\nThis allow us to support exiting systems while supporting the new change.",
       "parentUuid": "791b1687_ca024e5b",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "70aa2c3105720b69cc273095e51d6e5a7fe2eb5e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b71e4fda_825dbb63",
+        "filename": "meson.build",
+        "patchSetId": 20
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-05-02T17:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb528502_1ab0eeae",
       "range": {
         "startLine": 26,
         "startChar": 0,

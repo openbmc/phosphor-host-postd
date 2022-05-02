@@ -22,6 +22,30 @@
       },
       "revId": "a65083cca9d18a49c97ae7ddc18bd006cfc200c3",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d76830e0_5cc31076",
+        "filename": "meson_options.txt",
+        "patchSetId": 21
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000546
+      },
+      "writtenOn": "2022-05-02T17:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42ee70c7_74a83759",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "a65083cca9d18a49c97ae7ddc18bd006cfc200c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
