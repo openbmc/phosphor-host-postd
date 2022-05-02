@@ -6,14 +6,13 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+namespace
+{
 using ::testing::_;
 using ::testing::IsNull;
 using ::testing::NiceMock;
 using ::testing::Return;
 using ::testing::StrEq;
-
-namespace
-{
 
 // Fixture for testing class PostReporter
 class PostReporterTest : public ::testing::Test
