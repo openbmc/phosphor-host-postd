@@ -46,8 +46,10 @@
 
 static size_t codeSize = 1; /* Size of each POST code in bytes */
 const char* defaultHostInstances = "0";
+#ifdef ENABLE_IPMI_SNOOP
 const uint8_t minPositionVal = 0;
 const uint8_t maxPositionVal = 5;
+#endif
 
 #ifdef ENABLE_IPMI_SNOOP
 std::vector<std::unique_ptr<IpmiPostReporter>> reporters;
