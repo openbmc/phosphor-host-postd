@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc552202_10f4b786",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-03T15:31:27Z",
+      "side": 1,
+      "message": "confirmed that the old snoopd support is not broken. I built it in bitbake and tested it otu.",
+      "revId": "0269eaf36dcb486b6ac92326fa59f61c267ce7f8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
