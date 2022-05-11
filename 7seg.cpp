@@ -24,13 +24,12 @@ static const char* device_node_path;
 
 namespace fs = std::experimental::filesystem;
 
-static void DisplayDbusValue(postcode_t postcodes)
+static void DisplayDbusValue(FILE* f, postcode_t postcodes)
 {
     auto postcode = std::get<primary_post_code_t>(postcodes);
     // Uses cstdio instead of streams because the device file has
     // very strict requirements about the data format and streaming
     // abstractions tend to muck it up.
-    FILE* f = std::fopen(device_node_path, "r+");
     if (f)
     {
         int rc = std::fprintf(f, "%d%02x\n", (postcode > 0xff),
@@ -40,7 +39,6 @@ static void DisplayDbusValue(postcode_t postcodes)
             std::fprintf(stderr, "failed to write 7seg value: rc=%d\n", rc);
         }
         std::fflush(f);
-        std::fclose(f);
     }
 }
 
@@ -60,9 +58,11 @@ int main(int argc, const char* argv[])
 
     device_node_path = argv[1];
 
+    FILE* f = std::fopen(device_node_path, "r+");
+
     auto ListenBus = sdbusplus::bus::new_default();
     std::unique_ptr<lpcsnoop::SnoopListen> snoop =
-        std::make_unique<lpcsnoop::SnoopListen>(ListenBus, DisplayDbusValue);
+        std::make_unique<lpcsnoop::SnoopListen>(ListenBus, DisplayDbusValue, f);
 
     while (true)
     {
@@ -70,5 +70,6 @@ int main(int argc, const char* argv[])
         ListenBus.wait();
     }
 
+    std::fclose(f);
     return 0;
 }
