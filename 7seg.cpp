@@ -20,27 +20,24 @@
 #include <lpcsnoop/snoop_listen.hpp>
 #include <string>
 
-static const char* device_node_path;
-
 namespace fs = std::experimental::filesystem;
 
-static void DisplayDbusValue(postcode_t postcodes)
+static void DisplayDbusValue(FILE* f, postcode_t postcodes)
 {
     auto postcode = std::get<primary_post_code_t>(postcodes);
     // Uses cstdio instead of streams because the device file has
     // very strict requirements about the data format and streaming
     // abstractions tend to muck it up.
-    FILE* f = std::fopen(device_node_path, "r+");
     if (f)
     {
         int rc = std::fprintf(f, "%d%02x\n", (postcode > 0xff),
                               static_cast<uint8_t>(postcode & 0xff));
+        fprintf(stderr, "0%02x\n", static_cast<uint8_t>(postcode & 0xff));
         if (rc < 0)
         {
             std::fprintf(stderr, "failed to write 7seg value: rc=%d\n", rc);
         }
         std::fflush(f);
-        std::fclose(f);
     }
 }
 
@@ -58,17 +55,26 @@ int main(int argc, const char* argv[])
         return -1;
     }
 
-    device_node_path = argv[1];
+    static volatile sig_atomic_t sig_recv;
+    FILE* f = std::fopen(argv[1], "r+");
 
     auto ListenBus = sdbusplus::bus::new_default();
     std::unique_ptr<lpcsnoop::SnoopListen> snoop =
-        std::make_unique<lpcsnoop::SnoopListen>(ListenBus, DisplayDbusValue);
+        std::make_unique<lpcsnoop::SnoopListen>(ListenBus, DisplayDbusValue, f);
 
-    while (true)
+    signal(SIGINT, [](int signum) {
+        if (signum == SIGINT)
+        {
+            sig_recv = 1;
+        }
+    });
+
+    while (!sig_recv)
     {
         ListenBus.process_discard();
         ListenBus.wait();
     }
 
+    std::fclose(f);
     return 0;
 }
