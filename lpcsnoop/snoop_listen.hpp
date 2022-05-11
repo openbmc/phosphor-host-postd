@@ -36,7 +36,7 @@ static const std::string GetMatchRule()
 class SnoopListen
 {
     using message_handler_t = std::function<void(sdbusplus::message::message&)>;
-    using postcode_handler_t = std::function<void(postcode_t)>;
+    using postcode_handler_t = std::function<void(FILE*, postcode_t)>;
 
   public:
     SnoopListen(sdbusplus::bus::bus& busIn, sd_bus_message_handler_t handler) :
@@ -49,9 +49,9 @@ class SnoopListen
     {
     }
 
-    SnoopListen(sdbusplus::bus::bus& busIn, postcode_handler_t handler) :
-        SnoopListen(busIn, std::bind(defaultMessageHandler, handler,
-                                     std::placeholders::_1))
+    SnoopListen(sdbusplus::bus::bus& busIn, postcode_handler_t handler,
+        FILE *f = NULL) : SnoopListen(busIn, std::bind(defaultMessageHandler,
+        handler, f, std::placeholders::_1))
     {
     }
 
@@ -69,7 +69,7 @@ class SnoopListen
      * Default message handler which listens to published messages on snoop
      * DBus path, and calls the given postcode_handler on each value received.
      */
-    static void defaultMessageHandler(postcode_handler_t& handler,
+    static void defaultMessageHandler(postcode_handler_t& handler, FILE *f,
                                       sdbusplus::message::message& m)
     {
         std::string messageBusName;
@@ -78,10 +78,10 @@ class SnoopListen
 
         m.read(messageBusName, messageData);
 
-        if (messageBusName == snoopDbus &&
+        if (messageBusName == SNOOP_BUSNAME &&
             messageData.find(propertyKey) != messageData.end())
         {
-            handler(get<postcode_t>(messageData[propertyKey]));
+            handler(f, get<postcode_t>(messageData[propertyKey]));
         }
     }
 };
