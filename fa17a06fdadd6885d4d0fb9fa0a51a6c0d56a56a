@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce4d02c6_cf21bdd9",
+        "filename": "7seg.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-11T18:47:09Z",
+      "side": 1,
+      "message": "not needed anymore.",
+      "revId": "fa17a06fdadd6885d4d0fb9fa0a51a6c0d56a56a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd9878c_236586ff",
+        "filename": "7seg.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-11T18:47:09Z",
+      "side": 1,
+      "message": "can combine",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "fa17a06fdadd6885d4d0fb9fa0a51a6c0d56a56a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337e8211_8d169046",
+        "filename": "7seg.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-11T18:47:09Z",
+      "side": 1,
+      "message": "I think we need to close it if we get the interrupt signal.\n\nMaybe something like\n\n```\nint main(){\n   signal(SIGINT, [f](int signum){\n      std::fclose(f);\n   });\n}\n```",
+      "revId": "fa17a06fdadd6885d4d0fb9fa0a51a6c0d56a56a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da6bbec9_efd2f2d8",
+        "filename": "example.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-11T18:47:09Z",
+      "side": 1,
+      "message": "?",
+      "revId": "fa17a06fdadd6885d4d0fb9fa0a51a6c0d56a56a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
