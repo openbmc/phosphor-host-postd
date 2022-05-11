@@ -22,8 +22,9 @@
 #include <memory>
 
 /* Example PostCode handler which simply prints them */
-static void printPostcode(postcode_t postcode)
+static void printPostcode(FILE *f, postcode_t postcode)
 {
+    f = f;
     /* Print output to verify the example program is receiving values. */
     std::printf("recv: 0x%" PRIx64 "\n",
                 std::get<primary_post_code_t>(postcode));
