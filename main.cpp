@@ -322,10 +322,10 @@ int main(int argc, char* argv[])
     try
     {
         sdeventplus::Event event = sdeventplus::Event::get_default();
+        std::optional<sdeventplus::source::IO> reporterSource;
         if (postFd > 0)
         {
-
-            sdeventplus::source::IO reporterSource(
+            reporterSource.emplace(
                 event, postFd, EPOLLIN | EPOLLET,
                 std::bind_front(PostCodeEventHandler, &reporter, verbose));
         }
