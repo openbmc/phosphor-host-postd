@@ -60,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db48c23c_ce230eb8",
+        "filename": "7seg.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-12T21:52:05Z",
+      "side": 1,
+      "message": "or maybe can just use https://github.com/openbmc/stdplus/blob/master/src/stdplus/handle/managed.hpp?",
+      "parentUuid": "337e8211_8d169046",
+      "revId": "fa17a06fdadd6885d4d0fb9fa0a51a6c0d56a56a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da6bbec9_efd2f2d8",
         "filename": "example.cpp",
         "patchSetId": 4
