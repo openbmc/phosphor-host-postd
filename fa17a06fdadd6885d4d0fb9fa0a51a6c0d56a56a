@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d211992b_8b474c7b",
+        "filename": "7seg.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001423
+      },
+      "writtenOn": "2022-05-20T07:50:59Z",
+      "side": 1,
+      "message": "I used the `signal()` to install the signal.",
+      "parentUuid": "db48c23c_ce230eb8",
+      "revId": "fa17a06fdadd6885d4d0fb9fa0a51a6c0d56a56a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da6bbec9_efd2f2d8",
         "filename": "example.cpp",
         "patchSetId": 4
