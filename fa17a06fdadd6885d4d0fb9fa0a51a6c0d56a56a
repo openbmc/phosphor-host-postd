@@ -136,6 +136,24 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e986ca2_be3b9a0e",
+        "filename": "7seg.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-05-21T22:07:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d211992b_8b474c7b",
+      "revId": "fa17a06fdadd6885d4d0fb9fa0a51a6c0d56a56a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da6bbec9_efd2f2d8",
