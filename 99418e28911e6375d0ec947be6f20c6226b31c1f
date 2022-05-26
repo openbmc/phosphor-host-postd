@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9491af_b1b1e134",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000233
+      },
+      "writtenOn": "2022-05-26T01:38:08Z",
+      "side": 1,
+      "message": "You should retain the original copyright year. Optionally, you can also add the current year (e.g. 2017-2022)",
+      "revId": "99418e28911e6375d0ec947be6f20c6226b31c1f",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b5ea5f_5186349d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000233
+      },
+      "writtenOn": "2022-05-26T01:38:08Z",
+      "side": 1,
+      "message": "nit: sp",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "99418e28911e6375d0ec947be6f20c6226b31c1f",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
