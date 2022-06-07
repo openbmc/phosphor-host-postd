@@ -330,10 +330,12 @@ int main(int argc, char* argv[])
                 std::bind_front(PostCodeEventHandler, &reporter, verbose));
         }
         // Enable bus to handle incoming IO and bus events
+        bool done = false;
         bus.attach_event(event.get(), SD_EVENT_PRIORITY_NORMAL);
-        auto intCb = [](sdeventplus::source::Signal& source,
-                        const struct signalfd_siginfo*) {
+        auto intCb = [&done](sdeventplus::source::Signal& source,
+                             const struct signalfd_siginfo*) {
             source.get_event().exit(0);
+            done = true;
         };
         stdplus::signal::block(SIGINT);
         sdeventplus::source::Signal(event, SIGINT, intCb).set_floating(true);
@@ -341,6 +343,18 @@ int main(int argc, char* argv[])
         sdeventplus::source::Signal(event, SIGTERM, std::move(intCb))
             .set_floating(true);
         rc = event.loop();
+
+        while (!done)
+        {
+            // Process all outstanding bus events before running the loop.
+            // This prevents the sd-bus handling logic from leaking memory.
+            // TODO: Remove when upstream fixes this bug
+            while (bus.process_discard() > 0)
+                ;
+
+            // Run and never timeout
+            event.run(std::nullopt);
+        }
     }
     catch (const std::exception& e)
     {
