@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db4e660_70525ea2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000188
+      },
+      "writtenOn": "2022-06-07T22:04:32Z",
+      "side": 1,
+      "message": "I wonder if there is some hack I can add to sdeventplus that would do this globally for all busses attached to the event loop.",
+      "revId": "e9aa3327a29bf3e3665ff1dc54845fd6ee931c77",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
