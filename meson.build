@@ -83,9 +83,6 @@ if get_option('7seg').enabled()
       sdbusplus,
       phosphor_dbus_interfaces,
     ],
-    link_args : [
-      '-lstdc++fs',
-    ],
     install: true,
   )
 endif
