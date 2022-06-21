@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdecf645_6bd4e59b",
+        "filename": "7seg.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-06-21T07:54:18Z",
+      "side": 1,
+      "message": "Let\u0027s move to using `ManagedFd` while you are at this.\n\nhttp://github.com/openbmc/stdplus/blob/73a20c4a7bc4bdb4b47465e2c4d5d51a696d996b/src/stdplus/fd/managed.hpp",
+      "revId": "f8d0e0bf18cbf46e7d17476367c66400b307e83c",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
