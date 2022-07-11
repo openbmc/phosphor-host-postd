@@ -66,7 +66,7 @@ executable(
   install: true,
 )
 
-if get_option('7seg').enabled()
+if not get_option('7seg').disabled()
   udevdir = dependency('udev', required : false).get_pkgconfig_variable('udevdir')
   assert(udevdir != '', 'Cannot find udevdir')
   install_data(['80-7seg.rules'], install_dir : udevdir)

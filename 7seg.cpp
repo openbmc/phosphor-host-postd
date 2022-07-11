@@ -64,7 +64,7 @@ int main(int argc, const char* argv[])
     signal(SIGINT, [](int signum) {
         if (signum == SIGINT)
         {
-            sig_recv = true:
+            sig_recv = true;
         }
     });
 
