@@ -28,7 +28,7 @@ class PostReporterTest : public ::testing::Test
     }
 
     NiceMock<sdbusplus::SdBusMock> bus_mock;
-    sdbusplus::bus::bus bus;
+    sdbusplus::bus_t bus;
 };
 
 TEST_F(PostReporterTest, EmitsObjectsOnExpectedDbusPath)

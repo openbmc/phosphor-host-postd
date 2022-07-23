@@ -31,10 +31,10 @@ static void printPostcode(FILE*, postcode_t postcode)
 
 /*
  * One can also specify custom handler that operates on
- * sdbusplus::message::message type and pass them to constructor.
+ * sdbusplus::message_t type and pass them to constructor.
  * e.g.
  *
- * static void PrintMessageMap(sdbusplus::message::message& m)
+ * static void PrintMessageMap(sdbusplus::message_t& m)
  * {
  *     std::string messageBusName;
  *     std::map<std::string, std::variant<uint64_t>> messageData;

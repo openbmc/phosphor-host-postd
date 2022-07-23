@@ -37,7 +37,7 @@ const std::string rawObject = "/xyz/openbmc_project/state/boot";
 const std::string rawIface = "xyz.openbmc_project.State.Boot.Raw";
 const std::string rawService = "xyz.openbmc_project.State.Boot.Raw";
 
-uint32_t getSelectorPosition(sdbusplus::bus::bus& bus)
+uint32_t getSelectorPosition(sdbusplus::bus_t& bus)
 {
     const std::string propertyName = "Position";
 
@@ -53,7 +53,7 @@ uint32_t getSelectorPosition(sdbusplus::bus::bus& bus)
         reply.read(value);
         return std::get<uint32_t>(value);
     }
-    catch (const sdbusplus::exception::exception& ex)
+    catch (const sdbusplus::exception_t& ex)
     {
         std::cerr << "GetProperty call failed ";
         throw std::runtime_error("GetProperty call failed");
@@ -62,13 +62,13 @@ uint32_t getSelectorPosition(sdbusplus::bus::bus& bus)
 
 struct IpmiPostReporter : PostObject
 {
-    IpmiPostReporter(sdbusplus::bus::bus& bus, const char* objPath) :
+    IpmiPostReporter(sdbusplus::bus_t& bus, const char* objPath) :
         PostObject(bus, objPath), bus(bus),
         propertiesChangedSignalRaw(
             bus,
             sdbusplus::bus::match::rules::propertiesChanged(objPath, rawIface),
 
-            [this, &bus](sdbusplus::message::message& msg) {
+            [this, &bus](sdbusplus::message_t& msg) {
                 using primarycode_t = uint64_t;
                 using secondarycode_t = std::vector<uint8_t>;
                 using postcode_t = std::tuple<primarycode_t, secondarycode_t>;
@@ -130,10 +130,10 @@ struct IpmiPostReporter : PostObject
     {
     }
 
-    sdbusplus::bus::bus& bus;
+    sdbusplus::bus_t& bus;
     sdbusplus::bus::match_t propertiesChangedSignalRaw;
     int postCodeDisplay(uint8_t);
-    void getSelectorPositionSignal(sdbusplus::bus::bus& bus);
+    void getSelectorPositionSignal(sdbusplus::bus_t& bus);
 };
 
 // Configure the seven segment display connected GPIOs direction

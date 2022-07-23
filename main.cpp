@@ -56,7 +56,7 @@ std::vector<std::unique_ptr<IpmiPostReporter>> reporters;
 #endif
 
 #ifdef ENABLE_IPMI_SNOOP
-void IpmiPostReporter::getSelectorPositionSignal(sdbusplus::bus::bus& bus)
+void IpmiPostReporter::getSelectorPositionSignal(sdbusplus::bus_t& bus)
 {
     size_t posVal = 0;
 
@@ -64,7 +64,7 @@ void IpmiPostReporter::getSelectorPositionSignal(sdbusplus::bus::bus& bus)
         bus,
         sdbusplus::bus::match::rules::propertiesChanged(selectorObject,
                                                         selectorIface),
-        [&](sdbusplus::message::message& msg) {
+        [&](sdbusplus::message_t& msg) {
             std::string objectName;
             std::map<std::string, Selector::PropertiesVariant> msgData;
             msg.read(objectName, msgData);
@@ -155,7 +155,7 @@ void PostCodeEventHandler(PostReporter* reporter, bool verbose,
 #ifdef ENABLE_IPMI_SNOOP
 // handle muti-host D-bus
 int postCodeIpmiHandler(const std::string& snoopObject,
-                        const std::string& snoopDbus, sdbusplus::bus::bus& bus,
+                        const std::string& snoopDbus, sdbusplus::bus_t& bus,
                         std::span<std::string> host)
 {
     int ret = 0;
@@ -312,7 +312,7 @@ int main(int argc, char* argv[])
     bool deferSignals = true;
 
     // Add systemd object manager.
-    sdbusplus::server::manager::manager snoopdManager(bus, snoopObject);
+    sdbusplus::server::manager_t snoopdManager(bus, snoopObject);
 
     PostReporter reporter(bus, snoopObject, deferSignals);
     reporter.emit_object_added();
