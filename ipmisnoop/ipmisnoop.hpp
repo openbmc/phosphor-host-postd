@@ -20,6 +20,8 @@ const int hostParseIdx = 3;
 const int maxPostcode = 255;
 const int maxPosition = 4;
 
+bool gpioDisabled = false;
+
 std::vector<gpiod::line> led_lines;
 
 using Selector =
@@ -55,8 +57,15 @@ uint32_t getSelectorPosition(sdbusplus::bus_t& bus)
     }
     catch (const sdbusplus::exception_t& ex)
     {
-        std::cerr << "GetProperty call failed ";
-        throw std::runtime_error("GetProperty call failed");
+        std::cerr << "GetProperty call failed " << std::endl;
+
+        /* gpioDisabled flag is set when GPIO pins are not there 7 seg display
+         for fewer platforms. So, Get Selector position can be skipped in those
+         platforms. it will throw just error and proceed furthur.
+         */
+
+        // throw std::runtime_error("GetProperty call failed");
+        return 0;
     }
 }
 
@@ -73,58 +82,70 @@ struct IpmiPostReporter : PostObject
                 using secondarycode_t = std::vector<uint8_t>;
                 using postcode_t = std::tuple<primarycode_t, secondarycode_t>;
 
-                std::string objectName;
-                std::string InterfaceName;
-                std::map<std::string, std::variant<postcode_t>> msgData;
-                msg.read(InterfaceName, msgData);
+                /* gpioDisabled flag is set when GPIO pins are not there 7 seg
+                display for fewer platforms. So, the code for postcode dispay
+                and Get Selector position can be skipped in those platforms.
+                */
 
-                std::filesystem::path name(msg.get_path());
-                objectName = name.filename();
-
-                std::string hostNumStr = objectName.substr(hostParseIdx);
-                size_t hostNum = std::stoi(hostNumStr);
-
-                size_t position = getSelectorPosition(bus);
-
-                if (position > maxPosition)
+                if (!gpioDisabled)
                 {
-                    std::cerr << "Invalid position. Position should be 1 to 4 "
-                                 "for all hosts "
-                              << std::endl;
-                }
 
-                // Check if it was the Value property that changed.
-                auto valPropMap = msgData.find("Value");
-                if (valPropMap == msgData.end())
-                {
-                    std::cerr << "Value property is not found " << std::endl;
-                    return;
-                }
-                uint64_t postcode =
-                    std::get<0>(std::get<postcode_t>(valPropMap->second));
+                    std::string objectName;
+                    std::string InterfaceName;
+                    std::map<std::string, std::variant<postcode_t>> msgData;
+                    msg.read(InterfaceName, msgData);
 
-                if (postcode <= maxPostcode)
-                {
-                    if (position == hostNum)
+                    std::filesystem::path name(msg.get_path());
+                    objectName = name.filename();
+
+                    std::string hostNumStr = objectName.substr(hostParseIdx);
+                    size_t hostNum = std::stoi(hostNumStr);
+
+                    size_t position = getSelectorPosition(bus);
+
+                    if (position > maxPosition)
                     {
-                        uint8_t postcode_8bit =
-                            static_cast<uint8_t>(postcode & 0x0000FF);
+                        std::cerr
+                            << "Invalid position. Position should be 1 to 4 "
+                               "for all hosts "
+                            << std::endl;
+                    }
 
-                        // write postcode into seven segment display
-                        if (postCodeDisplay(postcode_8bit) < 0)
+                    // Check if it was the Value property that changed.
+                    auto valPropMap = msgData.find("Value");
+                    if (valPropMap == msgData.end())
+                    {
+                        std::cerr << "Value property is not found "
+                                  << std::endl;
+                        return;
+                    }
+                    uint64_t postcode =
+                        std::get<0>(std::get<postcode_t>(valPropMap->second));
+
+                    if (postcode <= maxPostcode)
+                    {
+                        if (position == hostNum)
                         {
-                            fprintf(stderr, "Error in display the postcode\n");
+                            uint8_t postcode_8bit =
+                                static_cast<uint8_t>(postcode & 0x0000FF);
+
+                            // write postcode into seven segment display
+                            if (postCodeDisplay(postcode_8bit) < 0)
+                            {
+                                fprintf(stderr,
+                                        "Error in display the postcode\n");
+                            }
+                        }
+                        else
+                        {
+                            fprintf(stderr, "Host Selector Position and host "
+                                            "number is not matched..\n");
                         }
                     }
                     else
                     {
-                        fprintf(stderr, "Host Selector Position and host "
-                                        "number is not matched..\n");
+                        fprintf(stderr, "invalid postcode value \n");
                     }
-                }
-                else
-                {
-                    fprintf(stderr, "invalid postcode value \n");
                 }
             })
     {
@@ -153,6 +174,12 @@ int configGPIODirOutput()
         {
             std::string errMsg = "Failed to find the " + gpioStr + " line";
             std::cerr << errMsg.c_str() << std::endl;
+
+            /* gpioDisabled flag is set when GPIO pins are not there 7 seg
+             * display for fewer platforms.
+             */
+
+            gpioDisabled = true;
             return -1;
         }
 
