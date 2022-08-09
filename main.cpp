@@ -176,7 +176,19 @@ int postCodeIpmiHandler(const std::string& snoopObject,
         }
 
         bus.request_name(snoopDbus.c_str());
-        reporters[0]->getSelectorPositionSignal(bus);
+
+        /* sevenSegmentLedEnabled flag is unset when GPIO pins are not there 7
+        seg display for fewer platforms. So, the code for postcode dispay and
+        Get Selector position can be skipped in those platforms.
+        */
+        if (sevenSegmentLedEnabled)
+        {
+            reporters[0]->getSelectorPositionSignal(bus);
+        }
+        else
+        {
+            reporters.clear();
+        }
     }
     catch (const std::exception& e)
     {
@@ -187,7 +199,8 @@ int postCodeIpmiHandler(const std::string& snoopObject,
     ret = configGPIODirOutput();
     if (ret < 0)
     {
-        fprintf(stderr, "Failed find the gpio line\n");
+        fprintf(stderr, "Failed find the gpio line. Cannot display postcodes "
+                        "in seven segment display..\n");
     }
 
     while (true)

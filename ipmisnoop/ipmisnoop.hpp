@@ -20,6 +20,8 @@ const int hostParseIdx = 3;
 const int maxPostcode = 255;
 const int maxPosition = 4;
 
+bool sevenSegmentLedEnabled = true;
+
 std::vector<gpiod::line> led_lines;
 
 using Selector =
@@ -55,8 +57,8 @@ uint32_t getSelectorPosition(sdbusplus::bus_t& bus)
     }
     catch (const sdbusplus::exception_t& ex)
     {
-        std::cerr << "GetProperty call failed ";
-        throw std::runtime_error("GetProperty call failed");
+        std::cerr << "GetProperty call failed. " << ex.what() << std::endl;
+        return 0;
     }
 }
 
@@ -72,6 +74,16 @@ struct IpmiPostReporter : PostObject
                 using primarycode_t = uint64_t;
                 using secondarycode_t = std::vector<uint8_t>;
                 using postcode_t = std::tuple<primarycode_t, secondarycode_t>;
+
+                /* sevenSegmentLedEnabled flag is set when GPIO pins are not
+                there 7 seg display for fewer platforms. So, the code for
+                postcode dispay and Get Selector position can be skipped in
+                those platforms.
+                */
+                if (!sevenSegmentLedEnabled)
+                {
+                    return;
+                }
 
                 std::string objectName;
                 std::string InterfaceName;
@@ -153,6 +165,11 @@ int configGPIODirOutput()
         {
             std::string errMsg = "Failed to find the " + gpioStr + " line";
             std::cerr << errMsg.c_str() << std::endl;
+
+            /* sevenSegmentLedEnabled flag is unset when GPIO pins are not there
+             * 7 seg display for fewer platforms.
+             */
+            sevenSegmentLedEnabled = false;
             return -1;
         }
 
