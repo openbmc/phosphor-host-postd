@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "737af2f5_b842f652",
+        "filename": "ipmisnoop/ipmisnoop.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001093
+      },
+      "writtenOn": "2022-08-10T09:59:46Z",
+      "side": 1,
+      "message": "Since this flag actually represents group of gpios associated with the 7 segment led can we name it as SevenSegmentLed? also using \"enabled\" flag is better than \"disabled\"  which is : sevenSegmentLedEnabled.",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "68a03dd39c84b12fc0fe4e6823b0b619020f4086",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbee5275_7031e5d9",
         "filename": "ipmisnoop/ipmisnoop.hpp",
         "patchSetId": 1
