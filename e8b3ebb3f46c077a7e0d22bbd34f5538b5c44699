@@ -16,6 +16,24 @@
       "message": "What\u0027s going on here?  Abandon?  Needs at least a rebase.",
       "revId": "e8b3ebb3f46c077a7e0d22bbd34f5538b5c44699",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e74d17c2_0c78d9cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000926
+      },
+      "writtenOn": "2022-08-11T19:04:37Z",
+      "side": 1,
+      "message": "This patchset wasn\u0027t merged when it was ready, and now it has some rebase conflicts since phosphor-dbus-interface has changed. I have plans to update this patchset in the future, but currently I have switched my focus to other tasks. So, if you want, I can change the status to adandoned for now",
+      "parentUuid": "c15c18f1_fca4f07f",
+      "revId": "e8b3ebb3f46c077a7e0d22bbd34f5538b5c44699",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
