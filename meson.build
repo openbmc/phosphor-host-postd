@@ -33,6 +33,9 @@ endif
 
 if get_option('snoop-device') != ''
   snoopd_args += ' -d /dev/' + get_option('snoop-device')
+  if get_option('snoop-device') == 'aspeed-lpc-pcc'
+      add_project_arguments('-DENABLE_ASPEED_PCC',language:'cpp')
+  endif
 endif
 conf_data.set('SNOOPD_ARGS', snoopd_args)
 

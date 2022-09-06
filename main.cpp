@@ -108,6 +108,23 @@ static void usage(const char* name)
             name, codeSize, defaultHostInstances);
 }
 
+#ifdef ENABLE_ASPEED_PCC
+static uint64_t code2postCode(uint64_t code)
+{
+    constexpr uint64_t mask = 0xFF;
+    constexpr size_t twoBytesLength = 16;
+    const size_t codeLength = codeSize * 8;
+    uint64_t pcode = 0;
+    for (size_t shiftBits = 0; shiftBits < codeLength;
+         shiftBits += twoBytesLength)
+    {
+        pcode |= (((code >> shiftBits) & mask) << (shiftBits / 2));
+    }
+
+    return pcode;
+}
+#endif
+
 /*
  * Callback handling IO event from the POST code fd. i.e. there is new
  * POST code available to read.
@@ -119,7 +136,11 @@ void PostCodeEventHandler(PostReporter* reporter, bool verbose,
     ssize_t readb;
     while ((readb = read(postFd, &code, codeSize)) > 0)
     {
+#ifdef ENABLE_ASPEED_PCC
+        code = code2postCode(code);
+#else
         code = le64toh(code);
+#endif
         if (verbose)
         {
             fprintf(stderr, "Code: 0x%" PRIx64 "\n", code);
