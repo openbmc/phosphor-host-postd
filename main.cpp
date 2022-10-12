@@ -366,6 +366,10 @@ int main(int argc, char* argv[])
 
             // Run and never timeout
             rc = event.run(std::nullopt);
+            if (done)
+            {
+                rc = 0; // clean exit when SIGTERM signal caught
+            }
         }
     }
     catch (const std::exception& e)
