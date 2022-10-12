@@ -22,6 +22,30 @@
       },
       "revId": "1db3fe292558a3816434c7dc32bb0a0e2e872124",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c8de03_fe4a7231",
+        "filename": "main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1001094
+      },
+      "writtenOn": "2022-10-12T09:02:51Z",
+      "side": 1,
+      "message": "event.run() returns rc\u003d1 in normal cases.// @return Positive value if an event was dispatched Only returns 0 a finite timeout is reached. here we pass as no timeout. \n\nThis Issue can be reproduced by stopping the service too. \n\"systemctl stop lpcsnoop.service\"\n\n\"done\" is true when SIGTERM signal is caught else it won\u0027t fall in if the condition.\nPlease let me know if it can be handled in a better way.",
+      "parentUuid": "741ac842_e224de66",
+      "range": {
+        "startLine": 368,
+        "startChar": 12,
+        "endLine": 372,
+        "endChar": 13
+      },
+      "revId": "1db3fe292558a3816434c7dc32bb0a0e2e872124",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
