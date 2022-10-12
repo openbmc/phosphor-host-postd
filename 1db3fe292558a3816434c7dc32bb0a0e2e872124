@@ -46,6 +46,30 @@
       },
       "revId": "1db3fe292558a3816434c7dc32bb0a0e2e872124",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c7da503_a4611917",
+        "filename": "main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2022-10-12T14:23:28Z",
+      "side": 1,
+      "message": "https://www.freedesktop.org/software/systemd/man/sd_event_run.html\n\noh, in that case. This variable assignment is wrong. That is not really the return code and it seems like we should just return 0 when the program exits.",
+      "parentUuid": "15c8de03_fe4a7231",
+      "range": {
+        "startLine": 368,
+        "startChar": 12,
+        "endLine": 372,
+        "endChar": 13
+      },
+      "revId": "1db3fe292558a3816434c7dc32bb0a0e2e872124",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
