@@ -320,7 +320,6 @@ int main(int argc, char* argv[])
 #endif
 
 #ifndef ENABLE_IPMI_SNOOP
-    int rc = 0;
 
     bool deferSignals = true;
 
@@ -365,7 +364,7 @@ int main(int argc, char* argv[])
                 ;
 
             // Run and never timeout
-            rc = event.run(std::nullopt);
+            event.run(std::nullopt);
         }
     }
     catch (const std::exception& e)
@@ -378,6 +377,6 @@ int main(int argc, char* argv[])
         close(postFd);
     }
 
-    return rc;
+    return 0;
 #endif
 }
