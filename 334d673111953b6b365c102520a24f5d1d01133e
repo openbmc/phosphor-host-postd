@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82abe6bc_ad4b0a99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-11-13T23:22:09Z",
+      "side": 1,
+      "message": "Hello wukaihua,\n\nThe Aspeed PCC driver isn\u0027t present in the OpenBMC kernel. As far as I\u0027m aware it\u0027s not upstream either, it only exists in Aspeed\u0027s SDK (based on OpenBMC). Supporting kernel interfaces that don\u0027t exist in the upstream kernel in userspace code almost always leads to future maintenance headaches.\n\nWe need to do the work to get the PCC driver either upstream or into the OpenBMC kernel (and getting it into the OpenBMC kernel requires that an effort is made to upstream it, doubly so in the case of a userspace ABI). Once that\u0027s done, then we can consider merging support into userspace.",
+      "revId": "334d673111953b6b365c102520a24f5d1d01133e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fda3c54e_7a962b3c",
         "filename": "main.cpp",
         "patchSetId": 3
@@ -60,6 +77,23 @@
         "endLine": 121,
         "endChar": 18
       },
+      "revId": "334d673111953b6b365c102520a24f5d1d01133e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7998979_bb92de1f",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2022-11-13T23:22:09Z",
+      "side": 1,
+      "message": "Please implement this without the ifdef (e.g. use callbacks, inheritance, or something equivalent where all the code can be built by default). ifdefs controlling mutually exclusive behaviour leads to combinatoric explosion of build configurations and the chance of things getting broken with no-one noticing increases.",
       "revId": "334d673111953b6b365c102520a24f5d1d01133e",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
