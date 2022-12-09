@@ -16,75 +16,43 @@
 
 #include "lpcsnoop/snoop.hpp"
 
+#include <function2/function2.hpp>
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/bus/match.hpp>
 #include <sdbusplus/message.hpp>
 
 namespace lpcsnoop
 {
-using std::get;
-
-/* Returns matching string for what signal to listen on Dbus */
-static const std::string GetMatchRule()
-{
-    using namespace sdbusplus::bus::match::rules;
-
-    return type::signal() + interface("org.freedesktop.DBus.Properties") +
-           member("PropertiesChanged") + path(snoopObject);
-}
 
 class SnoopListen
 {
-    using message_handler_t = std::function<void(sdbusplus::message_t&)>;
-    using postcode_handler_t = std::function<void(FILE*, postcode_t)>;
+    using postcode_handler_t = fu2::unique_function<void(postcode_t)>;
 
   public:
-    SnoopListen(sdbusplus::bus_t& busIn, sd_bus_message_handler_t handler) :
-        signal(busIn, GetMatchRule().c_str(), handler, this)
+    SnoopListen(sdbusplus::bus_t& bus, postcode_handler_t&& h) :
+        signal(bus, rule, [h = std::move(h)](sdbusplus::message_t& m) {
+            std::string messageBusName;
+            std::unordered_map<std::string, std::variant<postcode_t>>
+                messageData;
+
+            m.read(messageBusName, messageData);
+
+            auto it = messageData.find(std::string("Value"));
+            if (it != messageData.end())
+            {
+                h(f, std::get<postcode_t>(it->second));
+            }
+        })
     {
     }
-
-    SnoopListen(sdbusplus::bus_t& busIn, message_handler_t handler) :
-        signal(busIn, GetMatchRule(), handler)
-    {
-    }
-
-    SnoopListen(sdbusplus::bus_t& busIn, postcode_handler_t handler,
-                FILE* f = NULL) :
-        SnoopListen(busIn, std::bind(defaultMessageHandler, handler, f,
-                                     std::placeholders::_1))
-    {
-    }
-
-    SnoopListen() = delete; // no default constructor
-    ~SnoopListen() = default;
-    SnoopListen(const SnoopListen&) = delete;
-    SnoopListen& operator=(const SnoopListen&) = delete;
-    SnoopListen(SnoopListen&&) = default;
-    SnoopListen& operator=(SnoopListen&&) = default;
 
   private:
     sdbusplus::bus::match_t signal;
 
-    /*
-     * Default message handler which listens to published messages on snoop
-     * DBus path, and calls the given postcode_handler on each value received.
-     */
-    static void defaultMessageHandler(postcode_handler_t& handler, FILE* f,
-                                      sdbusplus::message_t& m)
-    {
-        std::string messageBusName;
-        std::map<std::string, std::variant<postcode_t>> messageData;
-        constexpr char propertyKey[] = "Value";
-
-        m.read(messageBusName, messageData);
-
-        if (messageBusName == snoopDbus &&
-            messageData.find(propertyKey) != messageData.end())
-        {
-            handler(f, get<postcode_t>(messageData[propertyKey]));
-        }
-    }
+    static inline constexpr auto rule = []() {
+        return sdbusplus::bus::match::rules::propertiesChanged(snoopObject,
+                                                               snoopDbus);
+    }();
 };
 
 } // namespace lpcsnoop
