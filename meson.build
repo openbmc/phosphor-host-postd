@@ -8,7 +8,7 @@ project(
   ],
   license: 'Apache-2.0',
   version: '1.0',
-  meson_version: '>=0.57.0',
+  meson_version: '>=0.58.0',
 )
 
 build_tests = get_option('tests')
@@ -41,7 +41,7 @@ configure_file(
   output: 'lpcsnoop.service',
   configuration: conf_data,
   install: true,
-  install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'))
+  install_dir: systemd.get_variable('systemdsystemunitdir'))
 
 executable(
   'snoopd',
@@ -67,13 +67,13 @@ executable(
 )
 
 if not get_option('7seg').disabled()
-  udevdir = dependency('udev', required : false).get_pkgconfig_variable('udevdir')
+  udevdir = dependency('udev', required : false).get_variable('udevdir')
   assert(udevdir != '', 'Cannot find udevdir')
   install_data(['80-7seg.rules'], install_dir : udevdir)
 
   install_data(
     ['postcode-7seg@.service'],
-    install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir')
+    install_dir: systemd.get_variable('systemdsystemunitdir')
   )
 
   executable(
