@@ -33,7 +33,12 @@ endif
 
 if get_option('snoop-device') != ''
   snoopd_args += ' -d /dev/' + get_option('snoop-device')
+  rate_limit = get_option('rate-limit')
+  if rate_limit > 0
+    snoopd_args += ' --rate-limit=' + rate_limit.to_string()
+  endif
 endif
+
 conf_data.set('SNOOPD_ARGS', snoopd_args)
 
 configure_file(

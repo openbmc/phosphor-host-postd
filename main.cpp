@@ -27,6 +27,7 @@
 #include <systemd/sd-event.h>
 #include <unistd.h>
 
+#include <chrono>
 #include <cstdint>
 #include <exception>
 #include <functional>
@@ -36,6 +37,7 @@
 #include <sdeventplus/source/event.hpp>
 #include <sdeventplus/source/io.hpp>
 #include <sdeventplus/source/signal.hpp>
+#include <sdeventplus/source/time.hpp>
 #include <sdeventplus/utility/sdbus.hpp>
 #include <span>
 #include <stdplus/signal.hpp>
@@ -47,6 +49,7 @@
 
 static size_t codeSize = 1; /* Size of each POST code in bytes */
 const char* defaultHostInstances = "0";
+static bool verbose = false;
 #ifdef ENABLE_IPMI_SNOOP
 const uint8_t minPositionVal = 0;
 const uint8_t maxPositionVal = 5;
@@ -109,15 +112,76 @@ static void usage(const char* name)
             name, codeSize, defaultHostInstances);
 }
 
+/**
+ * Call once for each POST code received. If the number of POST codes exceeds
+ * the configured rate limit, this function will disable the snoop device IO
+ * source until the end of the 1 second interval, then re-enable it.
+ *
+ * @return Whether the rate limit is exceeded.
+ */
+bool rateLimit(PostReporter& reporter, sdeventplus::source::IO& ioSource)
+{
+    if (reporter.rateLimit == 0)
+    {
+        // Rate limiting is disabled.
+        return false;
+    }
+
+    using Clock = sdeventplus::Clock<sdeventplus::ClockId::Monotonic>;
+
+    static constexpr std::chrono::seconds rateLimitInterval(1);
+    static unsigned int rateLimitCount = 0;
+    static Clock::time_point rateLimitEndTime;
+
+    const sdeventplus::Event& event = ioSource.get_event();
+
+    if (rateLimitCount == 0)
+    {
+        // Initialize the end time when we start a new interval
+        rateLimitEndTime = Clock(event).now() + rateLimitInterval;
+    }
+
+    if (++rateLimitCount < reporter.rateLimit)
+    {
+        return false;
+    }
+
+    rateLimitCount = 0;
+
+    if (rateLimitEndTime < Clock(event).now())
+    {
+        return false;
+    }
+
+    if (verbose)
+    {
+        fprintf(stderr, "Hit POST code rate limit - disabling temporarily\n");
+    }
+
+    ioSource.set_enabled(sdeventplus::source::Enabled::Off);
+    sdeventplus::source::Time<sdeventplus::ClockId::Monotonic>(
+        event, rateLimitEndTime, std::chrono::milliseconds(100),
+        [&ioSource](auto&, auto) {
+            if (verbose)
+            {
+                fprintf(stderr, "Reenabling POST code handler\n");
+            }
+            ioSource.set_enabled(sdeventplus::source::Enabled::On);
+        })
+        .set_floating(true);
+    return true;
+}
+
 /*
  * Callback handling IO event from the POST code fd. i.e. there is new
  * POST code available to read.
  */
-void PostCodeEventHandler(PostReporter* reporter, bool verbose,
-                          sdeventplus::source::IO& s, int postFd, uint32_t)
+void PostCodeEventHandler(PostReporter* reporter, sdeventplus::source::IO& s,
+                          int postFd, uint32_t)
 {
     uint64_t code = 0;
     ssize_t readb;
+
     while ((readb = read(postFd, &code, codeSize)) > 0)
     {
         code = le64toh(code);
@@ -134,6 +198,11 @@ void PostCodeEventHandler(PostReporter* reporter, bool verbose,
         // read depends on old data being cleared since it doens't always read
         // the full code size
         code = 0;
+
+        if (rateLimit(*reporter, s))
+        {
+            return;
+        }
     }
 
     if (readb < 0 && (errno == EAGAIN || errno == EWOULDBLOCK))
@@ -226,9 +295,9 @@ int main(int argc, char* argv[])
 #ifndef ENABLE_IPMI_SNOOP
     int postFd = -1;
 #endif
+    unsigned int rateLimit = 0;
 
     int opt;
-    bool verbose = false;
 
 #ifdef ENABLE_IPMI_SNOOP
     std::vector<std::string> host;
@@ -250,12 +319,14 @@ int main(int argc, char* argv[])
         #ifndef ENABLE_IPMI_SNOOP
         {"device", optional_argument, NULL, 'd'},
         #endif
+        {"rate-limit", optional_argument, NULL, 'r'},
         {"verbose", no_argument, NULL, 'v'},
         {0, 0, 0, 0}
     };
     // clang-format on
 
-    while ((opt = getopt_long(argc, argv, "h:b:d:v", long_options, NULL)) != -1)
+    while ((opt = getopt_long(argc, argv, "h:b:d:r:v", long_options, NULL)) !=
+           -1)
     {
         switch (opt)
         {
@@ -299,11 +370,34 @@ int main(int argc, char* argv[])
                 }
                 break;
 #endif
+            case 'r': {
+                int argVal = -1;
+                try
+                {
+                    argVal = std::stoi(optarg);
+                }
+                catch (...)
+                {
+                }
+
+                if (argVal < 1)
+                {
+                    fprintf(stderr, "Invalid rate limit '%s'. Must be >= 1.\n",
+                            optarg);
+                    return EXIT_FAILURE;
+                }
+
+                rateLimit = static_cast<unsigned int>(argVal);
+                fprintf(stderr, "Rate limiting to %d POST codes per second.\n",
+                        argVal);
+                break;
+            }
             case 'v':
                 verbose = true;
                 break;
             default:
                 usage(argv[0]);
+                return EXIT_FAILURE;
         }
     }
 
@@ -338,9 +432,10 @@ int main(int argc, char* argv[])
         std::optional<sdeventplus::source::IO> reporterSource;
         if (postFd > 0)
         {
+            reporter.rateLimit = rateLimit;
             reporterSource.emplace(
-                event, postFd, EPOLLIN | EPOLLET,
-                std::bind_front(PostCodeEventHandler, &reporter, verbose));
+                event, postFd, EPOLLIN,
+                std::bind_front(PostCodeEventHandler, &reporter));
         }
         // Enable bus to handle incoming IO and bus events
         auto intCb = [](sdeventplus::source::Signal& source,

@@ -26,4 +26,5 @@ class PostReporter : public PostObject
                          : PostObject::action::emit_object_added)
     {
     }
+    unsigned int rateLimit = 0;
 };

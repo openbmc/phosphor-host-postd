@@ -32,3 +32,11 @@ option(
 option(
     'tests', type: 'feature', description: 'Build tests.',
 )
+option(
+    'rate-limit',
+    description: 'Maximum number of POST codes to read from snoop device every'
+    + 'second. Value of 0 disables rate limiting.',
+    type: 'integer',
+    min: 0,
+    value: 1000
+)
