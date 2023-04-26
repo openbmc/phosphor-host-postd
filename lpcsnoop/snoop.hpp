@@ -20,10 +20,13 @@ using postcode_t = std::tuple<primary_post_code_t, secondary_post_code_t>;
 class PostReporter : public PostObject
 {
   public:
-    PostReporter(sdbusplus::bus_t& bus, const char* objPath, bool defer) :
+    PostReporter(sdbusplus::bus_t& bus, const char* objPath, bool defer,
+                 unsigned int rateLimit) :
         PostObject(bus, objPath,
                    defer ? PostObject::action::defer_emit
-                         : PostObject::action::emit_object_added)
+                         : PostObject::action::emit_object_added),
+        rateLimit(rateLimit)
     {
     }
+    unsigned int rateLimit;
 };
