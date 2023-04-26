@@ -116,6 +116,30 @@
       },
       "revId": "88199c8d3f80bebc30d7d63fe66c66d27a1fb79c",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b86de62_99ae6f9f",
+        "filename": "main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000733
+      },
+      "writtenOn": "2023-04-26T23:29:20Z",
+      "side": 1,
+      "message": "Ah right, that makes sense.  Just to get a rough sense of relative scales, do you know roughly how many unprocessed POST codes it takes for things to become problematic in the two cases described in the commit message?  For reference, on the kernel side it looks like the snoop driver uses a 2048-entry fifo, FWIW: https://github.com/openbmc/linux/blob/288cdbcca137444c131180738a8046c93ae228f0/drivers/soc/aspeed/aspeed-lpc-snoop.c#L30",
+      "parentUuid": "3229937c_bfae1517",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 31
+      },
+      "revId": "88199c8d3f80bebc30d7d63fe66c66d27a1fb79c",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
