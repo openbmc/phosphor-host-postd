@@ -27,6 +27,7 @@
 #include <systemd/sd-event.h>
 #include <unistd.h>
 
+#include <chrono>
 #include <cstdint>
 #include <exception>
 #include <functional>
@@ -116,8 +117,15 @@ static void usage(const char* name)
 void PostCodeEventHandler(PostReporter* reporter, bool verbose,
                           sdeventplus::source::IO& s, int postFd, uint32_t)
 {
+    constexpr int rateLimit = 100;
+    constexpr std::chrono::milliseconds rateLimitInterval(100);
+
     uint64_t code = 0;
     ssize_t readb;
+
+    static int rateLimitCount = 0;
+    static auto rateLimitEndTime =
+        std::chrono::steady_clock::now() + rateLimitInterval;
     while ((readb = read(postFd, &code, codeSize)) > 0)
     {
         code = le64toh(code);
@@ -134,6 +142,14 @@ void PostCodeEventHandler(PostReporter* reporter, bool verbose,
         // read depends on old data being cleared since it doens't always read
         // the full code size
         code = 0;
+
+        if (++rateLimitCount >= rateLimit)
+        {
+            std::this_thread::sleep_until(rateLimitEndTime);
+            rateLimitCount = 0;
+            rateLimitEndTime =
+                std::chrono::steady_clock::now() + rateLimitInterval;
+        }
     }
 
     if (readb < 0 && (errno == EAGAIN || errno == EWOULDBLOCK))
