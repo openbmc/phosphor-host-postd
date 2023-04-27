@@ -140,6 +140,30 @@
       },
       "revId": "88199c8d3f80bebc30d7d63fe66c66d27a1fb79c",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b651f895_00247a8d",
+        "filename": "main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000900
+      },
+      "writtenOn": "2023-04-27T20:50:31Z",
+      "side": 1,
+      "message": "I just tested the two cases by modifying snoopd and post-code-manager to print out the number of codes processed every 100 codes and checked the difference when the BMC grinds to a halt.\n\nCase 2 is the more common failure in my system. I forced Case 1 by calling bus.flush() for each code to force the message into dbus-broker.\n\nCase 1: 201200 signals stuck in dbus-broker (snoopd processed 764000, post-code-manager 562800)\nCase 2: 160300 signals stuck in snoopd (snoopd processed 307500, post-code-manager 147000)\n\nThis number will obviously depend on the POST code size and free system memory. Our Intel systems just use a single byte POST code. Both cases take less than 5 minutes to kill the BMC FW, with Case 2 being faster (sometimes less than 1 minute).",
+      "parentUuid": "2b86de62_99ae6f9f",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 31
+      },
+      "revId": "88199c8d3f80bebc30d7d63fe66c66d27a1fb79c",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
