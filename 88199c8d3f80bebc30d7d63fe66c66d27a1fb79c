@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78ee8240_63589bcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000900
+      },
+      "writtenOn": "2023-04-28T18:52:30Z",
+      "side": 1,
+      "message": "Yes, the driver will drop data when the fifo overruns. And driver also may miss data if it comes in faster than the IRQ is handled.",
+      "parentUuid": "11d1af72_4325dad7",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "88199c8d3f80bebc30d7d63fe66c66d27a1fb79c",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c5116fc_ca669a3d",
         "filename": "main.cpp",
         "patchSetId": 1
