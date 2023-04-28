@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2134d8d7_09fa16f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000900
+      },
+      "writtenOn": "2023-04-28T20:47:14Z",
+      "side": 1,
+      "message": "Patchset 2 adds meson option and command line parameter to control the rate limiting. And uses sdevent API to disable events rather than just sleeping.",
+      "revId": "012ed5a4d19241dba75d5fb307b97dde958042ed",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
