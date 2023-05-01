@@ -22,6 +22,30 @@
       },
       "revId": "38b0946cee9ec287dded7ce8cbb84bd445b44554",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "446abba5_d733db4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000900
+      },
+      "writtenOn": "2023-05-01T23:37:41Z",
+      "side": 1,
+      "message": "Yes, I do agree a proper D-Bus resource usage policy would be the most elegant/holistic solution, and running as non-root is a big part of the that. But AFAIK there is not consensus yet on the future design for privilege separation, so that\u0027s why I think this is needed in the short term.",
+      "parentUuid": "9e311152_58cbcd75",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "38b0946cee9ec287dded7ce8cbb84bd445b44554",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
