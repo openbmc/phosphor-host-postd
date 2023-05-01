@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e311152_58cbcd75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000233
+      },
+      "writtenOn": "2023-05-01T21:56:11Z",
+      "side": 1,
+      "message": "seems like the best solution would be allowing snoopd to run as non-root, right?\n\nmoving daemons to non-root users has been in progress project-wide for a while",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "38b0946cee9ec287dded7ce8cbb84bd445b44554",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
