@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-#ifdef ENABLE_IPMI_SNOOP
-#include "ipmisnoop/ipmisnoop.hpp"
-#endif
-
 #include "lpcsnoop/snoop.hpp"
 
 #include <endian.h>
@@ -44,22 +40,19 @@
 #include <thread>
 
 #ifdef ENABLE_IPMI_SNOOP
-#include <xyz/openbmc_project/State/Boot/Raw/server.hpp>
+#include "ipmisnoop/ipmisnoop.hpp"
 #endif
 
 static size_t codeSize = 1; /* Size of each POST code in bytes */
 const char* defaultHostInstances = "0";
 static bool verbose = false;
+
 #ifdef ENABLE_IPMI_SNOOP
 const uint8_t minPositionVal = 0;
 const uint8_t maxPositionVal = 5;
-#endif
 
-#ifdef ENABLE_IPMI_SNOOP
 std::vector<std::unique_ptr<IpmiPostReporter>> reporters;
-#endif
 
-#ifdef ENABLE_IPMI_SNOOP
 void IpmiPostReporter::getSelectorPositionSignal(sdbusplus::bus_t& bus)
 {
     size_t posVal = 0;
@@ -107,6 +100,7 @@ static void usage(const char* name)
             "  -b, --bytes <SIZE>     set POST code length to <SIZE> bytes. "
             "Default is %zu\n"
             "  -d, --device <DEVICE>  use <DEVICE> file.\n"
+            "  -r, --rate-limit=<N>   Only process N POST codes from the device per second."
             "  -h, --host <host instances>  . Default is '%s'\n"
             "  -v, --verbose  Prints verbose information while running\n\n",
             name, codeSize, defaultHostInstances);
@@ -291,34 +285,18 @@ int postCodeIpmiHandler(const std::string& snoopObject,
  */
 int main(int argc, char* argv[])
 {
-
-#ifndef ENABLE_IPMI_SNOOP
     int postFd = -1;
-#endif
     unsigned int rateLimit = 0;
 
     int opt;
 
-#ifdef ENABLE_IPMI_SNOOP
     std::vector<std::string> host;
-#endif
-    /*
-     * These string constants are only used in this method within this object
-     * and this object is the only object feeding into the final binary.
-     *
-     * If however, another object is added to this binary it would be proper
-     * to move these declarations to be global and extern to the other object.
-     */
 
     // clang-format off
     static const struct option long_options[] = {
-        #ifdef ENABLE_IPMI_SNOOP
         {"host", optional_argument, NULL, 'h'},
-        #endif
         {"bytes",  required_argument, NULL, 'b'},
-        #ifndef ENABLE_IPMI_SNOOP
         {"device", optional_argument, NULL, 'd'},
-        #endif
         {"rate-limit", optional_argument, NULL, 'r'},
         {"verbose", no_argument, NULL, 'v'},
         {0, 0, 0, 0}
@@ -332,7 +310,6 @@ int main(int argc, char* argv[])
         {
             case 0:
                 break;
-#ifdef ENABLE_IPMI_SNOOP
             case 'h': {
                 std::string_view instances = optarg;
                 size_t pos = 0;
@@ -345,7 +322,6 @@ int main(int argc, char* argv[])
                 host.emplace_back(instances);
                 break;
             }
-#endif
             case 'b': {
                 codeSize = atoi(optarg);
 
@@ -359,7 +335,6 @@ int main(int argc, char* argv[])
                 }
                 break;
             }
-#ifndef ENABLE_IPMI_SNOOP
             case 'd':
 
                 postFd = open(optarg, O_NONBLOCK);
@@ -369,7 +344,6 @@ int main(int argc, char* argv[])
                     return -1;
                 }
                 break;
-#endif
             case 'r': {
                 int argVal = -1;
                 try
@@ -413,8 +387,6 @@ int main(int argc, char* argv[])
     }
     return 0;
 #endif
-
-#ifndef ENABLE_IPMI_SNOOP
 
     bool deferSignals = true;
 
@@ -460,5 +432,4 @@ int main(int argc, char* argv[])
     }
 
     return 0;
-#endif
 }
