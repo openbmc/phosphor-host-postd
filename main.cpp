@@ -107,6 +107,8 @@ static void usage(const char* name)
             "  -b, --bytes <SIZE>     set POST code length to <SIZE> bytes. "
             "Default is %zu\n"
             "  -d, --device <DEVICE>  use <DEVICE> file.\n"
+            "  -r, --rate-limit=<N>   Only process N POST codes from the "
+            "device per second.\n"
             "  -h, --host <host instances>  . Default is '%s'\n"
             "  -v, --verbose  Prints verbose information while running\n\n",
             name, codeSize, defaultHostInstances);
@@ -294,8 +296,8 @@ int main(int argc, char* argv[])
 
 #ifndef ENABLE_IPMI_SNOOP
     int postFd = -1;
-#endif
     unsigned int rateLimit = 0;
+#endif
 
     int opt;
 
@@ -318,8 +320,8 @@ int main(int argc, char* argv[])
         {"bytes",  required_argument, NULL, 'b'},
         #ifndef ENABLE_IPMI_SNOOP
         {"device", optional_argument, NULL, 'd'},
-        #endif
         {"rate-limit", optional_argument, NULL, 'r'},
+        #endif
         {"verbose", no_argument, NULL, 'v'},
         {0, 0, 0, 0}
     };
@@ -369,7 +371,6 @@ int main(int argc, char* argv[])
                     return -1;
                 }
                 break;
-#endif
             case 'r': {
                 int argVal = -1;
                 try
@@ -392,6 +393,7 @@ int main(int argc, char* argv[])
                         argVal);
                 break;
             }
+#endif
             case 'v':
                 verbose = true;
                 break;
