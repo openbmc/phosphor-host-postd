@@ -14,6 +14,7 @@
 
 #include <filesystem>
 #include <iostream>
+#include <span>
 
 const std::string ipmiSnoopObject = "/xyz/openbmc_project/state/boot/raw";
 
@@ -21,14 +22,12 @@ const int hostParseIdx = 3;
 const int maxPostcode = 255;
 const int maxPosition = 4;
 
-bool sevenSegmentLedEnabled = true;
+extern bool sevenSegmentLedEnabled;
 
-std::vector<gpiod::line> led_lines;
+extern std::vector<gpiod::line> led_lines;
 
 using Selector =
     sdbusplus::xyz::openbmc_project::Chassis::Buttons::server::HostSelector;
-
-std::unique_ptr<sdbusplus::bus::match_t> matchSignal;
 
 const std::string selectorService = "xyz.openbmc_project.Chassis.Buttons";
 const std::string selectorObject =
@@ -40,28 +39,11 @@ const std::string rawObject = "/xyz/openbmc_project/state/boot";
 const std::string rawIface = "xyz.openbmc_project.State.Boot.Raw";
 const std::string rawService = "xyz.openbmc_project.State.Boot.Raw";
 
-uint32_t getSelectorPosition(sdbusplus::bus_t& bus)
-{
-    const std::string propertyName = "Position";
+int postCodeIpmiHandler(const std::string& snoopObject,
+                        const std::string& snoopDbus, sdbusplus::bus_t& bus,
+                        std::span<std::string> host);
 
-    auto method = bus.new_method_call(selectorService.c_str(),
-                                      selectorObject.c_str(),
-                                      "org.freedesktop.DBus.Properties", "Get");
-    method.append(selectorIface.c_str(), propertyName);
-
-    try
-    {
-        std::variant<uint32_t> value{};
-        auto reply = bus.call(method);
-        reply.read(value);
-        return std::get<uint32_t>(value);
-    }
-    catch (const sdbusplus::exception_t& ex)
-    {
-        std::cerr << "GetProperty call failed. " << ex.what() << std::endl;
-        return 0;
-    }
-}
+uint32_t getSelectorPosition(sdbusplus::bus_t& bus);
 
 struct IpmiPostReporter : PostObject
 {
@@ -147,61 +129,3 @@ struct IpmiPostReporter : PostObject
     int postCodeDisplay(uint8_t);
     void getSelectorPositionSignal(sdbusplus::bus_t& bus);
 };
-
-// Configure the seven segment display connected GPIOs direction
-int configGPIODirOutput()
-{
-    std::string gpioStr;
-    // Need to define gpio names LED_POST_CODE_0 to 8 in dts file
-    std::string gpioName = "LED_POST_CODE_";
-    const int value = 0;
-
-    for (int iteration = 0; iteration < 8; iteration++)
-    {
-        gpioStr = gpioName + std::to_string(iteration);
-        gpiod::line gpioLine = gpiod::find_line(gpioStr);
-
-        if (!gpioLine)
-        {
-            std::string errMsg = "Failed to find the " + gpioStr + " line";
-            std::cerr << errMsg.c_str() << std::endl;
-
-            /* sevenSegmentLedEnabled flag is unset when GPIO pins are not there
-             * 7 seg display for fewer platforms.
-             */
-            sevenSegmentLedEnabled = false;
-            return -1;
-        }
-
-        led_lines.push_back(gpioLine);
-        // Request GPIO output to specified value
-        try
-        {
-            gpioLine.request({__FUNCTION__,
-                              gpiod::line_request::DIRECTION_OUTPUT,
-                              gpiod::line_request::FLAG_ACTIVE_LOW},
-                             value);
-        }
-        catch (std::exception&)
-        {
-            std::string errMsg = "Failed to request " + gpioStr + " output";
-            std::cerr << errMsg.c_str() << std::endl;
-            return -1;
-        }
-    }
-
-    return 0;
-}
-
-// Display the received postcode into seven segment display
-int IpmiPostReporter::postCodeDisplay(uint8_t status)
-{
-    for (int iteration = 0; iteration < 8; iteration++)
-    {
-        // split byte to write into GPIOs
-        int value = !((status >> iteration) & 0x01);
-
-        led_lines[iteration].set_value(value);
-    }
-    return 0;
-}
