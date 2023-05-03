@@ -25,13 +25,14 @@ conf_data = configuration_data()
 conf_data.set('bindir', get_option('prefix') / get_option('bindir'))
 conf_data.set('SYSTEMD_TARGET', get_option('systemd-target'))
 
-snoopd_args = '-b ' + get_option('post-code-bytes').to_string()
-if not get_option('snoop').disabled()
-    add_project_arguments('-DENABLE_IPMI_SNOOP',language:'cpp')
-    snoopd_args += ' -h "' + get_option('host-instances') + '"'
-endif
-
-if get_option('snoop-device') != ''
+snoopd_src = ['main.cpp']
+snoopd_args = ''
+if get_option('snoop').enabled()
+  snoopd_src += 'ipmisnoop/ipmisnoop.cpp'
+  add_project_arguments('-DENABLE_IPMI_SNOOP',language:'cpp')
+  snoopd_args += ' -h "' + get_option('host-instances') + '"'
+elif get_option('snoop-device') != ''
+  snoopd_args += '-b ' + get_option('post-code-bytes').to_string()
   snoopd_args += ' -d /dev/' + get_option('snoop-device')
   rate_limit = get_option('rate-limit')
   if rate_limit > 0
@@ -50,7 +51,7 @@ configure_file(
 
 executable(
   'snoopd',
-  'main.cpp',
+  snoopd_src,
   dependencies: [
     sdbusplus,
     sdeventplus,
