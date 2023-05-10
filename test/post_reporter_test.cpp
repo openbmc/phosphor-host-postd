@@ -20,12 +20,9 @@ class PostReporterTest : public ::testing::Test
 {
   protected:
     PostReporterTest() : bus_mock(), bus(sdbusplus::get_mocked_new(&bus_mock))
-    {
-    }
+    {}
 
-    ~PostReporterTest()
-    {
-    }
+    ~PostReporterTest() {}
 
     NiceMock<sdbusplus::SdBusMock> bus_mock;
     sdbusplus::bus_t bus;
@@ -33,7 +30,6 @@ class PostReporterTest : public ::testing::Test
 
 TEST_F(PostReporterTest, EmitsObjectsOnExpectedDbusPath)
 {
-
     EXPECT_CALL(bus_mock,
                 sd_bus_emit_object_added(IsNull(), StrEq(snoopObject)))
         .WillOnce(Return(0));

@@ -24,7 +24,6 @@ class PostReporter : public PostObject
         PostObject(bus, objPath,
                    defer ? PostObject::action::defer_emit
                          : PostObject::action::emit_object_added)
-    {
-    }
+    {}
     unsigned int rateLimit = 0;
 };

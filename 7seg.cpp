@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
+#include <lpcsnoop/snoop_listen.hpp>
+
 #include <cstdint>
 #include <cstdio>
 #include <filesystem>
-#include <lpcsnoop/snoop_listen.hpp>
 #include <string>
 
 namespace fs = std::filesystem;

@@ -41,20 +41,17 @@ class SnoopListen
   public:
     SnoopListen(sdbusplus::bus_t& busIn, sd_bus_message_handler_t handler) :
         signal(busIn, GetMatchRule().c_str(), handler, this)
-    {
-    }
+    {}
 
     SnoopListen(sdbusplus::bus_t& busIn, message_handler_t handler) :
         signal(busIn, GetMatchRule(), handler)
-    {
-    }
+    {}
 
     SnoopListen(sdbusplus::bus_t& busIn, postcode_handler_t handler,
                 FILE* f = NULL) :
         SnoopListen(busIn, std::bind(defaultMessageHandler, handler, f,
                                      std::placeholders::_1))
-    {
-    }
+    {}
 
     SnoopListen() = delete; // no default constructor
     ~SnoopListen() = default;

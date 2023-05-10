@@ -27,20 +27,21 @@
 #include <systemd/sd-event.h>
 #include <unistd.h>
 
-#include <chrono>
-#include <cstdint>
-#include <exception>
-#include <functional>
-#include <iostream>
-#include <optional>
 #include <sdeventplus/event.hpp>
 #include <sdeventplus/source/event.hpp>
 #include <sdeventplus/source/io.hpp>
 #include <sdeventplus/source/signal.hpp>
 #include <sdeventplus/source/time.hpp>
 #include <sdeventplus/utility/sdbus.hpp>
-#include <span>
 #include <stdplus/signal.hpp>
+
+#include <chrono>
+#include <cstdint>
+#include <exception>
+#include <functional>
+#include <iostream>
+#include <optional>
+#include <span>
 #include <thread>
 
 #ifdef ENABLE_IPMI_SNOOP
@@ -69,33 +70,33 @@ void IpmiPostReporter::getSelectorPositionSignal(sdbusplus::bus_t& bus)
         sdbusplus::bus::match::rules::propertiesChanged(selectorObject,
                                                         selectorIface),
         [&](sdbusplus::message_t& msg) {
-            std::string objectName;
-            std::map<std::string, Selector::PropertiesVariant> msgData;
-            msg.read(objectName, msgData);
+        std::string objectName;
+        std::map<std::string, Selector::PropertiesVariant> msgData;
+        msg.read(objectName, msgData);
 
-            auto valPropMap = msgData.find("Position");
+        auto valPropMap = msgData.find("Position");
+        {
+            if (valPropMap == msgData.end())
             {
-                if (valPropMap == msgData.end())
+                std::cerr << "Position property not found " << std::endl;
+                return;
+            }
+
+            posVal = std::get<size_t>(valPropMap->second);
+
+            if (posVal > minPositionVal && posVal < maxPositionVal)
+            {
+                std::tuple<uint64_t, secondary_post_code_t> postcodes =
+                    reporters[posVal - 1]->value();
+                uint64_t postcode = std::get<uint64_t>(postcodes);
+
+                // write postcode into seven segment display
+                if (postCodeDisplay(postcode) < 0)
                 {
-                    std::cerr << "Position property not found " << std::endl;
-                    return;
-                }
-
-                posVal = std::get<size_t>(valPropMap->second);
-
-                if (posVal > minPositionVal && posVal < maxPositionVal)
-                {
-                    std::tuple<uint64_t, secondary_post_code_t> postcodes =
-                        reporters[posVal - 1]->value();
-                    uint64_t postcode = std::get<uint64_t>(postcodes);
-
-                    // write postcode into seven segment display
-                    if (postCodeDisplay(postcode) < 0)
-                    {
-                        fprintf(stderr, "Error in display the postcode\n");
-                    }
+                    fprintf(stderr, "Error in display the postcode\n");
                 }
             }
+        }
         });
 }
 #endif
@@ -164,11 +165,11 @@ bool rateLimit(PostReporter& reporter, sdeventplus::source::IO& ioSource)
     sdeventplus::source::Time<sdeventplus::ClockId::Monotonic>(
         event, rateLimitEndTime, std::chrono::milliseconds(100),
         [&ioSource](auto&, auto) {
-            if (verbose)
-            {
-                fprintf(stderr, "Reenabling POST code handler\n");
-            }
-            ioSource.set_enabled(sdeventplus::source::Enabled::On);
+        if (verbose)
+        {
+            fprintf(stderr, "Reenabling POST code handler\n");
+        }
+        ioSource.set_enabled(sdeventplus::source::Enabled::On);
         })
         .set_floating(true);
     return true;
@@ -293,7 +294,6 @@ int postCodeIpmiHandler(const std::string& snoopObject,
  */
 int main(int argc, char* argv[])
 {
-
 #ifndef ENABLE_IPMI_SNOOP
     int postFd = -1;
     unsigned int rateLimit = 0;
@@ -335,7 +335,8 @@ int main(int argc, char* argv[])
             case 0:
                 break;
 #ifdef ENABLE_IPMI_SNOOP
-            case 'h': {
+            case 'h':
+            {
                 std::string_view instances = optarg;
                 size_t pos = 0;
 
@@ -348,7 +349,8 @@ int main(int argc, char* argv[])
                 break;
             }
 #endif
-            case 'b': {
+            case 'b':
+            {
                 codeSize = atoi(optarg);
 
                 if (codeSize < 1 || codeSize > 8)
@@ -371,15 +373,15 @@ int main(int argc, char* argv[])
                     return -1;
                 }
                 break;
-            case 'r': {
+            case 'r':
+            {
                 int argVal = -1;
                 try
                 {
                     argVal = std::stoi(optarg);
                 }
                 catch (...)
-                {
-                }
+                {}
 
                 if (argVal < 1)
                 {
