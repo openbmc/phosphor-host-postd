@@ -16,6 +16,24 @@
       "message": "Might still be good to error out if unsupported options are given",
       "revId": "fd2430d8d6691a41480656db8e1c2a8269a5ea25",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c92405_e0c5aa5a",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000900
+      },
+      "writtenOn": "2023-05-11T00:17:41Z",
+      "side": 0,
+      "message": "Dove a little deeper into this and fixed up all the command line options to only be accepted in the correct build configuration.",
+      "parentUuid": "5bcd7f67_e3b83176",
+      "revId": "fd2430d8d6691a41480656db8e1c2a8269a5ea25",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
