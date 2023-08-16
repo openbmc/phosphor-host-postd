@@ -41,12 +41,13 @@ endif
 
 conf_data.set('SNOOPD_ARGS', snoopd_args)
 
-configure_file(
-  input: 'lpcsnoop.service.in',
-  output: 'lpcsnoop.service',
-  configuration: conf_data,
-  install: true,
-  install_dir: systemd.get_variable('systemdsystemunitdir'))
+fs = import('fs')
+fs.copyfile(
+    'lpcsnoop.service.in',
+    'lpcsnoop.service',
+    install: true,
+    install_dir: systemd.get_variable('systemdsystemunitdir')
+)
 
 executable(
   'snoopd',
