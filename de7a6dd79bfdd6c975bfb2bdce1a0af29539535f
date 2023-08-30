@@ -1,0 +1,8 @@
+Code-Review+2: Benjamin Fair <benjaminfair@google.com>
+Code-Review+1: Zhikui Ren <zhikui.ren@intel.com>
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Submitted-by: Jonathan Doman <jonathan.doman@intel.com>
+Submitted-at: Wed, 30 Aug 2023 20:54:29 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/phosphor-host-postd/+/63072
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
