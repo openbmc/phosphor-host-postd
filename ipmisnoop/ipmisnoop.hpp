@@ -121,7 +121,7 @@ struct IpmiPostReporter : PostObject
         {
             fprintf(stderr, "invalid postcode value \n");
         }
-            })
+    })
     {}
 
     sdbusplus::bus_t& bus;

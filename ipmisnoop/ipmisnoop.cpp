@@ -124,7 +124,7 @@ void IpmiPostReporter::getSelectorPositionSignal(sdbusplus::bus_t& bus)
                 }
             }
         }
-        });
+    });
 }
 
 // handle muti-host D-bus

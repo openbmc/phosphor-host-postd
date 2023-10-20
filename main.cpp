@@ -117,8 +117,7 @@ bool rateLimit(PostReporter& reporter, sdeventplus::source::IO& ioSource)
             fprintf(stderr, "Reenabling POST code handler\n");
         }
         ioSource.set_enabled(sdeventplus::source::Enabled::On);
-        })
-        .set_floating(true);
+    }).set_floating(true);
     return true;
 }
 
