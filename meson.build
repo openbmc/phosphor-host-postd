@@ -27,7 +27,7 @@ conf_data.set('SYSTEMD_TARGET', get_option('systemd-target'))
 
 snoopd_src = ['main.cpp']
 snoopd_args = ''
-if get_option('snoop').enabled()
+if get_option('snoop').allowed()
   snoopd_src += 'ipmisnoop/ipmisnoop.cpp'
   add_project_arguments('-DENABLE_IPMI_SNOOP',language:'cpp')
   snoopd_args += ' -h "' + get_option('host-instances') + '"'
