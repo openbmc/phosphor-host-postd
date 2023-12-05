@@ -44,6 +44,7 @@
 
 static size_t codeSize = 1; /* Size of each POST code in bytes */
 static bool verbose = false;
+static std::function<int(uint64_t&, ssize_t)> procPostCode;
 
 static void usage(const char* name)
 {
@@ -122,6 +123,70 @@ bool rateLimit(PostReporter& reporter, sdeventplus::source::IO& ioSource)
 }
 
 /*
+ * Split input code into multiple 2 bytes PCC code, If the PCC code prefix
+ * matches the check code, store each PCC code in aspeedPCCBuffer, or clear
+ * aspeedPCCBuffer if the prefix does not match.
+ *
+ * Each PCC code contains one byte of port number (MSB) and another byte of
+ * partial postcode (LSB). To get a compelete postcode, the PCC code should
+ * followed the sequence of 0x40AA, 0x41BB, 0x42CC & 0x43DD. When
+ * aspeedPCCBuffer contains enough PCC codes, the postcode will be assigned as
+ * 0xDDCCBBAA.
+ */
+int aspeedPCC(uint64_t& code, ssize_t readb)
+{
+    // Size of data coming from the PCC hardware
+    constexpr size_t pccSize = sizeof(uint16_t);
+    // Required PCC count of a full postcode, if codeSize is 8 bytes, it means
+    // it require 4 PCC codes in correct sequence to get a complete postcode.
+    const size_t fullPostPCCCount = codeSize / pccSize;
+    // A PCC buffer for storing PCC code in sequence.
+    static std::vector<uint16_t> aspeedPCCBuffer;
+
+    uint16_t* codePtr = reinterpret_cast<uint16_t*>(&code);
+    size_t i;
+
+    for (i = 0; i < (readb / pccSize); i++)
+    {
+        uint16_t checkCode = 0x4000 +
+                             ((aspeedPCCBuffer.size() % fullPostPCCCount) << 8);
+
+        if (checkCode == (codePtr[i] & 0xFF00))
+        {
+            aspeedPCCBuffer.push_back(codePtr[i]);
+        }
+        else
+        {
+            aspeedPCCBuffer.clear();
+
+            // keep the PCC code if codePtr[i] matches with 0x40XX as first PCC
+            // code in buffer.
+            if ((codePtr[i] & 0xFF00) == 0x4000)
+            {
+                aspeedPCCBuffer.push_back(codePtr[i]);
+            }
+        }
+    }
+
+    if (aspeedPCCBuffer.size() < fullPostPCCCount)
+    {
+        // not receive full postcode yet.
+        return -1;
+    }
+
+    // prepare postcode and remove the prefix bytes
+    code = 0;
+    for (size_t i = 0; i < fullPostPCCCount; i++)
+    {
+        code |= static_cast<uint64_t>(aspeedPCCBuffer[i] & 0x00FF) << (8 * i);
+    }
+    aspeedPCCBuffer.erase(aspeedPCCBuffer.begin(),
+                          aspeedPCCBuffer.begin() + fullPostPCCCount);
+
+    return 0;
+}
+
+/*
  * Callback handling IO event from the POST code fd. i.e. there is new
  * POST code available to read.
  */
@@ -133,6 +198,11 @@ void PostCodeEventHandler(PostReporter* reporter, sdeventplus::source::IO& s,
 
     while ((readb = read(postFd, &code, codeSize)) > 0)
     {
+        if (procPostCode && procPostCode(code, readb) < 0)
+        {
+            return;
+        }
+
         code = le64toh(code);
         if (verbose)
         {
@@ -243,6 +313,10 @@ int main(int argc, char* argv[])
                 break;
             }
             case 'd':
+                if (std::string(optarg) == "/dev/aspeed-lpc-pcc")
+                {
+                    procPostCode = aspeedPCC;
+                }
 
                 postFd = open(optarg, O_NONBLOCK);
                 if (postFd < 0)
