@@ -42,8 +42,12 @@
 #include <optional>
 #include <thread>
 
+constexpr size_t pccSize = 2; // 2 bytes per code
+constexpr uint8_t pccPrefixBase = 0x40;
+
 static size_t codeSize = 1; /* Size of each POST code in bytes */
 static bool verbose = false;
+static bool aspeedPcc = false;
 
 static void usage(const char* name)
 {
@@ -122,6 +126,73 @@ bool rateLimit(PostReporter& reporter, sdeventplus::source::IO& ioSource)
 }
 
 /*
+ * Filter out invalid or truncated data.
+ * returns - false, and remaing bytes to re-read if current code is invalid.
+ *         - true, if code satisfies patterns.
+ *           e.g. '0x43pp42qq41rr40ss' for 8 bytes; '0x41rr40ss' for 4 bytes.
+ */
+bool isPccGood(const uint64_t code, size_t& remBytes)
+{
+    size_t index = 0;
+    for (size_t i = 0; i < codeSize; i += pccSize)
+    {
+        uint8_t expected = pccPrefixBase + index;
+        uint8_t prefix = code >> (8 * (i + 1));
+        if (prefix == expected)
+        {
+            index++;
+        }
+        else
+        {
+            index = (prefix == pccPrefixBase) ? 1 : 0;
+        }
+    }
+
+    if (index == (codeSize / pccSize))
+    {
+        return true;
+    }
+    remBytes = codeSize - (index * pccSize);
+
+    return false;
+}
+
+bool processPCC(int postFd, uint64_t& code)
+{
+    uint64_t tempCode;
+    size_t remBytes = 0;
+
+    while (!isPccGood(code, remBytes))
+    {
+        tempCode = code >> (8 * remBytes);
+        code = 0;
+        ssize_t readb = read(postFd, &code, remBytes);
+        if (readb == remBytes)
+        {
+            code = code << (8 * (codeSize - remBytes)) | tempCode;
+        }
+        else
+        {
+            if (readb < 0 && (errno == EAGAIN || errno == EWOULDBLOCK))
+            {
+                return false;
+            }
+        }
+    }
+
+    // remove the prefix bytes
+    tempCode = 0;
+    for (int i = codeSize; i > 0; i -= pccSize)
+    {
+        tempCode <<= 8;
+        tempCode |= (code >> (8 * (i - pccSize))) & 0xFF;
+    }
+    code = tempCode;
+
+    return true;
+}
+
+/*
  * Callback handling IO event from the POST code fd. i.e. there is new
  * POST code available to read.
  */
@@ -133,6 +204,14 @@ void PostCodeEventHandler(PostReporter* reporter, sdeventplus::source::IO& s,
 
     while ((readb = read(postFd, &code, codeSize)) > 0)
     {
+        if (aspeedPcc)
+        {
+            if (!processPCC(postFd, code))
+            {
+                return;
+            }
+        }
+
         code = le64toh(code);
         if (verbose)
         {
@@ -243,6 +322,10 @@ int main(int argc, char* argv[])
                 break;
             }
             case 'd':
+                if (std::string(optarg).compare("aspeed-lpc-pcc") == 0)
+                {
+                    aspeedPcc = true;
+                }
 
                 postFd = open(optarg, O_NONBLOCK);
                 if (postFd < 0)
