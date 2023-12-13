@@ -41,6 +41,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07086462_a21b29ba",
+        "filename": "main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2023-12-13T08:06:13Z",
+      "side": 1,
+      "message": "Done, change type to size_t.",
+      "parentUuid": "c619be26_9798fbb7",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 49
+      },
+      "revId": "7e9d085774fd3421ed6f281f2645fd3dd2e1cde7",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "848a2c74_149b32f7",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-12-11T09:21:10Z",
       "side": 1,
       "message": "isn\u0027t this always 1 right now?",
+      "range": {
+        "startLine": 137,
+        "startChar": 27,
+        "endLine": 137,
+        "endChar": 35
+      },
+      "revId": "7e9d085774fd3421ed6f281f2645fd3dd2e1cde7",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "890c0d04_3214404b",
+        "filename": "main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2023-12-13T08:06:13Z",
+      "side": 1,
+      "message": "codeSize will be updated when program launched with `-b ${post-code-bytes}`",
+      "parentUuid": "848a2c74_149b32f7",
       "range": {
         "startLine": 137,
         "startChar": 27,
@@ -87,6 +135,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "311c64a9_11012b5a",
+        "filename": "main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2023-12-13T08:06:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c65e6fe_d23b9a8e",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 3
+      },
+      "revId": "7e9d085774fd3421ed6f281f2645fd3dd2e1cde7",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3ba4803_cf603ee1",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-12-11T09:21:10Z",
       "side": 1,
       "message": "how come it isn\u0027t exact match?",
+      "range": {
+        "startLine": 325,
+        "startChar": 20,
+        "endLine": 326,
+        "endChar": 37
+      },
+      "revId": "7e9d085774fd3421ed6f281f2645fd3dd2e1cde7",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eb0e038_aa9f1cf0",
+        "filename": "main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2023-12-13T08:06:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3ba4803_cf603ee1",
       "range": {
         "startLine": 325,
         "startChar": 20,
