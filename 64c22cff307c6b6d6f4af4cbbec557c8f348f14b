@@ -3,6 +3,86 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bb41104_7d35f71b",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-13T18:59:57Z",
+      "side": 1,
+      "message": "Why is it 2 when line 132 talks about 8 byte codes?",
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f8770a4_d9eaf3b3",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-13T18:59:57Z",
+      "side": 1,
+      "message": "What are these patterns and where do they come from?",
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729cc41e_eebb83a9",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-13T18:59:57Z",
+      "side": 1,
+      "message": "This const does nothing useful.",
+      "range": {
+        "startLine": 134,
+        "startChar": 15,
+        "endLine": 134,
+        "endChar": 20
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6181389_04ef7071",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-13T18:59:57Z",
+      "side": 1,
+      "message": "codeSize*pccSize?  codeSize is currently 1, so we only look at a single byte?",
+      "range": {
+        "startLine": 137,
+        "startChar": 27,
+        "endLine": 137,
+        "endChar": 35
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46462a84_eb2355ec",
         "filename": "main.cpp",
         "patchSetId": 3
@@ -20,6 +100,86 @@
         "endLine": 147,
         "endChar": 53
       },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "437a98bf_1a922517",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-13T18:59:57Z",
+      "side": 1,
+      "message": "This code is undocumented and unclear.  Why does the index ever become 1?",
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba0ba02_81349e70",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-13T18:59:57Z",
+      "side": 1,
+      "message": "This is always 0, but a completely invalid pcc also ends with index \u003d\u003d 0.",
+      "range": {
+        "startLine": 151,
+        "startChar": 18,
+        "endLine": 151,
+        "endChar": 36
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01d9ba9_6612f3a7",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-13T18:59:57Z",
+      "side": 1,
+      "message": "\"tempCode\" ... probably can come up with a better name here.",
+      "range": {
+        "startLine": 162,
+        "startChar": 13,
+        "endLine": 162,
+        "endChar": 21
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf0d868_8130cc5f",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-13T18:59:57Z",
+      "side": 1,
+      "message": "Move \u0027tempCode\" definition into this scope?",
       "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
@@ -49,6 +209,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d26d36e7_0d12f8a5",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-13T18:59:57Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem like you\u0027ve handled the case where the read returns less than remBytes?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 25
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee4b9e67_fcfa0f4c",
         "filename": "main.cpp",
         "patchSetId": 3
@@ -66,6 +249,23 @@
         "endLine": 177,
         "endChar": 13
       },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa1877fc_2575c68c",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-13T18:59:57Z",
+      "side": 1,
+      "message": "Prefer not to reuse a variable.  The compiler can optimize multiple similar variables away to share a register if appropriate.  Make the code readable.",
       "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
@@ -111,6 +311,29 @@
         "startChar": 8,
         "endLine": 209,
         "endChar": 42
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c31c4d2d_9c3b81db",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-13T18:59:57Z",
+      "side": 1,
+      "message": "I think it would be better to not embed a machine-specific concept right into the middle of this code.  Make a std::function that can be used for processing post codes.  Assign the std::function to processPCC in the case on line 325.",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 9
       },
       "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
