@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1784117d_9111e1df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "Hi reviewers, Sorry for taking long time to submit new patchset.\nI rewrite entire function and use a `std::vector\u003cuint16_t\u003e aspeedPccBuffer` for storing the PCC codes, also simplify the PCC code check mechanism base on the vector size.\nI hope this new mechanism is more simple and readable. Please kindly help me review this new code, thank you.",
+      "revId": "3b53f0ba12a6a819659d0ae1686037af551bf5c1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}

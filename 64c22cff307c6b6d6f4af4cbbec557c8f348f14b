@@ -18,6 +18,24 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7160d417_e56dcbda",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "A complete postcode size are 8 bytes which combined `code` and `index` from 4 ports, so pccSize from each port is 2 bytes.\n\nThe postcode raw format as below (port index: 0x40 - 0x43)\n[P0_CODE][P0_INDEX][P1_CODE][P1_INDEX][P2_CODE][P2_INDEX][P3_CODE][P3_INDEX]\n\n```\nroot@bmc-oob:~# hexdump -C /dev/aspeed-lpc-pcc \n00000000  a0 40 00 41 00 42 ee 43  a3 40 00 41 00 42 ee 43  |.@.A.B.C.@.A.B.C|\n00000010  a2 40 00 41 00 42 ee 43  a2 40 00 41 00 42 ee 43  |.@.A.B.C.@.A.B.C|\n......\n```",
+      "parentUuid": "5bb41104_7d35f71b",
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f8770a4_d9eaf3b3",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-12-13T18:59:57Z",
       "side": 1,
       "message": "What are these patterns and where do they come from?",
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b29768e_149eb76c",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "The postcode raw format as below (port index: 0x40 - 0x43)\n[P0_CODE][P0_INDEX][P1_CODE][P1_INDEX][P2_CODE][P2_INDEX][P3_CODE][P3_INDEX]\n\n- 0x43pp42qq41rr40ss\nThis is a example for a complete postcode (8 bytes).\n\n\n- 0x41rr40ss\nThis is a example for the incomplete postcode (4 bytes).",
+      "parentUuid": "2f8770a4_d9eaf3b3",
       "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
@@ -58,6 +94,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58bb8b65_b1a350b3",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "This part is not exist in PS4, so resolved for now.",
+      "parentUuid": "729cc41e_eebb83a9",
+      "range": {
+        "startLine": 134,
+        "startChar": 15,
+        "endLine": 134,
+        "endChar": 20
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6181389_04ef7071",
@@ -71,6 +131,30 @@
       "writtenOn": "2023-12-13T18:59:57Z",
       "side": 1,
       "message": "codeSize*pccSize?  codeSize is currently 1, so we only look at a single byte?",
+      "range": {
+        "startLine": 137,
+        "startChar": 27,
+        "endLine": 137,
+        "endChar": 35
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e73e67_447dbe36",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "The codeSize can be updated by passing `-b ${post-code-bytes}`\nFor aspeed-lpc-pcc device we will require \"post-code-bytes \u003d 8\"",
+      "parentUuid": "a6181389_04ef7071",
       "range": {
         "startLine": 137,
         "startChar": 27,
@@ -121,6 +205,48 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa63f61_97fec992",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "This part is not exist in PS4, so mark as resolved for now.",
+      "parentUuid": "437a98bf_1a922517",
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33cfb84b_e1589e45",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "This part is not exist in PS4, so mark as resolved for now.",
+      "parentUuid": "46462a84_eb2355ec",
+      "range": {
+        "startLine": 147,
+        "startChar": 20,
+        "endLine": 147,
+        "endChar": 53
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bba0ba02_81349e70",
@@ -134,6 +260,30 @@
       "writtenOn": "2023-12-13T18:59:57Z",
       "side": 1,
       "message": "This is always 0, but a completely invalid pcc also ends with index \u003d\u003d 0.",
+      "range": {
+        "startLine": 151,
+        "startChar": 18,
+        "endLine": 151,
+        "endChar": 36
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "656375de_ff94a718",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "This part is not exist in PS4, so mark as resolved for now.",
+      "parentUuid": "bba0ba02_81349e70",
       "range": {
         "startLine": 151,
         "startChar": 18,
@@ -167,6 +317,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa334ff_c5c975df",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "This part is not exist in PS4, so mark as resolved for now.",
+      "parentUuid": "a01d9ba9_6612f3a7",
+      "range": {
+        "startLine": 162,
+        "startChar": 13,
+        "endLine": 162,
+        "endChar": 21
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbf0d868_8130cc5f",
@@ -184,6 +358,24 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e75cdc2_d93f3b9f",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "This part is not exist in PS4, so mark as resolved for now.",
+      "parentUuid": "bbf0d868_8130cc5f",
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "613ad4fb_f8ab2fbf",
@@ -197,6 +389,30 @@
       "writtenOn": "2023-12-13T16:54:34Z",
       "side": 1,
       "message": "`static_cast\u003csize_t\u003e`",
+      "range": {
+        "startLine": 170,
+        "startChar": 25,
+        "endLine": 170,
+        "endChar": 33
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c50da82_50d3eb4a",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "This part is not exist in PS4, so mark as resolved for now.",
+      "parentUuid": "613ad4fb_f8ab2fbf",
       "range": {
         "startLine": 170,
         "startChar": 25,
@@ -230,6 +446,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "790c5f41_c1014a22",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "This part is not exist in PS4, so mark as resolved for now.",
+      "parentUuid": "d26d36e7_0d12f8a5",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 25
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee4b9e67_fcfa0f4c",
@@ -243,6 +483,30 @@
       "writtenOn": "2023-12-13T16:54:34Z",
       "side": 1,
       "message": "combine",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 177,
+        "endChar": 13
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b560516e_32d1d030",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "This part is not exist in PS4, so mark as resolved for now.",
+      "parentUuid": "ee4b9e67_fcfa0f4c",
       "range": {
         "startLine": 174,
         "startChar": 8,
@@ -270,6 +534,24 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e26885_d42a75c8",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "This part is not exist in PS4, so mark as resolved for now.",
+      "parentUuid": "aa1877fc_2575c68c",
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bbc9540_de2b5bb1",
@@ -283,6 +565,30 @@
       "writtenOn": "2023-12-13T16:54:34Z",
       "side": 1,
       "message": "this will drop some data size_t vs. int.",
+      "range": {
+        "startLine": 185,
+        "startChar": 9,
+        "endLine": 185,
+        "endChar": 25
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "735f667a_050da799",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "This part is not exist in PS4, so mark as resolved for now.",
+      "parentUuid": "1bbc9540_de2b5bb1",
       "range": {
         "startLine": 185,
         "startChar": 9,
@@ -316,6 +622,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ee82fe_8554f3ba",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c002264d_e7290ee3",
+      "range": {
+        "startLine": 207,
+        "startChar": 8,
+        "endLine": 209,
+        "endChar": 42
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c31c4d2d_9c3b81db",
@@ -339,6 +669,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef0f33a6_058e61c5",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "add `std::function\u003cint(uint64_t\u0026, ssize_t)\u003e procPostCode`",
+      "parentUuid": "c31c4d2d_9c3b81db",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 9
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6b09cf7_ff3d0cc1",
@@ -352,6 +706,30 @@
       "writtenOn": "2023-12-13T16:54:34Z",
       "side": 1,
       "message": "does\n```\noptarg \u003d\u003d \"aspeed-lpc-pcc\"\n```\nwork?",
+      "range": {
+        "startLine": 325,
+        "startChar": 20,
+        "endLine": 325,
+        "endChar": 70
+      },
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4de648_d6d10b1d",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-04T14:18:47Z",
+      "side": 1,
+      "message": "The type of `optarg` is `char *`, so it will have compile error in this case.",
+      "parentUuid": "f6b09cf7_ff3d0cc1",
       "range": {
         "startLine": 325,
         "startChar": 20,
