@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdd4f31f_02c613ba",
+        "filename": "main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-03-25T14:39:36Z",
+      "side": 1,
+      "message": "Can we get some more comments to this effect in the code then?  You can\u0027t expect everyone reviewing to be intimately familiar with this particular hardware detail.  \"2 bytes per code\" doesn\u0027t tell me much.",
+      "parentUuid": "7160d417_e56dcbda",
+      "revId": "64c22cff307c6b6d6f4af4cbbec557c8f348f14b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f8770a4_d9eaf3b3",
         "filename": "main.cpp",
         "patchSetId": 3
