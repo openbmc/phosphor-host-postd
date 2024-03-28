@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b962aad_06f97d2d",
+        "filename": "main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-28T10:21:15Z",
+      "side": 1,
+      "message": "move into aspeedPCC().",
+      "parentUuid": "28f1cee7_709a3840",
+      "revId": "3b53f0ba12a6a819659d0ae1686037af551bf5c1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b29d937d_4bd55a36",
         "filename": "main.cpp",
         "patchSetId": 4
@@ -48,6 +66,24 @@
       "writtenOn": "2024-03-25T14:39:36Z",
       "side": 1,
       "message": "Does this work for what you\u0027re tryingto accomplish?  Aren\u0027t you trying to support 4 byte post codes.",
+      "revId": "3b53f0ba12a6a819659d0ae1686037af551bf5c1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1245b189_56a89862",
+        "filename": "main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-28T10:21:15Z",
+      "side": 1,
+      "message": "The codeSize will be reassigned by input args (line 296 - 309).\nUser can config it by adding `POST_CODE_BYTES \u003d \"8\"` in bbappened file.\n\nI hope this answers your question.",
+      "parentUuid": "b29d937d_4bd55a36",
       "revId": "3b53f0ba12a6a819659d0ae1686037af551bf5c1",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
@@ -92,6 +128,48 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d02abb_239c78a7",
+        "filename": "main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-28T10:21:15Z",
+      "side": 1,
+      "message": "got it, check entire file and fix it.",
+      "parentUuid": "9002f00f_1ed85da6",
+      "range": {
+        "startLine": 50,
+        "startChar": 29,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "3b53f0ba12a6a819659d0ae1686037af551bf5c1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50616e91_2a25dbec",
+        "filename": "main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-28T10:21:15Z",
+      "side": 1,
+      "message": "move into aspeedPCC().",
+      "parentUuid": "237015cd_b8aebe35",
+      "revId": "3b53f0ba12a6a819659d0ae1686037af551bf5c1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4be71d96_1f02b208",
@@ -111,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5b3ef1b_fdba4620",
+        "filename": "main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-28T10:21:15Z",
+      "side": 1,
+      "message": "This is reason I use aspeedPCCBuffer for storing each PCC code.\n\n1. receieve 4 bytes data `[0x40AA][0x41BB]`\n\n  - aspeedPCCBuffer[0] \u003d 0x40AA\n  - aspeedPCCBuffer[1] \u003d 0x41BB\n\n`aspeedPCCBuffer.size()` less than `fullPostPCCCount`, it means aspeedPCCBuffer does not have enough data for 1 full postcode. return and wait for next coming data.\n\n\n2. receieve 8 bytes data `[0x42CC][0x43DD][0x40EE][0x41FF]`\n\n  - aspeedPCCBuffer[0] \u003d 0x40AA\n  - aspeedPCCBuffer[1] \u003d 0x41BB\n  - aspeedPCCBuffer[2] \u003d 0x42CC\n  - aspeedPCCBuffer[3] \u003d 0x43DD\n  - aspeedPCCBuffer[4] \u003d 0x40EE\n  - aspeedPCCBuffer[5] \u003d 0x41FF\n\n`aspeedPCCBuffer.size()` bigger than `fullPostPCCCount` now, it means aspeedPCCBuffer contains 1 full postcode, start postcode preparation.\nAfter process, the remaining aspeedPCCBuffer as below\n  - aspeedPCCBuffer[0] \u003d 0x40EE\n  - aspeedPCCBuffer[1] \u003d 0x41FF\n\nAnd return the postcode as `0xDDCCBBAA`",
+      "parentUuid": "4be71d96_1f02b208",
+      "revId": "3b53f0ba12a6a819659d0ae1686037af551bf5c1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52da160e_e04b26fa",
         "filename": "main.cpp",
         "patchSetId": 4
@@ -122,6 +218,30 @@
       "writtenOn": "2024-03-25T14:39:36Z",
       "side": 1,
       "message": "Isn\u0027t 4 only used for 4 byte post codes and doesn\u0027t work for 1 or 2 byte post codes?  This implies that the code is only useful for 4 byte post codes, which I don\u0027t think we should push that limitation.",
+      "range": {
+        "startLine": 147,
+        "startChar": 65,
+        "endLine": 147,
+        "endChar": 66
+      },
+      "revId": "3b53f0ba12a6a819659d0ae1686037af551bf5c1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cef02ac9_5270bcc0",
+        "filename": "main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-03-28T10:21:15Z",
+      "side": 1,
+      "message": "got it, I think I should use fullPostPCCCount instead.",
+      "parentUuid": "52da160e_e04b26fa",
       "range": {
         "startLine": 147,
         "startChar": 65,
