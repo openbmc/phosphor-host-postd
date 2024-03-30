@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4342a80a_20e221b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000086
+      },
+      "writtenOn": "2024-03-30T10:18:40Z",
+      "side": 1,
+      "message": "Patch looks similar to https://gerrit.openbmc.org/c/openbmc/phosphor-host-postd/+/56974.\nSee Andrew J comment on Aspeed PCC driver support OpenBMC kernel related.",
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
