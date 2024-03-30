@@ -16,6 +16,138 @@
       "message": "Patch looks similar to https://gerrit.openbmc.org/c/openbmc/phosphor-host-postd/+/56974.\nSee Andrew J comment on Aspeed PCC driver support OpenBMC kernel related.",
       "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc13d9f0_bb397e27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001049
+      },
+      "writtenOn": "2024-03-30T14:44:21Z",
+      "side": 1,
+      "message": "Nit comments.",
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33bd61bc_d25aad43",
+        "filename": "main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1001049
+      },
+      "writtenOn": "2024-03-30T14:44:21Z",
+      "side": 1,
+      "message": "Nit: Spelling mistake.",
+      "range": {
+        "startLine": 131,
+        "startChar": 36,
+        "endLine": 131,
+        "endChar": 45
+      },
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b99ffc_f17bb127",
+        "filename": "main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001049
+      },
+      "writtenOn": "2024-03-30T14:44:21Z",
+      "side": 1,
+      "message": "Nit: Can this be moved inside for loop at line 149",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c3c7497_251db3b9",
+        "filename": "main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001049
+      },
+      "writtenOn": "2024-03-30T14:44:21Z",
+      "side": 1,
+      "message": "Magic numbers, can this be defined as const expression with meaningful names?",
+      "range": {
+        "startLine": 151,
+        "startChar": 29,
+        "endLine": 151,
+        "endChar": 35
+      },
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c854f0_cfb74a9a",
+        "filename": "main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1001049
+      },
+      "writtenOn": "2024-03-30T14:44:21Z",
+      "side": 1,
+      "message": "Nit: Since the function is only returning -1 and 0 would it be better to return bool?",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 18
+      },
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523a2405_5e90d73b",
+        "filename": "main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1001049
+      },
+      "writtenOn": "2024-03-30T14:44:21Z",
+      "side": 1,
+      "message": "More magic numbers.",
+      "range": {
+        "startLine": 181,
+        "startChar": 71,
+        "endLine": 181,
+        "endChar": 72
+      },
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
