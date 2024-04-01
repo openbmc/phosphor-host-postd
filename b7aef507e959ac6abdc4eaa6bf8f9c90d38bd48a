@@ -58,6 +58,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beba7c73_652e7cc6",
+        "filename": "main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-04-01T03:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33bd61bc_d25aad43",
+      "range": {
+        "startLine": 131,
+        "startChar": 36,
+        "endLine": 131,
+        "endChar": 45
+      },
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97b99ffc_f17bb127",
@@ -71,6 +95,30 @@
       "writtenOn": "2024-03-30T14:44:21Z",
       "side": 1,
       "message": "Nit: Can this be moved inside for loop at line 149",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc559d50_5f545324",
+        "filename": "main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-04-01T03:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97b99ffc_f17bb127",
       "range": {
         "startLine": 147,
         "startChar": 4,
@@ -104,6 +152,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "492c7f49_60b21684",
+        "filename": "main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-04-01T03:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3c7497_251db3b9",
+      "range": {
+        "startLine": 151,
+        "startChar": 29,
+        "endLine": 151,
+        "endChar": 35
+      },
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86c854f0_cfb74a9a",
@@ -127,6 +199,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "094fc35d_2101a68a",
+        "filename": "main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-04-01T03:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86c854f0_cfb74a9a",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 18
+      },
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "523a2405_5e90d73b",
@@ -140,6 +236,30 @@
       "writtenOn": "2024-03-30T14:44:21Z",
       "side": 1,
       "message": "More magic numbers.",
+      "range": {
+        "startLine": 181,
+        "startChar": 71,
+        "endLine": 181,
+        "endChar": 72
+      },
+      "revId": "b7aef507e959ac6abdc4eaa6bf8f9c90d38bd48a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b48159d9_936f09ed",
+        "filename": "main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2024-04-01T03:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "523a2405_5e90d73b",
       "range": {
         "startLine": 181,
         "startChar": 71,
