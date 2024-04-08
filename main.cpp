@@ -318,7 +318,8 @@ int main(int argc, char* argv[])
                 break;
             }
             case 'd':
-                if (std::string(optarg) == "/dev/aspeed-lpc-pcc")
+                if (std::string(optarg).find("aspeed-lpc-pcc") !=
+                    std::string::npos)
                 {
                     procPostCode = aspeedPCC;
                 }
