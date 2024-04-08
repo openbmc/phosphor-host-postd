@@ -1,0 +1,10 @@
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Code-Review+2: Willy Tu <wltu@google.com>
+Code-Review+1: Supreeth Venkatesh <supreeth.venkatesh@amd.com>
+Code-Review+1: Jayanth Othayoth <ojayanth@gmail.com>
+Submitted-by: Rajaganesh Rathinasabapathi <Rajaganesh.Rathinasabapathi@amd.com>
+Submitted-at: Mon, 08 Apr 2024 16:35:40 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/phosphor-host-postd/+/70664
+Comments-Total: 1
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
