@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21dc1936_27a6d64f",
+        "filename": "main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2024-04-08T15:33:48Z",
+      "side": 1,
+      "message": "oh nice, I was just about to comment on if the prefixed changed or not and gonna suggest this change.",
+      "range": {
+        "startLine": 321,
+        "startChar": 19,
+        "endLine": 321,
+        "endChar": 75
+      },
+      "revId": "95aa444074ec354485cce3d8c858ea05814d1fb9",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
