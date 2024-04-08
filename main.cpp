@@ -318,7 +318,7 @@ int main(int argc, char* argv[])
                 break;
             }
             case 'd':
-                if (std::string(optarg) == "/dev/aspeed-lpc-pcc")
+                if (std::string(optarg).starts_with("/dev/aspeed-lpc-pcc"))
                 {
                     procPostCode = aspeedPCC;
                 }
