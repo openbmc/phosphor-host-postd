@@ -18,6 +18,7 @@
 #include "ipmisnoop/ipmisnoop.hpp"
 #endif
 #include "lpcsnoop/snoop.hpp"
+#include "nlohmann/json.hpp"
 
 #include <endian.h>
 #include <fcntl.h>
@@ -33,10 +34,15 @@
 #include <sdeventplus/source/time.hpp>
 #include <sdeventplus/utility/sdbus.hpp>
 #include <stdplus/signal.hpp>
+#include <phosphor-logging/elog-errors.hpp>
+#include <phosphor-logging/lg2.hpp>
+#include <phosphor-logging/log.hpp>
+#include <xyz/openbmc_project/State/Boot/PostCode/error.hpp>
 
 #include <chrono>
 #include <cstdint>
 #include <exception>
+#include <fstream>
 #include <functional>
 #include <iostream>
 #include <optional>
@@ -45,6 +51,14 @@
 static size_t codeSize = 1; /* Size of each POST code in bytes */
 static bool verbose = false;
 static std::function<bool(uint64_t&, ssize_t)> procPostCode;
+
+nlohmann::json jsonData;
+
+PHOSPHOR_LOG2_USING;
+using namespace phosphor::logging;
+using namespace sdbusplus::error::xyz::openbmc_project::state::boot::post_code;
+namespace PostCode = phosphor::logging::xyz::openbmc_project::state::boot;
+using PostCodeLog = PostCode::post_code::PostCodeFailed;
 
 static void usage(const char* name)
 {
@@ -120,6 +134,33 @@ bool rateLimit(PostReporter& reporter, sdeventplus::source::IO& ioSource)
         ioSource.set_enabled(sdeventplus::source::Enabled::On);
     }).set_floating(true);
     return true;
+}
+
+void loadJsonData(const std::string& filename)
+{
+    std::ifstream file(filename);
+    if (!file.is_open())
+    {
+        std::cerr << "Failed to open JSON file: " << filename << std::endl;
+        exit(1);
+    }
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    file.close();
+
+    jsonData = nlohmann::json::parse(buffer.str());
+}
+
+std::string getLogMessage(uint64_t code)
+{
+    std::stringstream ss;
+    ss << "0x" << std::hex << code;
+    auto key = ss.str();
+    if (jsonData.contains(key))
+    {
+        return jsonData[key].get<std::string>();
+    }
+    return "Unknown";
 }
 
 /*
@@ -213,6 +254,15 @@ void PostCodeEventHandler(PostReporter* reporter, sdeventplus::source::IO& s,
         {
             fprintf(stderr, "Code: 0x%" PRIx64 "\n", code);
         }
+
+        std::string logMessage = getLogMessage(code);
+        if (logMessage != "Unknown")
+        {
+            if (verbose)
+                fprintf(stderr, "Code: 0x%" PRIx64 " Log: %s\n", code, logMessage.c_str());
+            report<PostCodeFailed>(PostCodeLog::REASON(logMessage.c_str()));
+        }
+
         // HACK: Always send property changed signal even for the same code
         // since we are single threaded, external users will never see the
         // first value.
@@ -284,6 +334,7 @@ int main(int argc, char* argv[])
 #endif
         "v";
 
+    loadJsonData("/usr/share/phosphor-host-postd/post_code_log.json");
     while ((opt = getopt_long(argc, argv, optstring, long_options, NULL)) != -1)
     {
         switch (opt)
