@@ -19,7 +19,9 @@ phosphor_dbus_interfaces = dependency('phosphor-dbus-interfaces')
 sdbusplus = dependency('sdbusplus')
 sdeventplus = dependency('sdeventplus')
 systemd = dependency('systemd')
+phosphor_logging = dependency('phosphor-logging')
 libgpiodcxx = dependency('libgpiodcxx')
+nlohmann_json_dep = dependency('nlohmann_json', include_type: 'system')
 
 conf_data = configuration_data()
 conf_data.set('bindir', get_option('prefix') / get_option('bindir'))
@@ -57,6 +59,8 @@ executable(
     sdeventplus,
     phosphor_dbus_interfaces,
     libgpiodcxx,
+    nlohmann_json_dep,
+    phosphor_logging,
   ],
   install: true,
 )
