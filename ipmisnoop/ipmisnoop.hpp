@@ -16,6 +16,7 @@
 #include <iostream>
 #include <span>
 
+
 const std::string ipmiSnoopObject = "/xyz/openbmc_project/state/boot/raw";
 
 const int hostParseIdx = 3;
@@ -60,7 +61,7 @@ struct IpmiPostReporter : PostObject
 
         /* sevenSegmentLedEnabled flag is set when GPIO pins are not
         there 7 seg display for fewer platforms. So, the code for
-        postcode dispay and Get Selector position can be skipped in
+        postcode display and Get Selector position can be skipped in
         those platforms.
         */
         if (!sevenSegmentLedEnabled)
