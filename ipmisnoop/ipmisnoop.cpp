@@ -152,7 +152,7 @@ int postCodeIpmiHandler(const std::string& snoopObject,
         bus.request_name(snoopDbus.c_str());
 
         /* sevenSegmentLedEnabled flag is unset when GPIO pins are not there 7
-        seg display for fewer platforms. So, the code for postcode dispay and
+        seg display for fewer platforms. So, the code for postcode display and
         Get Selector position can be skipped in those platforms.
         */
         if (sevenSegmentLedEnabled)

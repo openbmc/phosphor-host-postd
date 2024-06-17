@@ -219,7 +219,7 @@ void PostCodeEventHandler(PostReporter* reporter, sdeventplus::source::IO& s,
         reporter->value(std::make_tuple(~code, secondary_post_code_t{}), true);
         reporter->value(std::make_tuple(code, secondary_post_code_t{}));
 
-        // read depends on old data being cleared since it doens't always read
+        // read depends on old data being cleared since it doesn't always read
         // the full code size
         code = 0;
 
