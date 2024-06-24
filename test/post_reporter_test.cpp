@@ -44,6 +44,9 @@ TEST_F(PostReporterTest, AddsObjectWithExpectedName)
                 sd_bus_add_object_vtable(IsNull(), _, StrEq(snoopObject),
                                          StrEq(snoopDbus), _, _))
         .WillOnce(Return(0));
+    EXPECT_CALL(bus_mock,
+                sd_bus_emit_object_removed(IsNull(), StrEq(snoopObject)))
+        .WillOnce(Return(0));
 
     PostReporter testReporter(bus, snoopObject, true);
 }
