@@ -40,10 +40,15 @@ TEST_F(PostReporterTest, EmitsObjectsOnExpectedDbusPath)
 
 TEST_F(PostReporterTest, AddsObjectWithExpectedName)
 {
+    auto slotcb = [](sd_bus*, sd_bus_slot** slot, auto&&...) {
+        *slot = reinterpret_cast<sd_bus_slot*>(0xdefa);
+        return 0;
+    };
+
     EXPECT_CALL(bus_mock,
                 sd_bus_add_object_vtable(IsNull(), _, StrEq(snoopObject),
                                          StrEq(snoopDbus), _, _))
-        .WillOnce(Return(0));
+        .WillOnce(slotcb);
 
     PostReporter testReporter(bus, snoopObject, true);
 }
