@@ -8,9 +8,9 @@ uint32_t getSelectorPosition(sdbusplus::bus_t& bus)
 {
     const std::string propertyName = "Position";
 
-    auto method = bus.new_method_call(selectorService.c_str(),
-                                      selectorObject.c_str(),
-                                      "org.freedesktop.DBus.Properties", "Get");
+    auto method =
+        bus.new_method_call(selectorService.c_str(), selectorObject.c_str(),
+                            "org.freedesktop.DBus.Properties", "Get");
     method.append(selectorIface.c_str(), propertyName);
 
     try
@@ -97,34 +97,34 @@ void IpmiPostReporter::getSelectorPositionSignal(sdbusplus::bus_t& bus)
         sdbusplus::bus::match::rules::propertiesChanged(selectorObject,
                                                         selectorIface),
         [&](sdbusplus::message_t& msg) {
-        std::string objectName;
-        std::map<std::string, Selector::PropertiesVariant> msgData;
-        msg.read(objectName, msgData);
+            std::string objectName;
+            std::map<std::string, Selector::PropertiesVariant> msgData;
+            msg.read(objectName, msgData);
 
-        auto valPropMap = msgData.find("Position");
-        {
-            if (valPropMap == msgData.end())
+            auto valPropMap = msgData.find("Position");
             {
-                std::cerr << "Position property not found " << std::endl;
-                return;
-            }
-
-            posVal = std::get<size_t>(valPropMap->second);
-
-            if (posVal > minPositionVal && posVal < maxPositionVal)
-            {
-                std::tuple<uint64_t, secondary_post_code_t> postcodes =
-                    reporters[posVal - 1]->value();
-                uint64_t postcode = std::get<uint64_t>(postcodes);
-
-                // write postcode into seven segment display
-                if (postCodeDisplay(postcode) < 0)
+                if (valPropMap == msgData.end())
                 {
-                    fprintf(stderr, "Error in display the postcode\n");
+                    std::cerr << "Position property not found " << std::endl;
+                    return;
+                }
+
+                posVal = std::get<size_t>(valPropMap->second);
+
+                if (posVal > minPositionVal && posVal < maxPositionVal)
+                {
+                    std::tuple<uint64_t, secondary_post_code_t> postcodes =
+                        reporters[posVal - 1]->value();
+                    uint64_t postcode = std::get<uint64_t>(postcodes);
+
+                    // write postcode into seven segment display
+                    if (postCodeDisplay(postcode) < 0)
+                    {
+                        fprintf(stderr, "Error in display the postcode\n");
+                    }
                 }
             }
-        }
-    });
+        });
 }
 
 // handle muti-host D-bus

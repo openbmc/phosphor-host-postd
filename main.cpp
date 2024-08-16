@@ -113,12 +113,13 @@ bool rateLimit(PostReporter& reporter, sdeventplus::source::IO& ioSource)
     sdeventplus::source::Time<sdeventplus::ClockId::Monotonic>(
         event, rateLimitEndTime, std::chrono::milliseconds(100),
         [&ioSource](auto&, auto) {
-        if (verbose)
-        {
-            fprintf(stderr, "Reenabling POST code handler\n");
-        }
-        ioSource.set_enabled(sdeventplus::source::Enabled::On);
-    }).set_floating(true);
+            if (verbose)
+            {
+                fprintf(stderr, "Reenabling POST code handler\n");
+            }
+            ioSource.set_enabled(sdeventplus::source::Enabled::On);
+        })
+        .set_floating(true);
     return true;
 }
 
@@ -151,9 +152,9 @@ bool aspeedPCC(uint64_t& code, ssize_t readb)
 
     for (size_t i = 0; i < (readb / pccSize); i++)
     {
-        uint16_t checkCode = firstPCCPortNumber +
-                             ((aspeedPCCBuffer.size() % fullPostPCCCount)
-                              << byteShift);
+        uint16_t checkCode =
+            firstPCCPortNumber +
+            ((aspeedPCCBuffer.size() % fullPostPCCCount) << byteShift);
 
         if (checkCode == (codePtr[i] & pccPortNumberMask))
         {
