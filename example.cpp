@@ -25,8 +25,14 @@
 static void printPostcode(FILE*, postcode_t postcode)
 {
     /* Print output to verify the example program is receiving values. */
-    std::printf("recv: 0x%" PRIx64 "\n",
-                std::get<primary_post_code_t>(postcode));
+    auto code = std::get<0>(postcode);
+    std::string hexCode;
+    hexCode.reserve(2 * code.size());
+    for (const auto& byte : code)
+    {
+        hexCode += std::format("{:02x}", byte);
+    }
+    std::printf("recv: 0x%s\n", hexCode.c_str());
 }
 
 /*
