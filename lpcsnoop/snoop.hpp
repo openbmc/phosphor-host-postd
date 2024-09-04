@@ -13,7 +13,7 @@ template <typename... T>
 using ServerObject = typename sdbusplus::server::object_t<T...>;
 using PostInterface = sdbusplus::xyz::openbmc_project::State::Boot::server::Raw;
 using PostObject = ServerObject<PostInterface>;
-using primary_post_code_t = uint64_t;
+using primary_post_code_t = std::vector<uint8_t>;
 using secondary_post_code_t = std::vector<uint8_t>;
 using postcode_t = std::tuple<primary_post_code_t, secondary_post_code_t>;
 

@@ -25,14 +25,14 @@ namespace fs = std::filesystem;
 
 static void DisplayDbusValue(FILE* f, postcode_t postcodes)
 {
-    auto postcode = std::get<primary_post_code_t>(postcodes);
+    const auto& postcode = std::get<0>(postcodes);
     // Uses cstdio instead of streams because the device file has
     // very strict requirements about the data format and streaming
     // abstractions tend to muck it up.
-    if (f)
+    if (f && !postcode.empty())
     {
-        int rc = std::fprintf(f, "%d%02x\n", (postcode > 0xff),
-                              static_cast<uint8_t>(postcode & 0xff));
+        int rc =
+            std::fprintf(f, "%d%02x\n", postcode.size() > 1, postcode.back());
         if (rc < 0)
         {
             std::fprintf(stderr, "failed to write 7seg value: rc=%d\n", rc);

@@ -113,12 +113,12 @@ void IpmiPostReporter::getSelectorPositionSignal(sdbusplus::bus_t& bus)
 
                 if (posVal > minPositionVal && posVal < maxPositionVal)
                 {
-                    std::tuple<uint64_t, secondary_post_code_t> postcodes =
-                        reporters[posVal - 1]->value();
-                    uint64_t postcode = std::get<uint64_t>(postcodes);
+                    std::tuple<primary_post_code_t, secondary_post_code_t>
+                        postcodes = reporters[posVal - 1]->value();
+                    auto postcode = std::get<0>(postcodes);
 
                     // write postcode into seven segment display
-                    if (postCodeDisplay(postcode) < 0)
+                    if (postCodeDisplay(postcode[0]) < 0)
                     {
                         fprintf(stderr, "Error in display the postcode\n");
                     }
