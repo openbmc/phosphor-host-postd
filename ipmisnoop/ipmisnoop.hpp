@@ -19,7 +19,6 @@
 const std::string ipmiSnoopObject = "/xyz/openbmc_project/state/boot/raw";
 
 const int hostParseIdx = 3;
-const int maxPostcode = 255;
 const int maxPosition = 4;
 
 extern bool sevenSegmentLedEnabled;
@@ -54,7 +53,7 @@ struct IpmiPostReporter : PostObject
             sdbusplus::bus::match::rules::propertiesChanged(objPath, rawIface),
 
             [this, &bus](sdbusplus::message_t& msg) {
-                using primarycode_t = uint64_t;
+                using primarycode_t = std::vector<uint8_t>;
                 using secondarycode_t = std::vector<uint8_t>;
                 using postcode_t = std::tuple<primarycode_t, secondarycode_t>;
 
@@ -95,18 +94,15 @@ struct IpmiPostReporter : PostObject
                     std::cerr << "Value property is not found " << std::endl;
                     return;
                 }
-                uint64_t postcode =
+                auto postcode =
                     std::get<0>(std::get<postcode_t>(valPropMap->second));
 
-                if (postcode <= maxPostcode)
+                if (postcode.size() == 1)
                 {
                     if (position == hostNum)
                     {
-                        uint8_t postcode_8bit =
-                            static_cast<uint8_t>(postcode & 0x0000FF);
-
                         // write postcode into seven segment display
-                        if (postCodeDisplay(postcode_8bit) < 0)
+                        if (postCodeDisplay(postcode[0]) < 0)
                         {
                             fprintf(stderr, "Error in display the postcode\n");
                         }
