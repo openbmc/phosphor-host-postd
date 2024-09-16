@@ -44,7 +44,7 @@
 
 static size_t codeSize = 1; /* Size of each POST code in bytes */
 static bool verbose = false;
-static std::function<bool(uint64_t&, ssize_t)> procPostCode;
+static std::function<bool(std::vector<uint8_t>&, ssize_t)> procPostCode;
 
 static void usage(const char* name)
 {
@@ -61,6 +61,16 @@ static void usage(const char* name)
 #endif
             "  -v, --verbose  Prints verbose information while running\n\n",
             name);
+}
+
+static std::vector<uint8_t> bytesInvert(const std::vector<uint8_t>& data)
+{
+    std::vector<uint8_t> inv;
+    for (const auto& byte : data)
+    {
+        inv.emplace_back(~byte);
+    }
+    return inv;
 }
 
 /**
@@ -134,63 +144,63 @@ bool rateLimit(PostReporter& reporter, sdeventplus::source::IO& ioSource)
  * aspeedPCCBuffer contains enough PCC codes, the postcode will be assigned as
  * 0xDDCCBBAA.
  */
-bool aspeedPCC(uint64_t& code, ssize_t readb)
-{
-    // Size of data coming from the PCC hardware
-    constexpr size_t pccSize = sizeof(uint16_t);
-    // Required PCC count of a full postcode, if codeSize is 8 bytes, it means
-    // it require 4 PCC codes in correct sequence to get a complete postcode.
-    const size_t fullPostPCCCount = codeSize / pccSize;
-    // A PCC buffer for storing PCC code in sequence.
-    static std::vector<uint16_t> aspeedPCCBuffer;
-    constexpr uint16_t firstPCCPortNumber = 0x4000;
-    constexpr uint16_t pccPortNumberMask = 0xFF00;
-    constexpr uint16_t pccPostCodeMask = 0x00FF;
-    constexpr uint8_t byteShift = 8;
+// bool aspeedPCC(std::vector<uint8_t>& code, ssize_t readb)
+// {
+//     // Size of data coming from the PCC hardware
+//     constexpr size_t pccSize = sizeof(uint16_t);
+//     // Required PCC count of a full postcode, if codeSize is 8 bytes, it means
+//     // it require 4 PCC codes in correct sequence to get a complete postcode.
+//     const size_t fullPostPCCCount = codeSize / pccSize;
+//     // A PCC buffer for storing PCC code in sequence.
+//     static std::vector<uint16_t> aspeedPCCBuffer;
+//     constexpr uint16_t firstPCCPortNumber = 0x4000;
+//     constexpr uint16_t pccPortNumberMask = 0xFF00;
+//     constexpr uint16_t pccPostCodeMask = 0x00FF;
+//     constexpr uint8_t byteShift = 8;
 
-    uint16_t* codePtr = reinterpret_cast<uint16_t*>(&code);
+//     uint16_t* codePtr = reinterpret_cast<uint16_t*>(&code);
 
-    for (size_t i = 0; i < (readb / pccSize); i++)
-    {
-        uint16_t checkCode =
-            firstPCCPortNumber +
-            ((aspeedPCCBuffer.size() % fullPostPCCCount) << byteShift);
+//     for (size_t i = 0; i < (readb / pccSize); i++)
+//     {
+//         uint16_t checkCode =
+//             firstPCCPortNumber +
+//             ((aspeedPCCBuffer.size() % fullPostPCCCount) << byteShift);
 
-        if (checkCode == (codePtr[i] & pccPortNumberMask))
-        {
-            aspeedPCCBuffer.emplace_back(codePtr[i]);
-        }
-        else
-        {
-            aspeedPCCBuffer.clear();
+//         if (checkCode == (codePtr[i] & pccPortNumberMask))
+//         {
+//             aspeedPCCBuffer.emplace_back(codePtr[i]);
+//         }
+//         else
+//         {
+//             aspeedPCCBuffer.clear();
 
-            // keep the PCC code if codePtr[i] matches with 0x40XX as first PCC
-            // code in buffer.
-            if ((codePtr[i] & pccPortNumberMask) == firstPCCPortNumber)
-            {
-                aspeedPCCBuffer.emplace_back(codePtr[i]);
-            }
-        }
-    }
+//             // keep the PCC code if codePtr[i] matches with 0x40XX as first PCC
+//             // code in buffer.
+//             if ((codePtr[i] & pccPortNumberMask) == firstPCCPortNumber)
+//             {
+//                 aspeedPCCBuffer.emplace_back(codePtr[i]);
+//             }
+//         }
+//     }
 
-    if (aspeedPCCBuffer.size() < fullPostPCCCount)
-    {
-        // not receive full postcode yet.
-        return false;
-    }
+//     if (aspeedPCCBuffer.size() < fullPostPCCCount)
+//     {
+//         // not receive full postcode yet.
+//         return false;
+//     }
 
-    // Remove the prefix bytes and combine the partial postcodes together.
-    code = 0;
-    for (size_t i = 0; i < fullPostPCCCount; i++)
-    {
-        code |= static_cast<uint64_t>(aspeedPCCBuffer[i] & pccPostCodeMask)
-                << (byteShift * i);
-    }
-    aspeedPCCBuffer.erase(aspeedPCCBuffer.begin(),
-                          aspeedPCCBuffer.begin() + fullPostPCCCount);
+//     // Remove the prefix bytes and combine the partial postcodes together.
+//     code = 0;
+//     for (size_t i = 0; i < fullPostPCCCount; i++)
+//     {
+//         code |= static_cast<uint64_t>(aspeedPCCBuffer[i] & pccPostCodeMask)
+//                 << (byteShift * i);
+//     }
+//     aspeedPCCBuffer.erase(aspeedPCCBuffer.begin(),
+//                           aspeedPCCBuffer.begin() + fullPostPCCCount);
 
-    return true;
-}
+//     return true;
+// }
 
 /*
  * Callback handling IO event from the POST code fd. i.e. there is new
@@ -199,7 +209,7 @@ bool aspeedPCC(uint64_t& code, ssize_t readb)
 void PostCodeEventHandler(PostReporter* reporter, sdeventplus::source::IO& s,
                           int postFd, uint32_t)
 {
-    uint64_t code = 0;
+    std::vector<uint8_t> code(codeSize);
     ssize_t readb;
 
     while ((readb = read(postFd, &code, codeSize)) > 0)
@@ -209,20 +219,24 @@ void PostCodeEventHandler(PostReporter* reporter, sdeventplus::source::IO& s,
             return;
         }
 
-        code = le64toh(code);
         if (verbose)
         {
-            fprintf(stderr, "Code: 0x%" PRIx64 "\n", code);
+            fprintf(stderr, "Code: 0x");
+            for (const auto& byte : code)
+            {
+                std::printf("%02X", byte);
+            }
+            fprintf(stderr, "\n");
         }
         // HACK: Always send property changed signal even for the same code
         // since we are single threaded, external users will never see the
         // first value.
-        reporter->value(std::make_tuple(~code, secondary_post_code_t{}), true);
+        reporter->value(std::make_tuple(bytesInvert(code), secondary_post_code_t{}), true);
         reporter->value(std::make_tuple(code, secondary_post_code_t{}));
 
         // read depends on old data being cleared since it doesn't always read
         // the full code size
-        code = 0;
+        code.clear();
 
         if (rateLimit(*reporter, s))
         {
@@ -319,10 +333,10 @@ int main(int argc, char* argv[])
                 break;
             }
             case 'd':
-                if (std::string(optarg).starts_with("/dev/aspeed-lpc-pcc"))
-                {
-                    procPostCode = aspeedPCC;
-                }
+                // if (std::string(optarg).starts_with("/dev/aspeed-lpc-pcc"))
+                // {
+                //     procPostCode = aspeedPCC;
+                // }
 
                 postFd = open(optarg, O_NONBLOCK);
                 if (postFd < 0)
