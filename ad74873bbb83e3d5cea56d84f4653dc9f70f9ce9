@@ -16,6 +16,24 @@
       "message": "Waiting for dependency to land first: https://gerrit.openbmc.org/c/openbmc/phosphor-dbus-interfaces/+/74633",
       "revId": "ad74873bbb83e3d5cea56d84f4653dc9f70f9ce9",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "019b3fe1_b2593fe1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-11-12T15:41:12Z",
+      "side": 1,
+      "message": "Please give an indication of how you feel about the code itself.",
+      "parentUuid": "6e4f590e_c011bc55",
+      "revId": "ad74873bbb83e3d5cea56d84f4653dc9f70f9ce9",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
