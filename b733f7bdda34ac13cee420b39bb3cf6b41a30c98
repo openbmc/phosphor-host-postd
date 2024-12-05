@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fefa919_495c9dd3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000559
+      },
+      "writtenOn": "2024-12-05T17:47:53Z",
+      "side": 1,
+      "message": "Is there a place to publish and update the baseline configuration across the openbmc repos?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "b733f7bdda34ac13cee420b39bb3cf6b41a30c98",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
