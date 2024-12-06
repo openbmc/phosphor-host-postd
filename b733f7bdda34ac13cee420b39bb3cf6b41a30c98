@@ -39,6 +39,24 @@
       "message": "Change lgtm. Only question is plans to maintain consistency across all repos",
       "revId": "b733f7bdda34ac13cee420b39bb3cf6b41a30c98",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee00c98_99b9c8a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000086
+      },
+      "writtenOn": "2024-12-06T15:57:41Z",
+      "side": 1,
+      "message": "Attempting to maintain consistency in base version checks across all repositories. These checks may vary based on the programming language used or advanced features like boost coroutines etc.",
+      "parentUuid": "4eed4202_e0a26792",
+      "revId": "b733f7bdda34ac13cee420b39bb3cf6b41a30c98",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
