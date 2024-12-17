@@ -48,7 +48,7 @@ class SnoopListen
     {}
 
     SnoopListen(sdbusplus::bus_t& busIn, postcode_handler_t handler,
-                FILE* f = NULL) :
+                FILE* f = nullptr) :
         SnoopListen(busIn, std::bind(defaultMessageHandler, handler, f,
                                      std::placeholders::_1))
     {}
