@@ -274,12 +274,12 @@ int main(int argc, char* argv[])
 #ifdef ENABLE_IPMI_SNOOP
         {"host", optional_argument, NULL, 'h'},
 #else
-        {"device", optional_argument, NULL, 'd'},
-        {"rate-limit", optional_argument, NULL, 'r'},
-        {"bytes",  required_argument, NULL, 'b'},
+        {"device", optional_argument, nullptr, 'd'},
+        {"rate-limit", optional_argument, nullptr, 'r'},
+        {"bytes",  required_argument, nullptr, 'b'},
 #endif
-        {"verbose", no_argument, NULL, 'v'},
-        {0, 0, 0, 0}
+        {"verbose", no_argument, nullptr, 'v'},
+        {nullptr, 0, nullptr, 0}
     };
     // clang-format on
 
@@ -291,7 +291,8 @@ int main(int argc, char* argv[])
 #endif
         "v";
 
-    while ((opt = getopt_long(argc, argv, optstring, long_options, NULL)) != -1)
+    while ((opt = getopt_long(argc, argv, optstring, long_options, nullptr)) !=
+           -1)
     {
         switch (opt)
         {
