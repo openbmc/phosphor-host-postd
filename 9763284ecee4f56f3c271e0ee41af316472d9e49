@@ -22,6 +22,30 @@
       },
       "revId": "9763284ecee4f56f3c271e0ee41af316472d9e49",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c468fb_335354c3",
+        "filename": "main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000086
+      },
+      "writtenOn": "2024-12-18T07:42:16Z",
+      "side": 1,
+      "message": "Ack. Looks like tool is not complaint due to compilation flag dependency .",
+      "parentUuid": "b3f2ec60_aadce542",
+      "range": {
+        "startLine": 275,
+        "startChar": 36,
+        "endLine": 275,
+        "endChar": 40
+      },
+      "revId": "9763284ecee4f56f3c271e0ee41af316472d9e49",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
