@@ -72,7 +72,7 @@ executable(
   install: true,
 )
 
-if not get_option('7seg').disabled()
+if get_option('7seg').allowed()
   udevdir = dependency('udev', required : false).get_variable('udevdir')
   assert(udevdir != '', 'Cannot find udevdir')
   install_data(['80-7seg.rules'], install_dir : udevdir)
@@ -98,6 +98,6 @@ install_headers(
   'lpcsnoop/snoop_listen.hpp',
   subdir: 'lpcsnoop')
 
-if not build_tests.disabled()
+if build_tests.allowed()
   subdir('test')
 endif
