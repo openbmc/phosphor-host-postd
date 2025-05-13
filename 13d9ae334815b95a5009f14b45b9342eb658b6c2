@@ -1,0 +1,8 @@
+Code-Review+2: Willy Tu <wltu@google.com>
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Code-Review+1: Zhikui Ren <zhikuiren8@gmail.com>
+Submitted-by: Willy Tu <wltu@google.com>
+Submitted-at: Tue, 13 May 2025 06:18:27 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/phosphor-host-postd/+/77771
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
