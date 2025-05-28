@@ -5,9 +5,9 @@
 #include <xyz/openbmc_project/State/Boot/Raw/server.hpp>
 
 /* The LPC snoop on port 80h is mapped to this dbus path. */
-constexpr char snoopObject[] = "/xyz/openbmc_project/state/boot/raw0";
+static std::string snoopObject = "/xyz/openbmc_project/state/boot/raw";
 /* The LPC snoop on port 80h is mapped to this dbus service. */
-constexpr char snoopDbus[] = "xyz.openbmc_project.State.Boot.Raw";
+static std::string snoopDbus = "xyz.openbmc_project.State.Boot.Raw";
 
 template <typename... T>
 using ServerObject = typename sdbusplus::server::object_t<T...>;

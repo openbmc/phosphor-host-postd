@@ -25,9 +25,14 @@ namespace lpcsnoop
 using std::get;
 
 /* Returns matching string for what signal to listen on Dbus */
-static const std::string GetMatchRule()
+static const std::string GetMatchRule(const std::string& node)
 {
     using namespace sdbusplus::bus::match::rules;
+
+    if (!node.empty())
+    {
+        snoopObject += node;
+    }
 
     return type::signal() + interface("org.freedesktop.DBus.Properties") +
            member("PropertiesChanged") + path(snoopObject);
@@ -39,18 +44,22 @@ class SnoopListen
     using postcode_handler_t = std::function<void(FILE*, postcode_t)>;
 
   public:
-    SnoopListen(sdbusplus::bus_t& busIn, sd_bus_message_handler_t handler) :
-        signal(busIn, GetMatchRule().c_str(), handler, this)
+    SnoopListen(sdbusplus::bus_t& busIn, sd_bus_message_handler_t handler,
+                const std::string& node) :
+        signal(busIn, GetMatchRule(node).c_str(), handler, this)
     {}
 
-    SnoopListen(sdbusplus::bus_t& busIn, message_handler_t handler) :
-        signal(busIn, GetMatchRule(), handler)
+    SnoopListen(sdbusplus::bus_t& busIn, message_handler_t handler,
+                const std::string& node) :
+        signal(busIn, GetMatchRule(node), handler)
     {}
 
     SnoopListen(sdbusplus::bus_t& busIn, postcode_handler_t handler,
-                FILE* f = nullptr) :
-        SnoopListen(busIn, std::bind(defaultMessageHandler, handler, f,
-                                     std::placeholders::_1))
+                const std::string& node, FILE* f = nullptr) :
+        SnoopListen(
+            busIn,
+            std::bind(defaultMessageHandler, handler, f, std::placeholders::_1),
+            node)
     {}
 
     SnoopListen() = delete; // no default constructor
