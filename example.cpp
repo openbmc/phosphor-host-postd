@@ -21,6 +21,8 @@
 #include <iostream>
 #include <memory>
 
+static std::string node = "0";
+
 /* Example PostCode handler which simply prints them */
 static void printPostcode(FILE*, postcode_t postcode)
 {
@@ -32,7 +34,7 @@ static void printPostcode(FILE*, postcode_t postcode)
     {
         hexCode += std::format("{:02x}", byte);
     }
-    std::printf("recv: 0x%s\n", hexCode.c_str());
+    std::printf("node%s_recv: 0x%s\n", node.c_str(), hexCode.c_str());
 }
 
 /*
@@ -64,10 +66,15 @@ static void printPostcode(FILE*, postcode_t postcode)
  * This application simply creates an object that registers for incoming value
  * updates for the POST code dbus object.
  */
-int main()
+int main(int argc, char* argv[])
 {
+    if (argc > 1)
+    {
+        node = argv[1];
+    }
+
     auto ListenBus = sdbusplus::bus::new_default();
-    lpcsnoop::SnoopListen snoop(ListenBus, printPostcode);
+    lpcsnoop::SnoopListen snoop(ListenBus, printPostcode, node);
 
     while (true)
     {
