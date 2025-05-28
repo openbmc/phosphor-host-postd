@@ -49,6 +49,8 @@ static void DisplayDbusValue(FILE* f, postcode_t postcodes)
  */
 int main(int argc, const char* argv[])
 {
+    std::string node = "0";
+
     if (argc != 2 || !fs::exists(argv[1]))
     {
         std::fprintf(stderr, "usage: %s <device_node>\n", argv[0]);
@@ -60,7 +62,8 @@ int main(int argc, const char* argv[])
 
     auto ListenBus = sdbusplus::bus::new_default();
     std::unique_ptr<lpcsnoop::SnoopListen> snoop =
-        std::make_unique<lpcsnoop::SnoopListen>(ListenBus, DisplayDbusValue, f);
+        std::make_unique<lpcsnoop::SnoopListen>(ListenBus, DisplayDbusValue,
+                                                node, f);
 
     signal(SIGINT, [](int signum) {
         if (signum == SIGINT)

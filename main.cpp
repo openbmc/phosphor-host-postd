@@ -264,6 +264,7 @@ int main(int argc, char* argv[])
 {
     int postFd = -1;
     unsigned int rateLimit = 0;
+    static std::string node = "0";
 
     int opt;
 
@@ -275,6 +276,7 @@ int main(int argc, char* argv[])
         {"host", optional_argument, nullptr, 'h'},
 #else
         {"device", optional_argument, nullptr, 'd'},
+        {"node", optional_argument, nullptr, 'd'},
         {"rate-limit", optional_argument, nullptr, 'r'},
         {"bytes",  required_argument, nullptr, 'b'},
 #endif
@@ -287,7 +289,7 @@ int main(int argc, char* argv[])
 #ifdef ENABLE_IPMI_SNOOP
         "h:"
 #else
-        "d:r:b:"
+        "d:n:r:b:"
 #endif
         "v";
 
@@ -338,6 +340,12 @@ int main(int argc, char* argv[])
                     return -1;
                 }
                 break;
+            case 'n':
+            {
+                node = optarg;
+                fprintf(stderr, "Setting node to %s.\n", optarg);
+                break;
+            }
             case 'r':
             {
                 int argVal = -1;
@@ -384,12 +392,23 @@ int main(int argc, char* argv[])
 
     bool deferSignals = true;
 
-    // Add systemd object manager.
-    sdbusplus::server::manager_t snoopdManager(bus, snoopObject);
+    // Add the node to the snoop object and dbus service names.
+    if (node == "0")
+    {
+        snoopObject += node;
+    }
+    else
+    {
+        snoopObject += node;
+        snoopDbus += node;
+    }
 
-    PostReporter reporter(bus, snoopObject, deferSignals);
+    // Add systemd object manager.
+    sdbusplus::server::manager_t snoopdManager(bus, snoopObject.c_str());
+
+    PostReporter reporter(bus, snoopObject.c_str(), deferSignals);
     reporter.emit_object_added();
-    bus.request_name(snoopDbus);
+    bus.request_name(snoopDbus.c_str());
 
     // Create sdevent and add IO source
     try

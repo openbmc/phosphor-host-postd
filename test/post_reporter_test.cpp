@@ -34,7 +34,7 @@ TEST_F(PostReporterTest, EmitsObjectsOnExpectedDbusPath)
                 sd_bus_emit_object_added(IsNull(), StrEq(snoopObject)))
         .WillOnce(Return(0));
 
-    PostReporter testReporter(bus, snoopObject, true);
+    PostReporter testReporter(bus, snoopObject.c_str(), true);
     testReporter.emit_object_added();
 }
 
@@ -50,18 +50,18 @@ TEST_F(PostReporterTest, AddsObjectWithExpectedName)
                                          StrEq(snoopDbus), _, _))
         .WillOnce(slotcb);
 
-    PostReporter testReporter(bus, snoopObject, true);
+    PostReporter testReporter(bus, snoopObject.c_str(), true);
 }
 
 TEST_F(PostReporterTest, ValueReadsDefaultToEmpty)
 {
-    PostReporter testReporter(bus, snoopObject, true);
+    PostReporter testReporter(bus, snoopObject.c_str(), true);
     EXPECT_TRUE(std::get<0>(testReporter.value()).empty());
 }
 
 TEST_F(PostReporterTest, SetValueToPositiveValueWorks)
 {
-    PostReporter testReporter(bus, snoopObject, true);
+    PostReporter testReporter(bus, snoopObject.c_str(), true);
     primary_post_code_t primaryCode = {122, 126, 127};
     secondary_post_code_t secondaryCode = {123, 124, 125};
     testReporter.value(std::make_tuple(primaryCode, secondaryCode));
@@ -71,7 +71,7 @@ TEST_F(PostReporterTest, SetValueToPositiveValueWorks)
 
 TEST_F(PostReporterTest, SetValueMultipleTimesWorks)
 {
-    PostReporter testReporter(bus, snoopObject, true);
+    PostReporter testReporter(bus, snoopObject.c_str(), true);
     primary_post_code_t primaryCode = {20, 21, 0, 123};
     secondary_post_code_t secondaryCode = {10, 40, 0, 245, 56};
     testReporter.value(std::make_tuple(primaryCode, secondaryCode));
