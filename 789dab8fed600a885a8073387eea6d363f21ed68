@@ -1,0 +1,9 @@
+Code-Review+2: Zhikui Ren <zhikuiren8@gmail.com>
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Code-Review+2: Benjamin Fair <benjaminfair@google.com>
+Submitted-by: Jayanth Othayoth <ojayanth@gmail.com>
+Submitted-at: Tue, 10 Jun 2025 09:37:03 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/phosphor-host-postd/+/76653
+Comments-Total: 3
+Project: openbmc/phosphor-host-postd
+Branch: refs/heads/master
