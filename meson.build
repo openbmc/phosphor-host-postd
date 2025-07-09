@@ -43,7 +43,7 @@ configure_file(
     output: 'lpcsnoop.service',
     configuration: conf_data,
     install: true,
-    install_dir: systemd.get_variable('systemdsystemunitdir'),
+    install_dir: systemd.get_variable('systemd_system_unit_dir'),
 )
 
 executable(
@@ -72,7 +72,7 @@ if get_option('7seg').allowed()
 
     install_data(
         ['postcode-7seg@.service'],
-        install_dir: systemd.get_variable('systemdsystemunitdir'),
+        install_dir: systemd.get_variable('systemd_system_unit_dir'),
     )
 
     executable(
