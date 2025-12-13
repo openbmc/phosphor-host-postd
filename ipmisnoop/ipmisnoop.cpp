@@ -134,6 +134,14 @@ int postCodeIpmiHandler(const std::string& snoopObject,
 {
     int ret = 0;
 
+    // Configure seven segment dsiplay connected to GPIOs as output
+    ret = configGPIODirOutput();
+    if (ret < 0)
+    {
+        fprintf(stderr, "Failed find the gpio line. Cannot display postcodes "
+                        "in seven segment display..\n");
+    }
+
     try
     {
         for (size_t iteration = 0; iteration < host.size(); iteration++)
@@ -159,23 +167,12 @@ int postCodeIpmiHandler(const std::string& snoopObject,
         {
             reporters[0]->getSelectorPositionSignal(bus);
         }
-        else
-        {
-            reporters.clear();
-        }
     }
     catch (const std::exception& e)
     {
         fprintf(stderr, "%s\n", e.what());
     }
 
-    // Configure seven segment dsiplay connected to GPIOs as output
-    ret = configGPIODirOutput();
-    if (ret < 0)
-    {
-        fprintf(stderr, "Failed find the gpio line. Cannot display postcodes "
-                        "in seven segment display..\n");
-    }
 
     while (true)
     {
