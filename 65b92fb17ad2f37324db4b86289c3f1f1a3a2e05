@@ -33,6 +33,23 @@
       "message": "Hi @patrick@stwcx.xyz, @benjaminfair@google.com, @wltu@google.com, @paligill@gmail.com, @pmb@meta.com,\n\nCould you please kindly help review this change and proceed with merging if there are no further concerns? Much appreciated!",
       "revId": "65b92fb17ad2f37324db4b86289c3f1f1a3a2e05",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "784dff0d_e89073af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002229
+      },
+      "writtenOn": "2026-01-19T05:21:42Z",
+      "side": 1,
+      "message": "Hi @benjaminfair@google.com, @wltu@google.com, @paligill@gmail.com, @pmb@meta.com,\n\nPatrick has already given his +1 on this change.\nCould you please take a look and merge if everything looks good? Much appreciated!",
+      "revId": "65b92fb17ad2f37324db4b86289c3f1f1a3a2e05",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
