@@ -61,7 +61,7 @@ class SnoopListen
     SnoopListen& operator=(SnoopListen&&) = default;
 
   private:
-    sdbusplus::bus::match_t signal;
+    sdbusplus::match signal;
 
     /*
      * Default message handler which listens to published messages on snoop

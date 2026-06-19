@@ -121,7 +121,7 @@ struct IpmiPostReporter : PostObject
     {}
 
     sdbusplus::bus_t& bus;
-    sdbusplus::bus::match_t propertiesChangedSignalRaw;
+    sdbusplus::match propertiesChangedSignalRaw;
     int postCodeDisplay(uint8_t);
     void getSelectorPositionSignal(sdbusplus::bus_t& bus);
 };
