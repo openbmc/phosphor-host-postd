@@ -49,8 +49,7 @@ struct IpmiPostReporter : PostObject
     IpmiPostReporter(sdbusplus::bus_t& bus, const char* objPath) :
         PostObject(bus, objPath), bus(bus),
         propertiesChangedSignalRaw(
-            bus,
-            sdbusplus::bus::match::rules::propertiesChanged(objPath, rawIface),
+            bus, sdbusplus::match_rules::propertiesChanged(objPath, rawIface),
 
             [this, &bus](sdbusplus::message_t& msg) {
                 using primarycode_t = std::vector<uint8_t>;
@@ -121,7 +120,7 @@ struct IpmiPostReporter : PostObject
     {}
 
     sdbusplus::bus_t& bus;
-    sdbusplus::bus::match_t propertiesChangedSignalRaw;
+    sdbusplus::match propertiesChangedSignalRaw;
     int postCodeDisplay(uint8_t);
     void getSelectorPositionSignal(sdbusplus::bus_t& bus);
 };

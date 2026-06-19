@@ -92,10 +92,10 @@ void IpmiPostReporter::getSelectorPositionSignal(sdbusplus::bus_t& bus)
 
     size_t posVal = 0;
 
-    static auto matchSignal = std::make_unique<sdbusplus::bus::match_t>(
+    static auto matchSignal = std::make_unique<sdbusplus::match>(
         bus,
-        sdbusplus::bus::match::rules::propertiesChanged(selectorObject,
-                                                        selectorIface),
+        sdbusplus::match_rules::propertiesChanged(selectorObject,
+                                                  selectorIface),
         [&](sdbusplus::message_t& msg) {
             std::string objectName;
             std::map<std::string, Selector::PropertiesVariant> msgData;

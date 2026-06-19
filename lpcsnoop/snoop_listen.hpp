@@ -27,7 +27,7 @@ using std::get;
 /* Returns matching string for what signal to listen on Dbus */
 static const std::string GetMatchRule()
 {
-    using namespace sdbusplus::bus::match::rules;
+    using namespace sdbusplus::match_rules;
 
     return type::signal() + interface("org.freedesktop.DBus.Properties") +
            member("PropertiesChanged") + path(snoopObject);
@@ -61,7 +61,7 @@ class SnoopListen
     SnoopListen& operator=(SnoopListen&&) = default;
 
   private:
-    sdbusplus::bus::match_t signal;
+    sdbusplus::match signal;
 
     /*
      * Default message handler which listens to published messages on snoop
