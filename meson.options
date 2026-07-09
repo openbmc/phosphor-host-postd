@@ -29,6 +29,12 @@ option(
 option('7seg', type: 'feature', description: 'Enable building 7seg POST daemon.')
 option('tests', type: 'feature', description: 'Build tests.')
 option(
+    'stop-at-post-complete',
+    type: 'feature',
+    description: 'Stop capturing POST codes when BootProgress reaches PostComplete.',
+    value: 'disabled',
+)
+option(
     'rate-limit',
     description: 'Maximum number of POST codes to read from snoop device every' + 'second. Value of 0 disables rate limiting.',
     type: 'integer',
