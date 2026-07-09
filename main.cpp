@@ -18,6 +18,9 @@
 #include "ipmisnoop/ipmisnoop.hpp"
 #endif
 #include "lpcsnoop/snoop.hpp"
+#ifdef STOP_AT_POST_COMPLETE
+#include "snoop_control.hpp"
+#endif
 
 #include <endian.h>
 #include <fcntl.h>
@@ -403,6 +406,11 @@ int main(int argc, char* argv[])
                 event, postFd, EPOLLIN,
                 std::bind_front(PostCodeEventHandler, &reporter));
         }
+#ifdef STOP_AT_POST_COMPLETE
+        std::optional<SnoopControl> snoopStop;
+        if (reporterSource)
+            snoopStop.emplace(bus, reporterSource);
+#endif
         // Enable bus to handle incoming IO and bus events
         auto intCb = [](sdeventplus::source::Signal& source,
                         const struct signalfd_siginfo*) {
