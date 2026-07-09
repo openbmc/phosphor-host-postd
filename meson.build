@@ -38,6 +38,10 @@ endif
 
 conf_data.set('SNOOPD_ARGS', snoopd_args)
 
+if get_option('stop-at-post-complete').allowed()
+    add_project_arguments('-DSTOP_AT_POST_COMPLETE', language: 'cpp')
+endif
+
 configure_file(
     input: 'lpcsnoop.service.in',
     output: 'lpcsnoop.service',
