@@ -18,6 +18,9 @@
 #include "ipmisnoop/ipmisnoop.hpp"
 #endif
 #include "lpcsnoop/snoop.hpp"
+#ifndef ENABLE_IPMI_SNOOP
+#include "lpcsnoop/snoop_control.hpp"
+#endif
 
 #include <endian.h>
 #include <fcntl.h>
@@ -387,7 +390,11 @@ int main(int argc, char* argv[])
     // Add systemd object manager.
     sdbusplus::server::manager_t snoopdManager(bus, snoopObject);
 
+#ifndef ENABLE_IPMI_SNOOP
+    lpcsnoop::SnoopControl reporter(bus, snoopObject, deferSignals);
+#else
     PostReporter reporter(bus, snoopObject, deferSignals);
+#endif
     reporter.emit_object_added();
     bus.request_name(snoopDbus);
 
@@ -402,6 +409,13 @@ int main(int argc, char* argv[])
             reporterSource.emplace(
                 event, postFd, EPOLLIN,
                 std::bind_front(PostCodeEventHandler, &reporter));
+#ifndef ENABLE_IPMI_SNOOP
+            reporter.setCapture([&reporterSource](bool enabled) {
+                reporterSource->set_enabled(
+                    enabled ? sdeventplus::source::Enabled::On
+                            : sdeventplus::source::Enabled::Off);
+            });
+#endif
         }
         // Enable bus to handle incoming IO and bus events
         auto intCb = [](sdeventplus::source::Signal& source,
