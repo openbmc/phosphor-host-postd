@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8748bab_c6bb3a46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002522
+      },
+      "writtenOn": "2026-07-15T08:10:47Z",
+      "side": 1,
+      "message": "Changed the implementation from a push-based approach to watching the BootProgress property. POST code capture is stopped only when BootProgress reaches PostComplete. \n\nThis behavior is also made optional through a Meson build option.",
+      "revId": "12fcd88a97c1bcf5a29c05aa48558425b8573da7",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
