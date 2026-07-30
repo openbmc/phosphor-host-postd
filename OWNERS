@@ -32,7 +32,6 @@
 # data within them will be kept sorted.
 
 owners:
-- benjaminfair@google.com
 - wltu@google.com
 
 reviewers:
@@ -40,9 +39,6 @@ reviewers:
 matchers:
 
 openbmc:
-- name: Benjamin Fair
-  email: benjaminfair@google.com
-  discord: benjaminfair
 - name: Willy Tu
   email: wltu@google.com
   discord: wltu
