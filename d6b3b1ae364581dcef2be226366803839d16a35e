@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "892f42d8_fcd8d6e0",
+        "filename": "snoop_control.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2026-09-23T00:17:55Z",
+      "side": 1,
+      "message": "can\u0027t this just be `std::string` and the read will try to read it to string and fail if it is not a string?",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "d6b3b1ae364581dcef2be226366803839d16a35e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b66a0d_bb225037",
+        "filename": "snoop_control.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2026-09-23T00:17:55Z",
+      "side": 1,
+      "message": "this doesn\u0027t do anything?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 5
+      },
+      "revId": "d6b3b1ae364581dcef2be226366803839d16a35e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c36710f_72313b61",
+        "filename": "snoop_control.hpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000885
+      },
+      "writtenOn": "2026-09-23T00:17:55Z",
+      "side": 1,
+      "message": "this should be in `onNameOwnerChanged`?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 24
+      },
+      "revId": "d6b3b1ae364581dcef2be226366803839d16a35e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0159b48e_3e8362de",
         "filename": "snoop_control.hpp",
         "patchSetId": 8
