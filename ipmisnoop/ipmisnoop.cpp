@@ -127,7 +127,7 @@ void IpmiPostReporter::getSelectorPositionSignal(sdbusplus::bus_t& bus)
         });
 }
 
-// handle muti-host D-bus
+// handle multi-host D-bus
 int postCodeIpmiHandler(const std::string& snoopObject,
                         const std::string& snoopDbus, sdbusplus::bus_t& bus,
                         std::span<std::string> host)
@@ -169,7 +169,7 @@ int postCodeIpmiHandler(const std::string& snoopObject,
         fprintf(stderr, "%s\n", e.what());
     }
 
-    // Configure seven segment dsiplay connected to GPIOs as output
+    // Configure seven segment display connected to GPIOs as output
     ret = configGPIODirOutput();
     if (ret < 0)
     {
